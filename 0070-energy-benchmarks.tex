@@ -4,7 +4,7 @@
 Energy consumption is a critical component of  ML benchmarking. Training and inference with modern AI systems can require enormous computational resources. 
 
 
-To illustrate the issue, we have provided in Table \ref{tab:energy-chatgpt} and Figure \ref{fig:energy-consumption} the energy required to train various ChatGPT models (some of which are estimated as no public data has been released \cite{sciencefeedback2024energy,kaplan2020scaling}, such as GPT-5 and GPT-6). The training of a single large-scale language model (GPT-3) consumes approximately 1,287 MWh placing it in the same range as the annual energy usage of about 130 U.S. households, according to U.S. Energy Information Administration (EIA) statistics on average residential electricity consumption \cite{EIA_Electricity_Price_2025,eia2024residential,WECEnergy,patterson2021carbon,jegham2025hungryaibenchmarkingenergy,baeldung2023energy}. 
+To illustrate the issue, we have provided in Table \ref{tab:energy-chatgpt} and Figure \ref{fig:energy-consumption} the energy required to train various ChatGPT models (some of which are estimated as no public data has been released \citep{sciencefeedback2024energy,kaplan2020scaling}, such as GPT-5 and GPT-6). The training of a single large-scale language model (GPT-3) consumes approximately 1,287 MWh placing it in the same range as the annual energy usage of about 130 U.S. households, according to U.S. Energy Information Administration (EIA) statistics on average residential electricity consumption \citep{EIA_Electricity_Price_2025,eia2024residential,WECEnergy,patterson2021carbon,jegham2025hungryaibenchmarkingenergy,baeldung2023energy}. 
 
 For the U.S. Department of Energy (DOE) leadership-class machines, such as those hosted at Oak Ridge National Laboratory (see Table \ref{tab:ornl-energy}), we find documented and significant progress toward exascale, but at the cost of increased energy consumption that more than doubled during the last generational upgrade. However, the Peak Performance per energy unit has increased significantly, and compared to Jaguar's initial values, Frontier has improved by a factor of 209, thus becoming relatively more efficient despite overall energy consumption needs.
 
@@ -12,7 +12,7 @@ For the U.S. Department of Energy (DOE) leadership-class machines, such as those
 \begin{table}[tb]
 \centering
 \caption{Estimated Energy Consumption of GPT Models for Training and Inference 
-(Based on \cite{brown2020language, patterson2021carbon, medium2023gpt4carbon, 
+(Based on \citep{brown2020language, patterson2021carbon, medium2023gpt4carbon, 
 extremenetworks2023energy, epochai2024compute, hackernoon2024dirtysecret}).}
 \label{tab:energy-chatgpt}
 \resizebox{\columnwidth}{!}{
@@ -21,11 +21,11 @@ extremenetworks2023energy, epochai2024compute, hackernoon2024dirtysecret}).}
 \textbf{Model} & \textbf{\makecell{Training Energy\\(MWh)}} & \textbf{\makecell{Inference Energy\\(per 1M queries, MWh)}} \\
 \hline
 \hline
-GPT-3 & $\sim$1,287 \cite{baeldung2023energy,patterson2021carbon} & $\sim$50--100 \\
+GPT-3 & $\sim$1,287 \citep{baeldung2023energy,patterson2021carbon} & $\sim$50--100 \\
 \hline
-GPT-4 & 51,773--62,319 \cite{medium2023gpt4carbon,extremenetworks2023energy} & $\sim$600--1,000 \\ \hline 
-GPT-5 & $>$60,000 (estimated) \cite{epochai2024compute,hackernoon2024dirtysecret} & $\sim$800--1,200 \\ \hline
-GPT-6 & 80,000--100,000 (projected) \cite{epochai2024compute} & $\sim$1,000--1,500 \\ \hline
+GPT-4 & 51,773--62,319 \citep{medium2023gpt4carbon,extremenetworks2023energy} & $\sim$600--1,000 \\ \hline 
+GPT-5 & $>$60,000 (estimated) \citep{epochai2024compute,hackernoon2024dirtysecret} & $\sim$800--1,200 \\ \hline
+GPT-6 & 80,000--100,000 (projected) \citep{epochai2024compute} & $\sim$1,000--1,500 \\ \hline
 \end{tabular}
 }
 \end{table}
@@ -50,13 +50,13 @@ GPT-6 & 80,000--100,000 (projected) \cite{epochai2024compute} & $\sim$1,000--1,5
             \textbf{Machine} & \textbf{Year} & \textbf{Architecture} & $R_{max}$ Scaling & \textbf{\makecell{$R_{max}$ \\ PFlops/s}} & \textbf{\makecell{$R_{peak}$ \\ PFlops/s}} & \textbf{\makecell{Power\\ (MW)}} & \textbf{\makecell{$R_{max}/$Power\\(PF/MW)}} \\
             \hline
             \hline
-            Jaguar\cite{BlandRogers2009-jaguar}       & 2009 & Multi-core CPU  & 1 &    1941 &    2628 & 7  & 277.29 \\
+            Jaguar\citep{BlandRogers2009-jaguar}       & 2009 & Multi-core CPU  & 1 &    1941 &    2628 & 7  & 277.29 \\
             \hline
-            Titan\cite{Bland2012-titan}               & 2012 & Hybrid CPU/GPU  & 9.06 &   17590 &   27113 & 9  & 1954.44  \\
+            Titan\citep{Bland2012-titan}               & 2012 & Hybrid CPU/GPU  & 9.06 &   17590 &   27113 & 9  & 1954.44  \\
             \hline
-            Summit\cite{WombleShankar2019-summit}     & 2017 & Hybrid CPU/GPU  & 76.6 &  148600 &  200795 & 13  & 11430.77  \\
+            Summit\citep{WombleShankar2019-summit}     & 2017 & Hybrid CPU/GPU  & 76.6 &  148600 &  200795 & 13  & 11430.77  \\
             \hline
-            Frontier\cite{AtchleyZimmer2023-frontier} & 2022 & Hybrid CPU/GPU  & 697.1 & 1353000 & 2055717 & 29  & 46655.17  \\
+            Frontier\citep{AtchleyZimmer2023-frontier} & 2022 & Hybrid CPU/GPU  & 697.1 & 1353000 & 2055717 & 29  & 46655.17  \\
             \hline
         \end{tabular}
     }
@@ -77,26 +77,26 @@ The following examples highlight this issue and directly impact budget and susta
 \noindent
 \textbf{Case 1 – Oak Ridge’s \emph{Frontier}.} %
 The Frontier exascale system draws
-\(24.6\;\text{MW}\) at LINPACK load and is housed in a data hall whose measured PUE is \(1.03\)\,\cite{DOE_Frontier_Power2023}. At the July 2025 U.S.\ industrial tariff of
-\$0.081 kWh\(^{-1}\)\,\cite{EIA_Electricity_Price_2025} the annual electricity bill is: $24.6\;\text{MW}\times 8\,760\;\text{h\,yr}^{-1}\times\$0.081
+\(24.6\;\text{MW}\) at LINPACK load and is housed in a data hall whose measured PUE is \(1.03\)\,\citep{DOE_Frontier_Power2023}. At the July 2025 U.S.\ industrial tariff of
+\$0.081 kWh\(^{-1}\)\,\citep{EIA_Electricity_Price_2025} the annual electricity bill is: $24.6\;\text{MW}\times 8\,760\;\text{h\,yr}^{-1}\times\$0.081
   \;\approx\;\$17.5\,\text{M}/\text{yr}.$  The Tennessee Valley Authority reported a residual grid intensity of
 \(360\;\text{g\,CO}_{2}\text{e\,kWh}^{-1}\) for 2024\footnote{TVA
 Sustainability Report (2025), \url{https://tva.com/environment/environmental-stewardship/sustainability}.} so Frontier emits
 \(\sim\!78\;\text{kt\,CO}_{2}\text{e\,yr}^{-1}\), equivalent to the
 territorial footprint of \(\sim\!12\,000\) EU residents
-(Eurostat 2024, 6.5 t cap\(^{-1}\))\,\cite{Eurostat_GHG_2024}.
+(Eurostat 2024, 6.5 t cap\(^{-1}\))\,\citep{Eurostat_GHG_2024}.
 
 %\vspace{4pt}
 \noindent
 \textbf{Case 2 – Google hyperscale fleet.} %
 Google’s 2023 environmental report lists a \emph{fleet-wide} PUE of
-\(\mathbf{1.10}\) (industry mean 1.58)\,\cite{Google_PUE_2023} yet company-wide GHG emissions still rose to
+\(\mathbf{1.10}\) (industry mean 1.58)\,\citep{Google_PUE_2023} yet company-wide GHG emissions still rose to
 \(14.3\;\text{Mt\,CO}_{2}\text{e}\) in 2023, up 49 \% since
-2019\,\cite{Google_Sustainability_2024}.   % <5>
+2019\,\citep{Google_Sustainability_2024}.   % <5>
 Internal modeling shows that deferring non-urgent ML jobs to periods of
 low grid-carbon intensity cuts emissions by 10–20 \%; Google plans to
 combine that policy with a 115 MW geothermal PPA coming online in Nevada
-in 2026\,\cite{Google_Geothermal_2023}.   % <6>
+in 2026\,\citep{Google_Geothermal_2023}.   % <6>
 
 \end{comment}
 
@@ -179,7 +179,7 @@ To identify commonly used metrics, we conducted an initial survey of tools and b
 Table \ref{tab:hpc_energy_catalog}, while listing their typical benchmark use.
 
 Common requirements for such metrics include obtaining measurements at low cost, sharing results with metadata augmentations, and integrating them into potential leaderboards. 
-We believe we have to go beyond established leaderboards such as {\em Green500} and the {\em MLPerf Power}, which already influence processor road-maps and procurement calls~\cite{Scogland11Green500,Tschand24MLPerfPower}, to raise awareness of the energy impact on real-world scientific applications.
+We believe we have to go beyond established leaderboards such as {\em Green500} and the {\em MLPerf Power}, which already influence processor road-maps and procurement calls~\citep{Scogland11Green500,Tschand24MLPerfPower}, to raise awareness of the energy impact on real-world scientific applications.
 
 \renewcommand{\arraystretch}{1.1}
 \begin{table*}[hptb]
@@ -198,46 +198,46 @@ We believe we have to go beyond established leaderboards such as {\em Green500} 
 \hline
 \hline
 \rowcolor{gray!20} \multicolumn{5}{|l|}{Benchmark}\\ \hline
-\mmB & SPECpower\_ssj2008           & \cite{specpower}            & W/transaction; ops/W                & Enterprise-server rankings; ENERGY STAR compliance \\ \hline
-\mmB & SPEC\,SERT$^{2}$             & \cite{sert2}                & Server-Efficiency-Rating = kWh + perf    & EU Lot 9 certification; vendor datasheets \\ \hline
-\mmB & TPC-Energy                   & \cite{tpcenergy}            & Wh/DB phase                            & OLTP/warehouse energy cost studies \\ \hline
-\mmB & JouleSort                    & \cite{joulesort}            & records/J                              & Storage-I/O contests; I/O-stack tuning \\ \hline
-\mmB & Green500                     & \cite{green500}             & GFLOPS/W (HPL or HPL-AI)               & Global supercomputer energy ranking \\ \hline
-\mmB & HPCG-Power                   & \cite{hpcgpower}            & GFLOPS/W (HPCG)                        & Memory-bound tuning; procurement add-on to TOP500 \\ \hline
-\mmB & HPL-MxP (HPL-AI)             & \cite{hplmxphplai}          & mixed-precision GFLOPS/W               & GPU/TPU evaluation for AI-optimised LINPACK \\ \hline
-\mmB & MLPerf Power                 & \cite{mlperfpower}          & J; avg W; J/sample; J/epoch       & Official energy track for MLPerf submissions \\ \hline
-\mmB & MLPerf Tiny                  & \cite{mlperftiny}           & $\mu$J/inference (MCU)             & Edge-AI board comparison; ultra-low-power design \\ \hline
-\mmB & CoreMark-PRO Power           & \cite{coremarkpro}          & iterations/s/W (SoC)                 & Pre-silicon DVFS sweeps; embedded RFPs \\ \hline 
-\mmB & UL Procyon AI Power          & \cite{procyon}              & images/W; fps/W                     & Smartphone \& laptop AI-inference benchmarks \\ \hline
-\mmB & CANDLE Power Study           & \cite{candlepowerstud}      & J/epoch; GFLOPS/W                   & DOE accelerator procurement guidance \\ \hline
-\mmB & LULESH/miniFE Energy       & \cite{luleshminifeene}      & J/iteration                            & DVFS + autotuning baselines \\ \hline
-\mmB & ExaSMR Power Benchmark       & \cite{exasmrpowerbenc}      & J/neutron; energy-vs-accuracy curve   & Energy budget strategy in nuclear simulations \\ \hline
-\mmB & EE-HPC-WG Energy Benchmark   & \cite{eehpcwgenergybe}      & draft node/job spec; JSON trace       & Toward common HPC energy standard \\ \hline
-\mmB & HPC-AI500 Energy Track       & \cite{hpcai500energyt}      & planned: GFLOPS/W; tokens/J         & Mixed AI/HPC cluster evaluations \\ \hline
-\mmB & PARSEC-3.1 Energy Extension  & \cite{parsec31energye}      & W; J via PAPI-RAPL; J/op; EDP       & Pre-silicon DVFS research \\ \hline
-\mmB & CosmoFlow-Power              & \cite{cosmoflow2019}        & J/epoch; GFLOPS/W                   & CNN scaling on 15 k+ GPUs \\ \hline
-\mmB & HACC Energy Add-on           & \cite{hacc2020power}        & J/particle update                      & N-body cosmology power studies \\ \hline
-\mmB & DeepCAM-Energy               & \cite{deepcam2020power}     & J/epoch (UNet)                         & Climate-analytics accelerator studies \\ \hline
-\mmB & OpenIFS-Energy               & \cite{openifsenergy2023}    & kWh/model-day; W timeline             & Weather-model node comparison \\ \hline
-\mmB & GROMACS-EE                   & \cite{gromacsee2024}        & J/ns; W/GPU                         & MD clock-vs-accuracy trade-offs \\ \hline
-\mmB & NAMD-Power                   & \cite{namdpower2019}        & Energy-Delay-Product (ApoA1)             & Summit node DVFS optimisation \\ \hline
-\mmB & QE Energy Suite              & \cite{qeenergy2022}         & J/SCF step; GFLOPS/W                & DFT GPU-offload studies \\ \hline
-\mmB & VASP-Power Harness           & \cite{vasppower2023}        & W; kWh/MD step                        & Materials-science accelerator compare \\ \hline
-\mmB & OpenFOAM-Energy              & \cite{openfoamenergy2021}   & J/1k iterations                       & CFD partitioning \& mesh tuning \\ \hline
-\mmB & InSAR-AI Power Kit           & \cite{insarpower2024}       & J/satellite scene                      & Edge-to-cloud EO inference cost \\ \hline
-\mmB & H3D-Energy                   & \cite{h3denergy2023}        & J/hydrology timestep                & Hydrology model DVFS exploration \\ \hline \hline\hline  
+\mmB & SPECpower\_ssj2008           & \citep{specpower}            & W/transaction; ops/W                & Enterprise-server rankings; ENERGY STAR compliance \\ \hline
+\mmB & SPEC\,SERT$^{2}$             & \citep{sert2}                & Server-Efficiency-Rating = kWh + perf    & EU Lot 9 certification; vendor datasheets \\ \hline
+\mmB & TPC-Energy                   & \citep{tpcenergy}            & Wh/DB phase                            & OLTP/warehouse energy cost studies \\ \hline
+\mmB & JouleSort                    & \citep{joulesort}            & records/J                              & Storage-I/O contests; I/O-stack tuning \\ \hline
+\mmB & Green500                     & \citep{green500}             & GFLOPS/W (HPL or HPL-AI)               & Global supercomputer energy ranking \\ \hline
+\mmB & HPCG-Power                   & \citep{hpcgpower}            & GFLOPS/W (HPCG)                        & Memory-bound tuning; procurement add-on to TOP500 \\ \hline
+\mmB & HPL-MxP (HPL-AI)             & \citep{hplmxphplai}          & mixed-precision GFLOPS/W               & GPU/TPU evaluation for AI-optimised LINPACK \\ \hline
+\mmB & MLPerf Power                 & \citep{mlperfpower}          & J; avg W; J/sample; J/epoch       & Official energy track for MLPerf submissions \\ \hline
+\mmB & MLPerf Tiny                  & \citep{mlperftiny}           & $\mu$J/inference (MCU)             & Edge-AI board comparison; ultra-low-power design \\ \hline
+\mmB & CoreMark-PRO Power           & \citep{coremarkpro}          & iterations/s/W (SoC)                 & Pre-silicon DVFS sweeps; embedded RFPs \\ \hline 
+\mmB & UL Procyon AI Power          & \citep{procyon}              & images/W; fps/W                     & Smartphone \& laptop AI-inference benchmarks \\ \hline
+\mmB & CANDLE Power Study           & \citep{candlepowerstud}      & J/epoch; GFLOPS/W                   & DOE accelerator procurement guidance \\ \hline
+\mmB & LULESH/miniFE Energy       & \citep{luleshminifeene}      & J/iteration                            & DVFS + autotuning baselines \\ \hline
+\mmB & ExaSMR Power Benchmark       & \citep{exasmrpowerbenc}      & J/neutron; energy-vs-accuracy curve   & Energy budget strategy in nuclear simulations \\ \hline
+\mmB & EE-HPC-WG Energy Benchmark   & \citep{eehpcwgenergybe}      & draft node/job spec; JSON trace       & Toward common HPC energy standard \\ \hline
+\mmB & HPC-AI500 Energy Track       & \citep{hpcai500energyt}      & planned: GFLOPS/W; tokens/J         & Mixed AI/HPC cluster evaluations \\ \hline
+\mmB & PARSEC-3.1 Energy Extension  & \citep{parsec31energye}      & W; J via PAPI-RAPL; J/op; EDP       & Pre-silicon DVFS research \\ \hline
+\mmB & CosmoFlow-Power              & \citep{cosmoflow2019}        & J/epoch; GFLOPS/W                   & CNN scaling on 15 k+ GPUs \\ \hline
+\mmB & HACC Energy Add-on           & \citep{hacc2020power}        & J/particle update                      & N-body cosmology power studies \\ \hline
+\mmB & DeepCAM-Energy               & \citep{deepcam2020power}     & J/epoch (UNet)                         & Climate-analytics accelerator studies \\ \hline
+\mmB & OpenIFS-Energy               & \citep{openifsenergy2023}    & kWh/model-day; W timeline             & Weather-model node comparison \\ \hline
+\mmB & GROMACS-EE                   & \citep{gromacsee2024}        & J/ns; W/GPU                         & MD clock-vs-accuracy trade-offs \\ \hline
+\mmB & NAMD-Power                   & \citep{namdpower2019}        & Energy-Delay-Product (ApoA1)             & Summit node DVFS optimisation \\ \hline
+\mmB & QE Energy Suite              & \citep{qeenergy2022}         & J/SCF step; GFLOPS/W                & DFT GPU-offload studies \\ \hline
+\mmB & VASP-Power Harness           & \citep{vasppower2023}        & W; kWh/MD step                        & Materials-science accelerator compare \\ \hline
+\mmB & OpenFOAM-Energy              & \citep{openfoamenergy2021}   & J/1k iterations                       & CFD partitioning \& mesh tuning \\ \hline
+\mmB & InSAR-AI Power Kit           & \citep{insarpower2024}       & J/satellite scene                      & Edge-to-cloud EO inference cost \\ \hline
+\mmB & H3D-Energy                   & \citep{h3denergy2023}        & J/hydrology timestep                & Hydrology model DVFS exploration \\ \hline \hline\hline  
 \rowcolor{gray!20} \multicolumn{5}{|l|}{Tool}\\ \hline
-\mmT & PTDaemon/SERT Energy       & \cite{specptdaemonser}      & calibrated W; kWh (node)                & Lab reproducibility; Lot 9 labels \\ \hline
-\mmT & Scaphandre                   & \cite{scaphandre}           & W; kWh (process/node, Prometheus)     & Slurm dashboards; power-cap feedback \\ \hline
-\mmT & Kepler                       & \cite{kepler}               & W/pod; J/pod (eBPF)                 & Energy observability in K8s clusters \\ \hline
-\mmT & CodeCarbon                   & \cite{codecarbon}           & kWh; kg CO\(_2\)e (process)             & Rapid CO\(_2\) estimation in pipelines \\ \hline
-\mmT & CarbonTracker                & \cite{carbontracker}        & measured + predicted kWh; CO\(_2\)e     & Scheduling DL jobs in low-carbon hours \\ \hline
-\mmT & PowerPACK/Mont-Blanc       & \cite{powerpackmontbl}      & W; J for MPI/OpenMP mini-apps         & Network-topology \& DVFS studies \\ \hline
-\mmT & Cray PAT Energy Counters     & \cite{craypatenergyco}      & J/function; avg W                     & Kernel hotspot hunting on Shasta \\ \hline
-\mmT & IBM PowerAPI (pmlib)         & \cite{ibmpowerapipmli}      & kWh (job/process)                      & Energy-aware scheduling on Summit \\ \hline
-\mmT & NVIDIA DCGM Energy           & \cite{nvidiadcgmenerg}      & W; J (GPU) \@ 1Hz; telemetry           & GPU power-cap discovery; Green500 \\ \hline
-\mmT & Intel VTune Power            & \cite{intelvtunepower}      & package W; J/function                 & Roofline-vs-energy tuning on Xeon \\ \hline 
-\mmT & Cloudmesh GPU & \cite{cloudmesh-gpu} & Power Draw; Temperature & Temperature and energy frequency traces \\ \hline
+\mmT & PTDaemon/SERT Energy       & \citep{specptdaemonser}      & calibrated W; kWh (node)                & Lab reproducibility; Lot 9 labels \\ \hline
+\mmT & Scaphandre                   & \citep{scaphandre}           & W; kWh (process/node, Prometheus)     & Slurm dashboards; power-cap feedback \\ \hline
+\mmT & Kepler                       & \citep{kepler}               & W/pod; J/pod (eBPF)                 & Energy observability in K8s clusters \\ \hline
+\mmT & CodeCarbon                   & \citep{codecarbon}           & kWh; kg CO\(_2\)e (process)             & Rapid CO\(_2\) estimation in pipelines \\ \hline
+\mmT & CarbonTracker                & \citep{carbontracker}        & measured + predicted kWh; CO\(_2\)e     & Scheduling DL jobs in low-carbon hours \\ \hline
+\mmT & PowerPACK/Mont-Blanc       & \citep{powerpackmontbl}      & W; J for MPI/OpenMP mini-apps         & Network-topology \& DVFS studies \\ \hline
+\mmT & Cray PAT Energy Counters     & \citep{craypatenergyco}      & J/function; avg W                     & Kernel hotspot hunting on Shasta \\ \hline
+\mmT & IBM PowerAPI (pmlib)         & \citep{ibmpowerapipmli}      & kWh (job/process)                      & Energy-aware scheduling on Summit \\ \hline
+\mmT & NVIDIA DCGM Energy           & \citep{nvidiadcgmenerg}      & W; J (GPU) \@ 1Hz; telemetry           & GPU power-cap discovery; Green500 \\ \hline
+\mmT & Intel VTune Power            & \citep{intelvtunepower}      & package W; J/function                 & Roofline-vs-energy tuning on Xeon \\ \hline 
+\mmT & Cloudmesh GPU & \citep{cloudmesh-gpu} & Power Draw; Temperature & Temperature and energy frequency traces \\ \hline
   \end{tabular}
   }
 \end{table*}

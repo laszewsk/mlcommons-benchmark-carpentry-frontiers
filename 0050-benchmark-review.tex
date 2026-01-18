@@ -15,12 +15,12 @@ HPC benchmarking has a great impact on the activities that we report here and we
 
 The list of world's largest supercomputers has been released biannually
 for nearly 4 decades now and thus offers a number of important lessons
-in designing sustainable benchmarks. At the heart of the TOP500 scoring procedure, which yields a ranked list of 500 supercomputing installations, is the LINPACK benchmark~\cite{dongarra2003hpl}, which bears the name of the
-namesake software library~\cite{dongarra1979linpack} for
+in designing sustainable benchmarks. At the heart of the TOP500 scoring procedure, which yields a ranked list of 500 supercomputing installations, is the LINPACK benchmark~\citep{dongarra2003hpl}, which bears the name of the
+namesake software library~\citep{dongarra1979linpack} for
 solving systems of linear equations. This linear solver package was
 designed in the 1970s and implemented in FORTRAN. The user guide for the
 library was published in 1979 and included a list of only 24
-computers~\cite{dongarra1979linpack}. The following decades brought in various aspects of scaling into the
+computers~\citep{dongarra1979linpack}. The following decades brought in various aspects of scaling into the
 software, the list sizes, and the machines submitted for inclusion in the ranking as well as data and reporting information.
 
 \subsubsection{Green500}
@@ -28,11 +28,11 @@ software, the list sizes, and the machines submitted for inclusion in the rankin
 
 Power and energy play a dominant role in the modern world of high-performance and distributed computing, with multi-megawatt data centers and computing facilities abound in many locations across the globe.
 The issues of excessive power draw and energy consumption
-data in the mid-2000s~\cite{feng2005pwrprofsciapps,
+data in the mid-2000s~\citep{feng2005pwrprofsciapps,
 cameron2005hpcpowerdistcompsciapps} culminated in a special working
-group of cross-industry members~\cite{specpower2008, specpower}, combining the TOP500 ranking with the available power
+group of cross-industry members~\citep{specpower2008, specpower}, combining the TOP500 ranking with the available power
 draw information from the supercomputers to yield the ranking
-called Green500~\cite{green500}. Since then, it is published
+called Green500~\citep{green500}. Since then, it is published
 alongside the TOP500 ranking and continues to underscore the
 importance of efficient energy use at large HPC installations.
 
@@ -44,7 +44,7 @@ facilitate the use of HPC systems and foster democratization, power
 consumption monitoring has been integrated at the various levels of HPC
 facilities, from the processing and networking elements to the data
 center level infrastructure. Also, by utilizing different floating-point
-precisions~\cite{abdelfattah2021mxpsurvey} the applications improve
+precisions~\citep{abdelfattah2021mxpsurvey} the applications improve
 their efficiency and benefit from a great impact on the system
 performance due to direct targeting of the specific architectural
 designs.
@@ -61,22 +61,22 @@ In some cases, it is informative to include end-to-end performance, including da
 
 Benchmarking in scientific machine learning (ML) has emerged as a critical area to guide algorithm development, enable fair comparisons towards progress and innovation, and facilitate reproducibility. The development of ML benchmarks for science is especially critical because of the multi-disciplinary nature of the development, often including domain experts, computing hardware developers, and ML researchers.  That, coupled with the variety of tasks and workloads, makes {\it high quality} benchmarking critical to making progress. 
 
-To obtain an overview how many academic benchmarks have been published in well known public domain archives, so we queried arXiv~\cite{www-arXiv} and Google Scholar~\cite{www-google-scholar}. Note that according to Google, Google Scholar does not include all entries from arXiv, but it does include most of them. However, it also includes many more resources, so we expect a larger number from Google Scholer. As of Oct 1, 2025, we find 106 entries on arXiv when searching for the topic {\em ``AI benchmark''}.
+To obtain an overview how many academic benchmarks have been published in well known public domain archives, so we queried arXiv~\citep{www-arXiv} and Google Scholar~\citep{www-google-scholar}. Note that according to Google, Google Scholar does not include all entries from arXiv, but it does include most of them. However, it also includes many more resources, so we expect a larger number from Google Scholer. As of Oct 1, 2025, we find 106 entries on arXiv when searching for the topic {\em ``AI benchmark''}.
 executing equivalent queries in Google Scholar yields 2,490 entries for {\em ``AI benchmark''}. It is evident from this that a complete survey of these papers is difficult to achieve through manual inspection. In an upcoming effort, we plan to explore how to automatically categorize these entries using LLMs while implementing an agentic AI framework for it.
 
 The vast number and diversity of scientific tasks poses challenges to finding a well-defined, high-quality benchmark for any given task.
 To improve discoverability, we have cataloged in this paper all MLCommons benchmarks that have a result submission.
-Secondly, we have developed an ontology \cite{www-las-mlcommons-benchmark-collection,www-mlcommons-science-benchmarks-paper} that allows users to identify suitable benchmarks.
+Secondly, we have developed an ontology \citep{www-las-mlcommons-benchmark-collection,www-mlcommons-science-benchmarks-paper} that allows users to identify suitable benchmarks.
 
 \subsubsection{MLCommons}
 
-MLCommons \cite{www-mlcommons} provides one of the most comprehensive and standardized ecosystems of AI benchmarking. It addresses training, inference, scientific computing, and domain-specific benchmarks. Most prominently, the MLPerf benchmark suite—covering datacenter, edge, mobile, and training applications—establishes industry-wide baselines for performance, accuracy, power efficiency, and quality of service across diverse model classes such as computer vision, language, recommendation, speech, and reinforcement learning. Additionally, it offers specialized evaluations including MLPerf Tiny for microcontroller-class devices, MLPerf Storage for I/O workloads, and MLPerf Science for large-scale scientific AI. Furthermore, MLCommons promotes the reproducibility through initiatives such as Croissant ML, a standardized metadata schema for datasets, and MLCube, a portable container-based model packaging standard. Additional domain-specific working groups in medical AI, multilingual speech, and responsible AI have recently expanded the targeted domains. 
+MLCommons \citep{www-mlcommons} provides one of the most comprehensive and standardized ecosystems of AI benchmarking. It addresses training, inference, scientific computing, and domain-specific benchmarks. Most prominently, the MLPerf benchmark suite—covering datacenter, edge, mobile, and training applications—establishes industry-wide baselines for performance, accuracy, power efficiency, and quality of service across diverse model classes such as computer vision, language, recommendation, speech, and reinforcement learning. Additionally, it offers specialized evaluations including MLPerf Tiny for microcontroller-class devices, MLPerf Storage for I/O workloads, and MLPerf Science for large-scale scientific AI. Furthermore, MLCommons promotes the reproducibility through initiatives such as Croissant ML, a standardized metadata schema for datasets, and MLCube, a portable container-based model packaging standard. Additional domain-specific working groups in medical AI, multilingual speech, and responsible AI have recently expanded the targeted domains. 
 
 We have provided a comprehensive list of benchmarks in Tables \ref{tab:benchmarks-mlcommons} and \ref{tab:llm_benchmarks_long}.  The tables contain information about the benchmark name, model, task, domain, model type, metrics, hardware, and a brief note. The evaluations of the AILuminate benchmarks can be found on the MLCommons Web pages and include (a) Safety / Jailbreak Tests, (b) LLM Safety Evaluation, (c)  Responsible AI / Alignment (d)  LLM (Decoder) (e)  Safety Rate, Toxicity Score (f) Cloud LLM APIs (g) Robustness and Alignment.
 
 \subsubsection{Ontology}
 
-To improve discoverability of suitable benchmarks for a given task, we introduce a definition and AI Benchmark ontology of scientific machine learning benchmarks, where benchmarks are classified and mapped to their scientific domain and machine learning task type in~\cite{www-mlcommons-science-benchmarks-paper}. This work grew out of the Web page created at  \cite{www-las-mlcommons-benchmark-collection}, \cite{www-mlcommons-benchmarks} and provides an easy to use interactive mechanism to query the cataloged benchmarks.
+To improve discoverability of suitable benchmarks for a given task, we introduce a definition and AI Benchmark ontology of scientific machine learning benchmarks, where benchmarks are classified and mapped to their scientific domain and machine learning task type in~\citep{www-mlcommons-science-benchmarks-paper}. This work grew out of the Web page created at  \citep{www-las-mlcommons-benchmark-collection}, \citep{www-mlcommons-benchmarks} and provides an easy to use interactive mechanism to query the cataloged benchmarks.
 
 New AI benchmarks are added through an open submission workflow overseen by the MLCommons Science Working Group. Each submission is evaluated against a rubric of currently six categories (Software Environment, Problem Specification, Dataset, Performance Metrics, Reference Solution, Documentation) that assigns an overall rating and potential endorsement. The scoring framework enables stakeholders, researchers, domain scientists, and hardware vendors to identify representative subsets of benchmarks that align with their specific priorities. The ontology supports adding new scientific domains, AI/ML motifs, and computing motifs.   
 
@@ -108,7 +108,7 @@ In addition to discoverability challenges, there are also technical issues that 
 \label{sec:benchmarks-mlcommons-desktop}
 
 There are many workflow frameworks that can support the AI Benchmark Workflow. Two of them 
-are the Compute Coordinator and the Experiment Executer; they can be used in conjunction or separately \cite{las-2022-templated}. The Compute Coordinator allows hybrid infrastructure access from the benchmark application, while the Experiment Executor allows the repeated execution of templated benchmarks. Both produce results in a structured fashion so they can be combined from multiple experiments and multiple infrastructures in order to support the FAIR principles.
+are the Compute Coordinator and the Experiment Executer; they can be used in conjunction or separately \citep{las-2022-templated}. The Compute Coordinator allows hybrid infrastructure access from the benchmark application, while the Experiment Executor allows the repeated execution of templated benchmarks. Both produce results in a structured fashion so they can be combined from multiple experiments and multiple infrastructures in order to support the FAIR principles.
 
 \subsubsection{Containerization}
 \label{sec:benchmarks-mlcommons-hpc}
@@ -121,7 +121,7 @@ Hence, AI benchmarking carpentry should include the development of software in a
 
 Benchmarking can be complex if the software, libraries and infrastructure differ across systems.
 To support coordinated  benchmarking across different machines, we have introduced a 
-templates hybrid reusable computational analytics workflow management framework with cloudmesh. This framework has been be applied to multiple Deep Learning MLCommons Applications. The details are explained in  \cite{las-2022-templated}. Utilizing such workflow systems promotes adaptation as deployment and execution is typically included in the workflow specifications. However, it can also address adaptation and modifications to future improvements and porting to different hardware as a working template is already provided..
+templates hybrid reusable computational analytics workflow management framework with cloudmesh. This framework has been be applied to multiple Deep Learning MLCommons Applications. The details are explained in  \citep{las-2022-templated}. Utilizing such workflow systems promotes adaptation as deployment and execution is typically included in the workflow specifications. However, it can also address adaptation and modifications to future improvements and porting to different hardware as a working template is already provided..
     
 \subsubsection{Logging and Monitoring}
 \label{sec:benchmarks-mlcommons-logging}

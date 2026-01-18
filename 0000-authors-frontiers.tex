@@ -1,98 +1,102 @@
 \def\firstAuthorLast{Sample {et~al.}} %use et al only if is more than 1 author
-\def\Authors{First Author\,$^{1,*}$, Co-Author\,$^{2}$ and Co-Author\,$^{1,2}$}
+\def\Authors{
+Gregor von Laszewski,$^{1}$
+Wesley Brewer,$^{2}$
+Jeyan Thiyagalingam,$^{3}$
+Juri Papay,$^{3}$
+Armstrong Foundjem,$^{4}$
+Piotr Luszczek,$^{5}$
+Murali Emani,$^{6}$
+Shirley V. Moore,$^{7}$
+Vijay Janapa Reddi,$^{8}$
+Matthew D. Sinclair,$^{9}$
+Sebastian Lobentanzer,$^{10}$
+Sujata Goswami,$^{11}$
+Benjamin Hawks,$^{12}$
+Marco Colombo,$^{13}$
+Nhan Tran,$^{12}$
+Christine R. Kirkpatrick,$^{14}$
+Abdulkareem Alsudais,$^{15}$
+Gregg Barrett,$^{16}$
+Tianhao Li,$^{17}$
+Kirsten Morehouse,$^{18}$
+Shivaram Venkataraman,$^{9}$
+Rutwik Jain,$^{9}$
+Kartik Mathur,$^{20}$
+Victor Lu,$^{21}$
+Tejinder Singh,$^{22}$
+Khojasteh Z. Mirza,$^{23}$
+Kongtao Chen,$^{24}$
+Sasidhar Kunapuli,$^{25}$
+Gavin Farrell,$^{26}$
+Renato Umeton,$^{27}$
+Geoffrey C. Fox,$^{1}$
+}
+
+%First Author\,,$^{1,*}$, Co-Author\,,$^{2}$ and Co-Author\,,$^{1,2}$}
 % Affiliations should be keyed to the author's name with superscript numbers and be listed as follows: Laboratory, Institute, Department, Organization, City, State abbreviation (USA, Canada, Australia), and Country (without detailed address information such as city zip codes or street names).
 % If one of the authors has a change of address, list the new address below the correspondence details using a superscript symbol and use the same symbol to indicate the author in the author list.
-\def\Address{$^{1}$Laboratory X, Institute X, Department X, Organization X, City X , State XX (only USA, Canada and Australia), Country X \\
-$^{2}$Laboratory X, Institute X, Department X, Organization X, City X , State XX (only USA, Canada and Australia), Country X  }
+\def\Address{
+%$^{1}$Laboratory X, Institute X, Department X, Organization X, City X , State XX (only USA, Canada and Australia), Country X \\
+%$^{2}$Laboratory X, Institute X, Department X, Organization X, City X , State XX (only USA, Canada and Australia), Country X  
+$^{1}$ Biocomplexity Institute, University of Virginia, Charlottesville, VA, USA \\
+% (laszewski@gmail.com, gcfexchange@gmail.com)\\
+$^{2}$ Oak Ridge National Laboratory, Oak Ridge, TN, USA \\
+% (brewerwh@ornl.gov)\\
+$^{3}$ Rutherford Appleton Laboratory, STFC, Harwell Campus, UK \\
+% (t.jeyan@stfc.ac.uk, juri.papay@stfc.ac.uk)\\
+$^{4}$ DEEL, Polytechnique Montreal, Montreal, Canada \\ 
+% (a.foundjem@polymtl.ca)\\
+$^{5}$ LLSC, MIT Lincoln Laboratory, Lexington, MA, USA \\
+% (luszczek@icl.utk.edu)\\
+$^{6}$ Argonne National Laboratory, Lemont, IL, USA  \\
+% (memani@anl.gov)\\
+$^{7}$ Computer Science Department, UTEP, El Paso, TX, USA \\
+% (svmoore@utep.edu)\\
+$^{8}$ Harvard University, Boston, MA, USA \\
+% (vj@eecs.harvard.edu)\\
+$^{9}$ Computer Sciences Department, Univ. of Wisconsin–Madison, Madison, WI, USA \\
+% ~~(sinclair@cs.wisc.edu, shivaram@cs.wisc.edu, rnjain@wisc.edu)\\
+$^{10}$ Helmholtz Center Munich, Munich, Germany \\
+% ~~(sebastian.lobentanzer@helmholtz-munich.de)\\
+$^{11}$ ALS, LBNL, Berkeley, CA, USA \\
+% (sujatagoswami@lbl.gov)\\
+$^{12}$ Fermilab, Batavia, IL, USA \\
+% (ntran@fnal.gov, bhawks@fnal.gov)\\
+$^{13}$ Discovery Partners Institute, UIUC, Chicago, IL, USA \\
+% (mcolom4@illinois.edu)\\
+$^{14}$ SDSC, UC San Diego, San Diego, CA, USA \\
+% (christine@sdsc.edu)\\
+$^{15}$ Prince Sattam bin Abdulaziz University, Saudi Arabia \\
+% (a.alsudais@psau.edu.sa)\\
+$^{16}$ Cirrus AI, Johannesburg, South Africa \\ 
+%(gregg.barrett@cirrusai.net)\\
+$^{17}$ Duke University, Durham, NC, USA \\
+% (tianhao.li@duke.edu)\\
+$^{18}$ Harvard University, Cambridge, MA, USA \\
+% (knmorehouse@gmail.com)\\
+$^{20}$ Microsoft, Vancouver, BC, Canada \\
+% (kartikmathur@microsoft.com)\\
+$^{21}$ Independent Researcher, Tampa, FL, USA \\
+% (victorjunlu@gmail.com)\\
+$^{22}$ Office of the CTO, Dell Technologies, Santa Clara, CA, USA \\
+% (Singh.Tejinder@Dell.com)\\
+$^{23}$ Cornell Tech, Cornell University, New York, NY, USA \\
+% (kzm6@cornell.edu)\\
+$^{24}$ Google, Mountain View, CA, USA \\
+% (kongtao@google.com)\\
+$^{25}$ Independent Researcher, San Jose, CA, USA \\
+% (sasidhar.kunapuli@gmail.com)\\
+$^{26}$ University of Padua, Padua, Italy \\
+% (gavinmichael.farrell@phd.unipd.it)\\
+$^{27}$ St. Jude Children's Research Hospital, Memphis, TN \\
+% (Renato.Umeton@stjude.org)
+}
+
 % The Corresponding Author should be marked with an asterisk
 % Provide the exact contact address (this time including street name and city zip code) and email of the corresponding author
 \def\corrAuthor{Gregor von Laszewski}
 
 \def\corrEmail{laszewski@gmail.com}
 
-\author{
-\IEEEauthorblockN{
-Gregor von Laszewski\textsuperscript{1},
-Wesley Brewer\textsuperscript{2},
-Jeyan Thiyagalingam\textsuperscript{3},
-Juri Papay\textsuperscript{3},
-Armstrong Foundjem\textsuperscript{4}
-}
-\and
-\IEEEauthorblockN{
-Piotr Luszczek\textsuperscript{5},
-Murali Emani\textsuperscript{6},
-Shirley V. Moore\textsuperscript{7},
-Vijay Janapa Reddi\textsuperscript{8},
-Matthew D. Sinclair\textsuperscript{9}
-}
-\and
-\IEEEauthorblockN{
-Sebastian Lobentanzer\textsuperscript{10},
-Sujata Goswami\textsuperscript{11},
-Benjamin Hawks\textsuperscript{12},
-Marco Colombo\textsuperscript{13},
-Nhan Tran\textsuperscript{12}
-}
-\and
-\IEEEauthorblockN{
-Christine R. Kirkpatrick\textsuperscript{14},
-Abdulkareem Alsudais\textsuperscript{15},
-Gregg Barrett\textsuperscript{16},
-Tianhao Li\textsuperscript{17},
-Kirsten Morehouse\textsuperscript{18}
-}
-\and
-\IEEEauthorblockN{
-Shivaram Venkataraman\textsuperscript{9},
-Rutwik Jain\textsuperscript{9},
-Kartik Mathur\textsuperscript{20},
-Victor Lu\textsuperscript{21},
-Tejinder Singh\textsuperscript{22},
-Khojasteh Z. Mirza\textsuperscript{23},
-}
-\and
-\IEEEauthorblockN{
-~~~~~~~~
-Kongtao Chen\textsuperscript{24},
-Sasidhar Kunapuli\textsuperscript{25},
-Gavin Farrell\textsuperscript{26},
-Renato Umeton\textsuperscript{27},
-Geoffrey C. Fox\textsuperscript{1}
-}
-\\
-\IEEEauthorblockA{
-\begin{tabular}[t]{@{}l@{}}
-\textsuperscript{1}\textit{Biocomplexity Institute, University of Virginia}, Charlottesville, VA, USA \\
-~~(laszewski@gmail.com, gcfexchange@gmail.com)\\
-\textsuperscript{2}\textit{Oak Ridge National Laboratory}, Oak Ridge, TN, USA (brewerwh@ornl.gov)\\
-\textsuperscript{3}\textit{Rutherford Appleton Laboratory, STFC}, Harwell Campus, UK \\
-~~(t.jeyan@stfc.ac.uk, juri.papay@stfc.ac.uk)\\
-\textsuperscript{4}\textit{DEEL, Polytechnique Montreal}, Montreal, Canada (a.foundjem@polymtl.ca)\\
-\textsuperscript{5}\textit{LLSC, MIT Lincoln Laboratory}, Lexington, MA, USA (luszczek@icl.utk.edu)\\
-\textsuperscript{6}\textit{Argonne National Laboratory}, Lemont, IL, USA (memani@anl.gov)\\
-\textsuperscript{7}\textit{Computer Science Department, UTEP}, El Paso, TX, USA (svmoore@utep.edu)\\
-\textsuperscript{8}\textit{Harvard University}, Boston, MA, USA (vj@eecs.harvard.edu)\\
-\textsuperscript{9}\textit{Computer Sciences Department, Univ. of Wisconsin–Madison}, Madison, WI, USA \\
-~~(sinclair@cs.wisc.edu, shivaram@cs.wisc.edu, rnjain@wisc.edu)\\
-\textsuperscript{10}\textit{Helmholtz Center Munich}, Munich, Germany \\
-~~(sebastian.lobentanzer@helmholtz-munich.de)\\
-\textsuperscript{11}\textit{ALS, LBNL}, Berkeley, CA, USA (sujatagoswami@lbl.gov)\\
-\textsuperscript{12}\textit{Fermilab}, Batavia, IL, USA (ntran@fnal.gov, bhawks@fnal.gov)\\
-\textsuperscript{13}\textit{Discovery Partners Institute, UIUC}, Chicago, IL, USA (mcolom4@illinois.edu)\\
-\textsuperscript{14}\textit{SDSC, UC San Diego}, San Diego, CA, USA (christine@sdsc.edu)\\
-\textsuperscript{15}\textit{Prince Sattam bin Abdulaziz University}, Saudi Arabia (a.alsudais@psau.edu.sa)\\
-\textsuperscript{16}\textit{Cirrus AI}, Johannesburg, South Africa (gregg.barrett@cirrusai.net)\\
-\textsuperscript{17}\textit{Duke University}, Durham, NC, USA (tianhao.li@duke.edu)\\
-\textsuperscript{18}\textit{Harvard University}, Cambridge, MA, USA (knmorehouse@gmail.com)\\
-\textsuperscript{20}\textit{Microsoft}, Vancouver, BC, Canada (kartikmathur@microsoft.com)\\
-\textsuperscript{21}\textit{Independent Researcher}, Tampa, FL, USA (victorjunlu@gmail.com)\\
-\textsuperscript{22}\textit{Office of the CTO, Dell Technologies}, Santa Clara, CA, USA (Singh.Tejinder@Dell.com)\\
-\textsuperscript{23}\textit{Cornell Tech, Cornell University}, New York, NY, USA (kzm6@cornell.edu)\\
-\textsuperscript{24}\textit{Google}, Mountain View, CA, USA (kongtao@google.com)\\
-\textsuperscript{25}\textit{Independent Researcher}, San Jose, CA, USA (sasidhar.kunapuli@gmail.com)\\
-\textsuperscript{26}\textit{University of Padua}, Padua, Italy (gavinmichael.farrell@phd.unipd.it)\\
-\textsuperscript{27}\textit{St. Jude Children's Research Hospital}, Memphis, TN (Renato.Umeton@stjude.org)
-\end{tabular}
-}
-}
+

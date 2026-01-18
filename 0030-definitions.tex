@@ -26,11 +26,11 @@ Traditional high-performance computing (HPC) benchmarking includes:
 
 (For a more detailed discussion, see Section \ref{sec:hpc})
 
-Important design and applicability criteria for benchmarks include relevance and representativeness for the field, fairness, repeatability, cost-effectiveness, scalability, and transparency~\cite{wikipedia:benchmarking}. One caveat is that vendors may optimize hardware specifically for these benchmarks, potentially neglecting new real-world problems and emerging challenges not captured by traditional benchmark suites.  
+Important design and applicability criteria for benchmarks include relevance and representativeness for the field, fairness, repeatability, cost-effectiveness, scalability, and transparency~\citep{wikipedia:benchmarking}. One caveat is that vendors may optimize hardware specifically for these benchmarks, potentially neglecting new real-world problems and emerging challenges not captured by traditional benchmark suites.  
 
 Therefore, it is essential to provide a diverse set of benchmarks so that different communities can evaluate and interpret results in terms of the performance metrics most relevant to their specific needs.  
 
-HPC benchmarking has traditionally focused on supercomputing performance comparisons, targeting compute performance~\cite{Dongarra1989LinpackReport,Dongarra2016HPCG}, as well as memory, communication, and storage performance~\cite{PerfKitBenchmarker,IO500}. With the resurgence of AI and machine learning—including deep learning—it is now appropriate to explore additional lessons for benchmarking drawn from these domains.  
+HPC benchmarking has traditionally focused on supercomputing performance comparisons, targeting compute performance~\citep{Dongarra1989LinpackReport,Dongarra2016HPCG}, as well as memory, communication, and storage performance~\citep{PerfKitBenchmarker,IO500}. With the resurgence of AI and machine learning—including deep learning—it is now appropriate to explore additional lessons for benchmarking drawn from these domains.  
 
 HPC benchmarks are often executed under controlled conditions, such as those maintained by system administrators, to ensure exclusive access to hardware and eliminate interference from other users or applications. This approach allows for measurement of the best achievable performance and is frequently used to guide system procurement decisions. However, such conditions do not reflect the shared nature of most computing environments, which often include factors such as queue wait times and concurrent multi-user workloads sharing hardware resources.
 
@@ -66,9 +66,9 @@ One must recognize that a significant amount of progress in AI research is condu
 
 To set the stage for why we need AI benchmark carpentry, we need to first look at how the term has been introduced and is now commonly associated with software carpentry. After a more detailed analysis of software carpentry, we define the term AI benchmark carpentry.
 
-Software Carpentry \cite{wilson2014software} was initially conceived to teach researchers in scientific fields fundamental computational and software development skills,  analogous to a hammer or level in a tool belt. Thus, non-computer scientists would be able to improve the use and development of the software they need to conduct their own research while benefiting from targeted, short educational tutorials. 
+Software Carpentry \citep{wilson2014software} was initially conceived to teach researchers in scientific fields fundamental computational and software development skills,  analogous to a hammer or level in a tool belt. Thus, non-computer scientists would be able to improve the use and development of the software they need to conduct their own research while benefiting from targeted, short educational tutorials. 
 
-Today, a global community effort has sprung up since 1998~\cite{softwarecarpentry2024} that provides a number of training materials and sessions to the scientific community to we can leverage in some extend. Recently, additional areas beyond software, such as data carpentry.
+Today, a global community effort has sprung up since 1998~\citep{softwarecarpentry2024} that provides a number of training materials and sessions to the scientific community to we can leverage in some extend. Recently, additional areas beyond software, such as data carpentry.
 Together, these efforts includes:
 
 \begin{itemize}
@@ -77,10 +77,10 @@ Together, these efforts includes:
   Programming with Python, Version Control with Git, The Unix Shell, Programming with R, Python, and using Git for version control.
 
  \item \textbf{Data Carpentry Efforts:}
-  Teaches researchers skills necessary to work effectively and reproducibly with data in the context of specific domains. This includes lessons in the fiels of Astronomy, Ecology, Genomics, and Social Science with crosscutting topics such as Geospatial and Image Processing. Within those areas, are lessons such as Data Analysis and Visualization in R for Social Scientists, Foundations of Astronomical Data Science, and Introduction to the Command Line for Genomics \cite{datacarpentry2025}.
+  Teaches researchers skills necessary to work effectively and reproducibly with data in the context of specific domains. This includes lessons in the fiels of Astronomy, Ecology, Genomics, and Social Science with crosscutting topics such as Geospatial and Image Processing. Within those areas, are lessons such as Data Analysis and Visualization in R for Social Scientists, Foundations of Astronomical Data Science, and Introduction to the Command Line for Genomics \citep{datacarpentry2025}.
 
   \item \textbf{Other Carpentry Efforts:}
-   Library Carpentry provides lessons for information scientists, data stewards, and roles in library science, reusing some of the Software Carpentry topics adapted in a curation context. Additional lessons available include High-Performance Computing (HPC Carpentry) \cite{reid2025hpc,HPCcarpentry2025}.
+   Library Carpentry provides lessons for information scientists, data stewards, and roles in library science, reusing some of the Software Carpentry topics adapted in a curation context. Additional lessons available include High-Performance Computing (HPC Carpentry) \citep{reid2025hpc,HPCcarpentry2025}.
 
 \end{itemize}
 
@@ -90,7 +90,7 @@ From this list, we see that benchmark carpentry is missing.
 \subsection{What is Benchmark Carpentry?}
 \label{sec:benchmark-carpentry}
 
-Based on our observations in the educational and scientific communities  \cite{las-frontiers-edu}, we find that similar efforts are needed to focus on benchmarking.
+Based on our observations in the educational and scientific communities  \citep{las-frontiers-edu}, we find that similar efforts are needed to focus on benchmarking.
 This is more important as AI applications consume enormous resources, and properly scaling and using them requires a much deeper understanding of their time and space requirements.
 The hope is that, from similar benchmarks, not only can the scientist learn lessons about their own applications, but, if needed, their own benchmarks can be developed to estimate costs and effort more precisely.
 In addition, reproducible, portable benchmarks enable the selection and comparison of suitable hardware for the effort.

@@ -13,39 +13,39 @@
 \textbf{Benchmark} &  & \textbf{Scientific Domain} & \textbf{Focus} & \textbf{Task Types} & \textbf{AI Capability Measured} & \textbf{Notable Models Evaluated} \\
 \hline
 \hline
-\YES PDEBench &~\cite{takamoto2022pdebench} & Physics / Engineering & Solving Partial Differential Equations & Time-series simulation, regression & Physics modeling, operator learning & PINNs, FNO, DeepONet \\
+\YES PDEBench &~\citep{takamoto2022pdebench} & Physics / Engineering & Solving Partial Differential Equations & Time-series simulation, regression & Physics modeling, operator learning & PINNs, FNO, DeepONet \\
 \hline
-\NO LAB-Bench &~\cite{laurent2024labbench} & Biology / Life Sciences & Laboratory research assistance & Multiple choice, planning, analysis & Scientific reasoning, experiment planning & GPT-4, Claude, Gemini, etc. \\
+\NO LAB-Bench &~\citep{laurent2024labbench} & Biology / Life Sciences & Laboratory research assistance & Multiple choice, planning, analysis & Scientific reasoning, experiment planning & GPT-4, Claude, Gemini, etc. \\
 \hline
-\NO SciEval &~\cite{suneval2024} & General Science (multi-domain) & Scientific research understanding & QA, reasoning, synthesis & Recall, reasoning, synthesis, analysis & GPT-4, Claude, Mixtral \\
+\NO SciEval &~\citep{suneval2024} & General Science (multi-domain) & Scientific research understanding & QA, reasoning, synthesis & Recall, reasoning, synthesis, analysis & GPT-4, Claude, Mixtral \\
 \hline
-\NO SciSafeEval &~\cite{li2024scisafeeval} & Chemistry, Biology, Physics, Medicine & Scientific safety alignment & QA, reasoning, synthesis, prediction & Safety alignment, refusal awareness, adversarial robustness & GPT-4o, Claude, QWen, LLaMa \\
+\NO SciSafeEval &~\citep{li2024scisafeeval} & Chemistry, Biology, Physics, Medicine & Scientific safety alignment & QA, reasoning, synthesis, prediction & Safety alignment, refusal awareness, adversarial robustness & GPT-4o, Claude, QWen, LLaMa \\
 \hline
-\NO CORE-Bench &~\cite{siegel2024corebench} & General (CS, Social Sci, Medicine) & Computational reproducibility & Execution, interpretation, synthesis & Reproducibility, multi-modal understanding & GPT-4V, Claude, OpenAI Agents \\
+\NO CORE-Bench &~\citep{siegel2024corebench} & General (CS, Social Sci, Medicine) & Computational reproducibility & Execution, interpretation, synthesis & Reproducibility, multi-modal understanding & GPT-4V, Claude, OpenAI Agents \\
 \hline
-\NO Galactica Eval &~\cite{taylor2022galactica} & General Science & Scientific writing \& knowledge recall & QA, document generation & Scientific knowledge representation & Galactica, GPT, T5, BERT \\
+\NO Galactica Eval &~\citep{taylor2022galactica} & General Science & Scientific writing \& knowledge recall & QA, document generation & Scientific knowledge representation & Galactica, GPT, T5, BERT \\
 \hline
 \textcolor{red}{TODO: under a different name: MMLU (Massive Multitask Language Understanding). Could be for the general science one listed below}
-\YES Hendrycks Science QA &~\cite{hendrycks2021measuring} & Physics, Chemistry, Biology & High-school level scientific QA & Multiple choice QA & Factual and conceptual understanding & GPT-3, GPT-4, PaLM \\
+\YES Hendrycks Science QA &~\citep{hendrycks2021measuring} & Physics, Chemistry, Biology & High-school level scientific QA & Multiple choice QA & Factual and conceptual understanding & GPT-3, GPT-4, PaLM \\
 \hline
 \textcolor{red}{TODO: under a different name: ARC-Challenge (Advanced Reasoning Challenge)}
-\YES ARC &~\cite{clark2018arc} & General Science (K–12) & Commonsense + Science QA & Multiple choice QA & Reasoning, reading comprehension & GPT, T5, UnifiedQA \\
+\YES ARC &~\citep{clark2018arc} & General Science (K–12) & Commonsense + Science QA & Multiple choice QA & Reasoning, reading comprehension & GPT, T5, UnifiedQA \\
 \hline
-\NO AristoBench &~\cite{clark2016combining} & Science (elementary–high school) & Natural science exams (NY Regents) & Multiple choice QA & Domain-specific factual recall & Aristo, GPT-3, RoBERTa \\
+\NO AristoBench &~\citep{clark2016combining} & Science (elementary–high school) & Natural science exams (NY Regents) & Multiple choice QA & Domain-specific factual recall & Aristo, GPT-3, RoBERTa \\
 \hline
-\NO SCIQ &~\cite{welbl2017crowdsourcing} & Science (school-level) & Sentence-level inference & MCQ, sentence completion & Language understanding in science context & GPT-3, T5, BERT \\
+\NO SCIQ &~\citep{welbl2017crowdsourcing} & Science (school-level) & Sentence-level inference & MCQ, sentence completion & Language understanding in science context & GPT-3, T5, BERT \\
 \hline
-\NO BioASQ &~\cite{krithara2023bioasq} & Biomedical / Life Sciences & Biomedical question answering & Factoid, list, yes/no, documents & Domain-specific retrieval and understanding & BioBERT, PubMedGPT, GPT-4 \\
+\NO BioASQ &~\citep{krithara2023bioasq} & Biomedical / Life Sciences & Biomedical question answering & Factoid, list, yes/no, documents & Domain-specific retrieval and understanding & BioBERT, PubMedGPT, GPT-4 \\
 \hline
 \textcolor{red}{TODO: under the name: MedQA and different citation}
-\YES MedQA (USMLE) &~\cite{jin2021disease} & Medicine & US medical licensing exam QA & Multiple choice, long-form QA & Clinical reasoning, medical knowledge & GPT-4, PaLM, Med-PaLM \\
+\YES MedQA (USMLE) &~\citep{jin2021disease} & Medicine & US medical licensing exam QA & Multiple choice, long-form QA & Clinical reasoning, medical knowledge & GPT-4, PaLM, Med-PaLM \\
 \hline
 \textcolor{red}{TODO: under the name: MMLU (Massive Multitask Language Understanding)}
-MMLU (Science subset) &~\cite{hendrycks2021measuring} & General Science, Math & Academic knowledge & Multiple choice & Cross-domain reasoning and recall & GPT-4, Claude, LLaMA, Gemini \\
+MMLU (Science subset) &~\citep{hendrycks2021measuring} & General Science, Math & Academic knowledge & Multiple choice & Cross-domain reasoning and recall & GPT-4, Claude, LLaMA, Gemini \\
 \hline
 \end{tabular}%
 e}
 \YES = included, 
-\NO = not included in github at \cite{www-las-mlcommons-benchmark-coolection}
+\NO = not included in github at \citep{www-las-mlcommons-benchmark-coolection}
 
 \end{table*}
