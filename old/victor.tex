@@ -1,0 +1,71 @@
+\section{Something}
+
+* whats the problem
+
+* what have others done to solve this problem
+* why is this problem not solved
+* what has this problem to do with benchmark carpentry
+* Why is it needed
+* what tools and frameworks exist to further solutions to this 
+ area in regards to benchmarking
+
+ 
+
+\subsection{\textbf{What’s the Problem?}}
+
+Scientific benchmarks have historically focused on canonical mathematical problems—e.g., matrix multiplication, QR decomposition, and graph algorithms—rooted in complexity theory. While effective for infrastructure evaluation, they fail to reflect the complex, domain-specific, and AI-driven workloads now common in science. These include dynamic workflows, heterogeneous compute, and tasks involving memory, reasoning, and planning. Existing benchmarks don't evaluate orchestration or adaptability—key traits in modern batch and AI systems.
+
+\subsection{\textbf{What Have Others Done?}}
+
+Progress exists in both theory and practice:
+
+\begin{itemize}
+    \item Complexity theory and algorithm analysis underpin traditional benchmarks.
+    \item Tools like \textbf{SPEC HPCG}, \textbf{Graph500}, and \textbf{BLAS/LAPACK} target general performance.
+    \item Domain-specific tools (e.g., \textbf{GATK}, \textbf{OpenFOAM}) address niche cases.
+    \item Workflow systems like \textbf{Dask}, \textbf{Parsl}, and \textbf{Airflow} help manage distributed batch jobs.
+\end{itemize}
+Yet, these tools operate in silos—failing to reflect integrated, intelligent workload behavior.
+
+\subsection{\textbf{Why Is the Problem Not Solved?}}
+
+\begin{itemize}
+    \item Theoretical work remains hard to apply directly (“burden of knowledge”).
+    \item Scientific workloads evolve faster than benchmarks adapt.
+    \item Current systems don’t assess reasoning, planning, or coordination.
+    \item Most benchmarks lack system-level realism, focusing on micro-tasks or synthetic loads.
+\end{itemize}
+
+\subsection{\textbf{What’s the Link to Benchmark Carpentry?}}
+
+\textbf{Benchmark carpentry} calls for benchmarks rooted in real use cases and system behavior. Our proposed solution, the \textbf{DeepBatch Agent}, applies this idea using an AI-inspired modular design:
+
+\begin{itemize}
+    \item Agents mirror brain regions (e.g., planning = prefrontal cortex, memory = hippocampus).
+    \item They coordinate across CPUs, GPUs, TPUs based on task type.
+    \item Benchmarks evaluate not just compute, but orchestration, adaptability, and learning.
+\end{itemize}
+This approach enables realistic, future-proof benchmarking of scientific workflows.
+
+\subsection{\textbf{Why Is It Needed?}}
+
+Scientific systems now require:
+
+\begin{itemize}
+    \item Adaptive, intelligent scheduling.
+    \item Support for long-term memory and planning.
+    \item Integration of AI, simulation, and data processing.
+\end{itemize}
+DeepBatch-style benchmarking provides insight into system behavior under real conditions—essential for optimizing resource usage and guiding next-gen hardware/software design.
+
+\subsection{\textbf{Tools and Frameworks to Advance This}}
+
+\begin{itemize}
+    \item \textbf{Classical Benchmarks}: BLAS, LAPACK, Graph500, SPEC HPCG.
+    \item \textbf{Domain-Specific}: OpenFOAM, GATK, LAMMPS.
+    \item \textbf{Workflow \& Batch Systems}: Dask, Parsl, Ray, Airflow, Prefect.
+    \item \textbf{AI \& Agents}: ReAct agents, RLlib, AutoGPT—models for orchestrating complex tasks.
+\end{itemize}
+These tools can be integrated into composite, modular benchmarks reflecting the real challenges of scientific and AI-enhanced batch computing.
+
+  

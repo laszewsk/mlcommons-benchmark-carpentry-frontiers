@@ -1,0 +1,105 @@
+%
+% FROZEN
+% FROZEN
+% FROZEN
+% FROZEN
+%
+
+\subsection{Simulation as a Tool to Benefit AI Benchmark Carpentry and Democratization}
+\label{sec:sim}
+
+% MLCommons Science report:
+% 1/2 column  - 1 column on simulator availability for running ML workloads -- their pros and cons
+% Make sure to talk about Wes' work at scale at ORNL
+%\TODO{gem5+SST, Running PyTorch/TensorFlow in gem5 and Accel-Sim (Matt)}
+
+Simulating AI hardware and software infrastructures offers an opportunity to democratize AI benchmarking and impact AI development. 
+This is especially useful for those (a) without direct access to the hardware on which the AI benchmarks run, and therefore can use simulations to estimate its behavior; and (b) planning large-scale experiments, who can use simulations to assess the impact on real hardware and infrastructure.
+
+As part of this, recent work in the modeling and simulation community has significantly expanded users' options for studying how their ML workload optimizations affect them.
+Although there is a wide array of tools that can be used, we focus on four of the most popular, widely used tools: Accel-Sim~\cite{KhairyShen2021-accelSim}, gem5~\cite{binkert2011gem5, LowePowerAhmad2020-gem520}, SST~\cite{RodriguesHemmert2011-sst, SST}, and Digital Twins~\cite{brewer2024digital}.
+These tools are often used in academia, industry, and national labs because they enable high-fidelity, early-stage design exploration.
+Moreover, they enable users who do not have access to real hardware or are prototyping optimizations for hardware that does not yet exist to simulate the behavior of popular ML workloads while balancing performance and power trade-offs.
+
+\noindent
+\textbf{Accel-Sim}~\cite{KhairyShen2021-accelSim}: For users interested in simulating ML workloads on modern NVIDIA (Volta through Blackwell) GPUs, Accel-Sim offers a great combination of high fidelity and usability.
+Accel-Sim builds upon the popular GPGPU-Sim~\cite{BakhodaYuan2009-gpgpuSim}, and has an integrated power model~\cite{KandiahPeverelle2021-accelWattch}.
+This allows users to examine power and performance tradeoffs for ML workloads.
+
+\begin{comment}
+Originally, GPGPU-Sim supported running ML workloads natively: i.e., it required either direct access to the CUDA source code or access the underlying PTX (NVIDIA's virtual assembly language which is portable across GPUs) to run ML workloads~\cite{LewShah2018-gpgpusimML}.
+%Unfortunately, starting with CUDA 8.1, NVIDIA stopped including PTX in their binaries for their libraries -- preventing users from running ML workloads that included popular libraries like cuDNN and cuBLAS.
+\end{comment}
+
+Currently, Accel-Sim supports running ML workloads in three formats: (1) direct CUDA source code, (2) CUDA programs with library calls where the library includes the PTX for the library calls (only for CUDA 8.1 and earlier~\cite{LewShah2018-gpgpusimML}), (3) and direct SASS (NVIDIA's machine assembly language) execution.
+As NVIDIA's libraries (e.g., cuDNN, cuBLAS) grow increasingly complex, and software like PyTorch add additional complexity on top of these libraries, the third option is the most popular as it can trace through multiple layers of software (e.g., PyTorch, cuBLAS).
+Moreover, to make the simulator's runtime more tractable, recent work has demonstrated how to identify and simulate a representative subset of a given workload without significantly compromising accuracy~\cite{AvalosKhairy2021-pka}.
+Thus, Accel-Sim is widely used by users who want to improve the efficiency of a given GPU.
+However, since Accel-Sim focuses on the GPU, it may not be best for users who want to study interactions with other system components (e.g., the CPU or other accelerators).
+Accel-Sim also does not heavily focus on the GPU cache coherence or memory consistency.
+
+\noindent
+\textbf{gem5}~\cite{binkert2011gem5, LowePowerAhmad2020-gem520}: %The gem5 simulator is another widely used tool for modeling workloads, including ML workloads.
+The gem5 simulator is another popular tool used in computer system research to evaluate novel hardware designs. 
+It provides a robust API for researchers to modify and extend current models and to create new models in the gem5 infrastructure.
+The gem5 simulator implements many models for system component including CPUs (out-of-order designs, in-order designs, and others), AMD and ARM GPUs~\cite{GutierrezBeckmann2018-gem5GPU}, accelerators~\cite{RogersSlycord2020-gem5Salam, SpencerRogers2024-gem5Salam2, ChaudhariSinclair2025-gem5Accel}, various memories, on-chip interconnects, coherent caches, I/O devices, and many others.
+These gem5 models have enough fidelity to boot Linux, run unmodified workloads, and investigate cross-layer designs.
+
+Thus, gem5 enables rapid prototyping of hardware-software co-designs across the computing stack.
+For example, users can prototype optimizations to the compiler, OS, or runtime in tandem with architectural changes and study the implications of their design choices.
+Like Accel-Sim, gem5 has an integrated power model~\cite{SmithBruce2024-gem5Power} and also supports running popular ML workloads both natively and through frameworks like PyTorch -- including adding support for advanced techniques to tradeoff simulation time for reduced fidelity in less important application regions~\cite{RamadasPoremba2023-gem5GPUFS, RamadasPoremba2024-gem5MLSim, RamadasSinclair2024-gem5MLSim}.
+However, gem5's support for ML workloads differs in three key ways from Accel-Sim's.
+% ML for more than just the GPU
+First, unlike Accel-Sim, gem5's support for ML workloads spans across different types of compute devices, including CPUs and accelerators.
+% AMD vs. NVIDIA
+Second, gem5 currently focuses its support on AMD GPUs.
+Since AMD's GPU runtime and drivers are open-source, this enables gem5 to model co-design between additional layers of the computing stack because it simulates all of those layers (unlike Accel-Sim).
+% modeling interfaces and such
+Third and finally, gem5 also has highly accurate models for cache coherence, memory consistency, and interfaces between components in the system like the GPU's Command Processor.
+Thus, gem5 may be a good choice for users wanting to study how ML workloads behave across system components or who want to prototype optimizations across layers of the computing stack.
+However, since many users focus on NVIDIA GPUs and gem5 currently does not support them, users deeply tied to NVIDIA's ecosystem will not find it useful.
+
+\noindent
+\textbf{SST}~\cite{RodriguesHemmert2011-sst,SST}: Accel-Sim and gem5 focus on modeling a single GPU (Accel-Sim, gem5) or a single system-on-a-chip (gem5).
+However, modern, large-scale computing systems frequently have hundreds or thousands of processors (e.g., GPUs) integrated together.
+Thus, the Structural Simulation Toolkit (SST) is a good option for users who want to study ML workloads in rack-scale systems.
+Instead of using high fidelity, but often slow models for components like processors (like Accel-Sim and gem5 do), SST utilizes analytical models for these components and focuses on modeling the network across many components, making it faster and scalable.
+However, for users who want to focus on both smaller- and larger-scale systems, both Accel-Sim~\cite{sandia_2, sandia_3} and gem5~\cite{hsieh2012gem5sst, nguyen2022gem5sst} have integrated their models with SST -- potentially providing the best of both worlds.
+
+\textbf{ExaDigiT}~\cite{brewer2024digital}: 
+To study AI workloads at datacenter or supercomputer scale, ExaDigiT provides a holistic digital twin framework that models the coupled behavior of workloads, compute, power, and cooling subsystems.
+Unlike simulators such as Accel-Sim, gem5, or SST, which operate at device- or node-level timescales, ExaDigiT enables large-scale modeling of system dynamics over operational timescales—capturing interactions that are difficult to observe or measure directly in production environments.
+This framework further provides a means to evaluate operational strategies, perform “what-if” analyses, and uncover complex, cross-disciplinary transient behaviors that emerge from the tight coupling of workloads, compute, power, and cooling.
+
+\begin{table*}[tb!]
+  \caption{Example Simulation Tools that Benefit AI Benchmark Simulations.}
+  \begin{center}
+  \begin{tabular}
+  {|p{0.15\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+  \hline
+  \rowcolor{blue!30!white}
+  Tool/Software & Scale & Benefits & Application\\
+  \hline
+  \hline
+  Accel-Sim~\cite{KhairyShen2021-accelSim} & Single- and multi-\textbf{GPU} & High fidelity, usability, integrated power model, supports NVIDIA GPUs. & Examining power/performance tradeoffs; improving GPU efficiency.\\
+  \hline
+  gem5~\cite{binkert2011gem5, LowePowerAhmad2020-gem520} & Single- and multi-\textbf{CPU, GPU, and system-on-a-chip} & High fidelity, hardware-software co-design, models cache coherence, interconnects, and memory consistency, supports accelerators and AMD/ARM GPUs. & Studying ML workload behavior across components; prototyping optimizations across layers.\\
+  \hline
+  SST~\cite{RodriguesHemmert2011-sst, SST} & \textbf{Rack-scale} systems & Faster, scalable, models networking, utilizes analytical models. & Studying ML workload behavior in large-scale systems.\\
+  \hline
+  ExaDigiT~\cite{brewer2024digital} & \textbf{Datacenter- or supercomputer-level} & Models interactions among workloads, scheduling, power, networking, and cooling, including physical footprint. & Examining ML workload behavior at the largest scales.\\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+\end{table*}
+
+ExaDigiT consists of three coupled modules: (1) a \emph{resource allocator and power simulator (RAPS)} for replaying telemetry, simulating the scheduling of real or synthetic workloads, and dynamically estimating energy consumption; (2) a \emph{thermo-fluid cooling module} for predicting pressures, temperatures, flow rates, system-level control responses, and overall power-usage effectiveness (PUE); and (3) a \emph{visual analytics module} that integrates both a web-based dashboard and extended reality (XR) interfaces for immersive exploration of system behavior in augmented, virtual, or mixed reality. 
+
+Operating at coarser timescales than cycle-accurate simulators, ExaDigiT enables comprehensive studies of power, cooling, and scheduling interactions across the full supercomputer. 
+It has been applied to analyze how scheduling policies influence power and cooling dynamics~\cite{maiterth2025hpc}, used as a reinforcement learning environment for training optimal scheduling agents~\cite{brewer2025trace}, and to perform ``virtual'' benchmarking of large-scale LLM training workloads~\cite{kalepu2025virtual}.
+
+\noindent
+\textbf{Summary}: 
+Collectively, these simulation frameworks span a continuum of modeling fidelity and scale—from device-level, cycle-accurate simulators such as Accel-Sim and gem5, to system- and datacenter-level models such as SST and ExaDigiT. 
+By enabling controlled, repeatable, and cost-effective experimentation, they serve to democratize AI benchmarking in the design-space exploration of emerging architectures. 
+As AI workloads continue to push the limits of power, cooling, and scheduling efficiency, such simulation-based tools will become indispensable for evaluating new ideas before committing to physical deployment.

@@ -1,0 +1,88 @@
+
+\begin{figure*}[p!]
+  \centering
+  \resizebox{0.35\textheight}{!}{
+  \begin{forest}
+    skan tree
+    [MLCommons
+        [AILuminate
+            [Claude 3.5
+                [Haiku 20241022 (API)]	
+                [Sonnet 20241022 (API)]	
+            ]
+            [Gemma 2 9b]	
+            [Phi 3.5 
+                [MoE Instruct (API)]	
+                [Mini Instruct (API)]	
+            ]
+            [{Gemini 1.5 Pro (API, with option)}]	
+            [GPT-4o
+                [Regular (API)]	
+                [Mini (API)]
+            ]
+            [Llama 3.1 
+                [405B Instruct]	
+                [8b Instruct FP8]
+            ]
+            [Mistral
+                [{Ministral 8B 24.10 (API)}]	
+                [{Mistral Large 24.11 (API)}]	
+            ]
+            [OLMo 7b 0724 Instruct]	
+        ]
+        [{AlgoPerf \cite{dahl2023benchmarkingneuralnetworktraining,mlommons-algoperf}}
+            [External Tuning]
+            [Self Tuning]
+        ]
+        [MLPerf Inference
+            [Datacenter
+                [Benchmark]
+                [Model]
+                [Scenario and Model]
+                [Units]
+            ]
+            [Edge
+                [Benchmark]
+                [Model]
+                [Scenario and Model]
+                [Units]
+            ]
+            [Mobile
+                [Benchmark]
+                [Model]
+                [Scenario and Model]
+                [Units]
+            ]
+            [Tiny
+                [Benchmark]
+                [Model]
+                [Scenario and Model]
+                [Units]
+            ]
+        ]
+        [MLPerf Storage
+            [Benchmark]
+            [Model]
+            [Workloads]
+            [Units]
+        ]
+        [MLPerf Training
+            [Benchmark]
+            [Model]
+            [Units]
+        ]
+        [MLPerf Training HPC
+            [Benchmark
+                [CosmoFlow]
+                [DeepCAM]
+                [OpenCatalyst]
+            ]
+            [Model]
+            [Units]
+        ]
+    ]
+  \end{forest}
+  }
+  \caption{MLCommons benchmark overview.} 
+  \label{F:graph-mlcommons}
+\end{figure*}

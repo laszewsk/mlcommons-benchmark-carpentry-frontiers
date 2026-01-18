@@ -1,0 +1,118 @@
+
+\appendix
+
+
+\TODO{Here is some work from previous papers word by word copied}
+
+\TODO{likely all this will be not included but we need to cite the paper(s) with reasoning.}
+
+
+\section{Tools and Software Carpentry}\label{sec:tools}
+
+From~\cite{las-2023-mlcommons-edu-eq} we quote:
+
+\TODO{rewrite as we just quote here:}
+
+
+\section{Software Carpentry}
+
+What is software carpentry?
+Why is it important?
+What are the limitations?
+What lessons can we learn?
+What other things are missing?
+
+Is there a need for benchmark carpentry?
+Should benchmark carpentry integrated into software carpentry?
+
+\begin{quote}
+    
+Unfortunately, today's students are not sufficiently exposed to software carpentry at the beginning of their studies, as we found while working with four different student groups from three different universities, despite the university curriculum consisting of Python and AI classes. 
+
+To efficiently use the libraries and methods, as well as the infrastructure used to execute software on shared HPC computers, students need a basic understanding of software engineering tools such as a text editor and code management system. A subset of this is often referred to as software carpentry~\cite{software-carpentry}. Topics of immediate importance include the ability to: (1)
+ obtain a moderate grasp of terminal use with Unix commands,
+(2) leverage the features of a professional IDE,
+(3) be familiar with a code management system and version control,
+(4) ensure the availability of the code using open-source, 
+(5) understand how to collaborate with others, and (6) utilize queuing systems as used within shared resources managed through queuing systems. 
+
+It is vital to instill these industry-standard practices within apprentices new to artificial intelligence utilization of HPC systems, beyond just the simplest example, to efficiently use the resources and plan benchmark experiments. These skills are key to evolving a beginner's research and class experience towards intermediate and advanced knowledge usable in the industry so they can further contribute to altruist AI applications and the dissemination of work within academia. Moreover, these students will bring valuable and lucrative skillsets with them to their future professional careers.
+
+Although many centers offer Jupyter as an interactive use of the HPC resources, such notebooks are often designed to be simple one-off experiments, not allowing for encapsulation or expansion into other code. Furthermore, the queuing system time imitations within HPC environments hinder the reproducibility of experiments as the time requirements may only allow one experiment as we have experienced with our application.
+
+Pertaining to educational insights, we observed that most students own Microsoft Windows-based desktops and have never come in contact with a terminal using commandline tools. This is backed up by the fact that Microsoft's Windows 10 possesses 68.75\% of the OS market as of 2023~\cite{norem}. Hence, the students cannot often navigate a Unix HPC environment, where machine learning is commonly conducted in a shared resource. This also exacerbates students' manual code expenditure, as Unix commands such as \verb|grep|, \verb|find|, and \verb|make| are typically not known, and automation of the programs building the workflow to execute a benchmark experiment efficiently is limited. 
+
+However, as part of our efforts, we found an easy way to not only teach students these concepts but also access HPC machines via a terminal straight from the laptop or desktop. While built-in terminals and shells can be used on macOS and Linux, the ones on Windows are not Unix-like. Nevertheless, the use of the open-source, downloadable Git Bash on Windows systems provides a Unix-like environment. We also leverage {\em Chocolatey}, a package manager that mimics the Unix package tools. Alternatively, Windows Subsystem for Linux (WSL) achieves the same result while directly being able to run Linux in a virtual machine on the computers. However, for students with older or resource-limited machines, the latter may not be an option. 
+To efficiently use the terminal, the elementary use of commands needs to be taught, including the use of a simple commandline editor. While leveraging bash on the commandline, it becomes easy to develop tutorials and scripts that allow the formulation of simple shell scripts to access the HPC queuing system. 
+
+Furthermore, sophisticated programming tools that readily exist in cross-OS portable fashion on the laptop/desktop can be used to develop or improve the code quality of the software. This includes the availability of integrated development environments (IDEs) (such as PyCharm and VSCode) with advanced features such as syntax highlighting, code inspection, and refactoring.  As part of this, applying uniform formatting such as promoted by PEP 8~\cite{www-pep8} increases code readability and uniformity, thereby effortlessly improving collaboration on code by various team members.
+
+
+Although such IDEs can become quite complex with the evolution of their corresponding toolchains~\cite{fincher_robins_2019}, in our case we can restrict their use towards code development and management.
+As such, habits are immediately introduced that improve the code quality. Furthermore, these tools allow 
+collaborative code development through group editing and group version control management.
+Together, they help students write correct code that meets industry standards and practices~\cite{tan_chen}.
+
+From our experience, this knowledge saves significant effort in time-intensive programs such as Research Experiences for Undergraduates, which typically only last one semester and require the completion of a student project. As part of this, we observed that integrated software carpeting while also integrating IDEs benefits novice students as they are more likely to contribute to existing research activities related to scientific machine learning applications.
+Such sophisticated IDEs are offered as free community editions or are available in their professional version for free to students and open-source projects.
+Such IDEs also provide the ability to easily write markdown text and render the output while writing. This is very useful for writing documentation. Documentation is a necessity in ML research experiences as a lack thereof creates a barrier to entry~\cite{konigstorfer}.
+
+As previously mentioned, most recently, these tools also allow writing code remotely, as well as in online group sessions fostering collaboration. Hence, peer programming has become a reality, even if the students work remotely with each other. This is further proven by online, free IDEs such as {\em Replit} where students can edit the same file simultaneously~\cite{Kovtaniuk2022}. However, such features have now become an integral part of modern IDEs such as PyCharm and vscode, so the use of external tools is unnecessary. Due to this, 
+we noticed an uptake among students in using the remote editing capabilities of more advanced editors such as PyCharm and vscode; alongside their superiority while developing code, a command editor on the HPC terminal was entirely avoided. However, this comes with an increased load on the login nodes, which is outweighed by the developers' convenience and code quality while using such advanced editors. HPC centers are advised to increase their capabilities significantly to support such tools while increasing their resources for using them by their customers.
+
+Lastly, the common choice for collaborative code management is Git, with successful social coding platforms such as GitHub and GitLab. These code management systems are key for teams to share their developed code and enable collaborative code management.  However, they require a significant learning curve. An important aspect is that the code management systems are typically hosted in the open, and the code is available for improvement at any time. We found that students who adopt the open-source philosophy perform considerably better than those who may store their code in a private repository. The openness fosters two aspects: 
+
+\begin{itemize}
+    \item First, the code quality improves as the students put more effort into the work due to its openness to the community. This allows students to share their code, improve other code, and gain networking opportunities. Also, perhaps most importantly, this allows scientists to replicate their experiments to ensure similar results and validity. 
+    \item Second, collaboration can include research experts from the original authors and researchers that would otherwise not be available at the university. Hence, the overall quality of the research experience for the student increases as the overall potential for success is implicitly accessible to the student.
+\end{itemize}
+
+An additional tool is JupyterLab, created by Project Jupyter. It provides a web browser interface for interactive Python notebooks (with file extension \verb|ipynb|). The strength here is a rich external ecosystem that allows us to interactively run programs while integrating analysis components to utilize data frames and visualization to conduct data exploration. For example, this is possible by using Web browser interfaces to either the HPC-hosted Jupyter notebook editor or Google Colab. The unfortunate disadvantage of using notebooks is that, while the segmentation of code into cells can provide debugging convenience, this format may break proper software engineering practices such as defining and using functions, classes, and self-defined Python libraries that lead to more sustainable and easier-to-manage code. An upside to Jupyter notebooks is that they possess an integrated markdown engine that can provide sophisticated documentation built in; we have also identified that students without access to capable local machines can leverage Google Colab, which is a free platform for using Jupyter notebooks. Jupyter notebooks accessing HPC queues are currently often made available through Web-based access as part of on-demand interfaces to the HPC computing resource~\cite{uva-ondemand}.
+
+\TODO{this seems outdated:}
+
+Regrettably, live collaborative editing of Jupyter notebooks is not yet supported on some platforms such as {\em Replit} and {\em PyCharm}. However, vscode does support this feature, even within the browser, eliminating the need to download a client. We expect that such features will eventually become available in other tools. 
+
+While topical-focused classes such as machine and deep learning is obviously in the foreground, we 
+see a lack of introducing students to software carpeting and even the understanding of HPC queuing systems in general. Tools such as Jupyter and Colab that are often used in such classes deprive the students often from the needed underlying understanding of efficiently using shared GPU resources for ML and DL. 
+
+Hence, students are often ill-prepared for software carpeting needs that arise in more advanced applications of DL utilizing parallel and concurrent DL methodologies. Furthermore, programming language classes are often only applied to teaching Python while only emphasizing the language aspects but not with a sustainable, {\em practical} software engineering approach. Because machine learning is a relatively new venture in the computing field, there is not yet a definitive set of standards meant for beginning students. 
+The lack of emphasizing standards as part of teaching activities such as these relates to a general problem at the university level. 
+
+
+We alleviate difficulties such as these encountered within research experience by leveraging a cross-platform cloud-computing toolkit named {\em cloudmesh}. This toolkit, alongside our use of professional IDEs and version control, allows students to focus less on manual code expenditures and operating system debugging, and more on HPC use and machine learning development on datasets such as from the Modified National Institute of Standards and Technology (MNIST), among others. We acknowledge the importance of saving time as it is a precious commodity in research experiences.  
+The use of {\em cloudmesh} reduces the entry barrier surrounding the creation of machine learning benchmark workflow applications, as well as our standardized benchmarking system, MLCommons. This system is easily implemented as long as programmers can utilize the capabilities of an industry-standard IDE. Since we emphasize reproducibility and openness with other contributors, then an open-source solution like MLCommons is necessary.
+\end{quote}
+
+
+from~\cite{las-2023-mlcommons-edu-eq};
+
+quote from: Opportunities for Enhancing MLCommons Efforts while leveraging Insights in
+High-Performance Big Data Systems Gained from Educational MLCommons Earthquake
+Benchmarks Efforts Gregor von Laszewski,\*, J.P. Fleischer, Robert Knuuti, Geoffrey. C. Fox, Jake Kolessar, Thomas S. Butler, Judy Fox:
+
+\begin{quote}
+    Benchmark carpentry is not yet a well-known concept while focusing on applying software carpentry, common benchmark software, and experiment management aspects to create reproducible results in research computing. To work towards a consolidated effort of benchmark carpentry, the experiences and insights documented in this paper have recently been reported to the MLCommons Science Working group. Throughout the discussion, we identified the need to develop an effort focusing on benchmark carpentry that goes beyond the aspects typically taught in software carpentry while focusing on aspects of benchmarks that are not covered. This includes a review of other benchmark efforts such as TOP500 and Green500, the technical discussion around system benchmarks including SPEC benchmarks, as well as tools and practices  to better benchmark a system. Special effort needs not only to be placed on benchmarking the CPU and GPU capabilities, but also on what effect the impact of the file system or the memory hierarchy has. This benchmarking ensures reproducibility while leveraging the Findability, Accessibility, Interoperability, and Reusability (FAIR) principle. Further, using software that establishes not only immutable baseline environments such as Singularity and Docker, but also the creation of reproducible benchmark pipelines and workflows using cloudmesh-ee and cloudmesh-cc, is beneficial. Such efforts can also be included in university courses, and the results of developing material for and by the participants can significantly pervade the concept of a standardized benchmarking system such as MLCommons’s MLPerf.
+\end{quote}
+
+
+
+
+References
+
+have not checked these if relevant:
+\begin{comment}
+TODO: Wilson, G., Aruliah, D. A., Brown, C. T., Chue Hong, N. P., Davis, M., Guy, R. T., ... & Wilson, P. (2014). Best practices for scientific computing. PLoS biology, 12(1), e1001745. https://doi.org/10.1371/journal.pbio.1001745 
+
+TODO: Teal, T. K., Cranston, K. A., Lapp, H., White, E. P., Wilson, G., & Ram, K. (2015). Data carpentry: Workshops to increase data literacy for researchers. International Journal of Digital Curation, 10(1), 135-143. https://doi.org/10.2218/ijdc.v10i1.351 
+
+TODO: Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., & Teal, T. K. (2017). Good enough practices in scientific computing. PLoS computational biology, 13(6), e1005510. https://doi.org/10.1371/journal.pcbi.1005510 
+
+TODO: Huff, K. (2015). Best practices for computational science: Software carpentry. Journal of Open Research Software, 3(1), e6. https://doi.org/10.5334/jors.bl 
+
+TODO: Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS computational biology, 9(10), e1003285. https://doi.org/10.1371/journal.pcbi.1003285 
+TODO: https://software-carpentry.org/
+TODO: lessons: https://software-carpentry.org/lessons/ 
+TODO: Curricula: https://carpentries.org/workshops-curricula/ (no content?) 
+\end{comment}
+

@@ -1,0 +1,112 @@
+\section{Definitions}
+\label{sec:definition}
+
+In this section, we introduce some of the definitions and terminology used throughout this work in order to work towards a formal definition of AI benchmarks.
+
+\subsection{What is Benchmarking?}
+\label{sec:definition-benchmarking}
+
+
+In computing and scientific software evaluation, benchmarking is the process of comparing metrics for computer programs, models, or systems in order to assess their relative performance, typically with respect to a baseline. While early benchmarks focused largely on hardware throughput (e.g., the time required to complete a fixed computational task), modern benchmarks increasingly evaluate software, algorithms, and integrated systems. Three dimensions now structure most benchmarking efforts: 1) runtime—the amount of time a system requires to complete a set task; 2) accuracy—the comparative quality or correctness of outcomes for the same task; and 3) efficiency—the ratio between used computational resources and quality of outcomes. 
+
+The goals of benchmarking include identifying performance gaps, establishing baseline expectations, driving innovation, and supporting continuous improvement over both short- and long-term horizons. Benchmarking has been extensively used in computer engineering and science—across both industry and academia—to measure the performance of computing equipment and the applications running on such systems.
+
+In addition to the classical primary outcome metrics (runtime, accuracy, efficiency), today's benchmarks evaluate secondary qualities that are of high importance to the real-world deployment of systems. These include robustness and reliability (stability with respect to distribution shifts and noise, generalization), usability and accessibility (ease of integration with other systems, error transparency, ease of setup), and reproducibility (stability of the results and consistent behavior across versions, seeds, or environments).
+
+
+\subsection{Lessons Learned from Traditional HPC Benchmarking}
+
+Traditional high-performance computing (HPC) benchmarking includes:  
+
+\begin{enumerate}
+\item \textit{synthetic benchmarks} that simulate characteristic community workloads, as exemplified by the TOP500 and Green500 benchmarks;  
+\item \textit{application benchmarks} that represent real-world applications to measure end-to-end performance, such as SPEC HPC; and  
+\item \textit{scientific application benchmarks} that emphasize the accuracy of computational methods in solving domain-specific scientific problems.
+\end{enumerate}
+
+(For a more detailed discussion, see Section \ref{sec:hpc})
+
+Important design and applicability criteria for benchmarks include relevance and representativeness for the field, fairness, repeatability, cost-effectiveness, scalability, and transparency~\cite{wikipedia:benchmarking}. One caveat is that vendors may optimize hardware specifically for these benchmarks, potentially neglecting new real-world problems and emerging challenges not captured by traditional benchmark suites.  
+
+Therefore, it is essential to provide a diverse set of benchmarks so that different communities can evaluate and interpret results in terms of the performance metrics most relevant to their specific needs.  
+
+HPC benchmarking has traditionally focused on supercomputing performance comparisons, targeting compute performance~\cite{Dongarra1989LinpackReport,Dongarra2016HPCG}, as well as memory, communication, and storage performance~\cite{PerfKitBenchmarker,IO500}. With the resurgence of AI and machine learning—including deep learning—it is now appropriate to explore additional lessons for benchmarking drawn from these domains.  
+
+HPC benchmarks are often executed under controlled conditions, such as those maintained by system administrators, to ensure exclusive access to hardware and eliminate interference from other users or applications. This approach allows for measurement of the best achievable performance and is frequently used to guide system procurement decisions. However, such conditions do not reflect the shared nature of most computing environments, which often include factors such as queue wait times and concurrent multi-user workloads sharing hardware resources.
+
+
+\subsection{What is Democratization?}
+\label{sec:definition-democratization}
+
+We believe it is vital not only to allow experts and power users to participate in benchmarking efforts but also to lower barriers to entry — making powerful benchmarks, tools, knowledge, and infrastructure available to everyone, not just those with specialized resources or expertise. For benchmarking, this implies in particular to improve the following:-
+
+\begin{enumerate}
+\item[a.] {\bf Accessibility:} Making benchmarks easier to use, enforcing  open-source licensing.
+
+\item[b.] {\bf Open participation:} Encouraging community contributions through open-source development (e.g, on GitHub; shared repositories with transparent governance).
+
+\item [c.] {\bf Knowledge sharing:} Providing tutorials, documentation, and educational resources so that non-experts can effectively use and modify the benchmarks.
+
+\item[d.] {\bf Affordability:} Reducing cost barriers not only by introducing open source benchmarks, but also by allowing benchmarks to be offered at various scales and not only for leadership-class computing resources.
+
+\end{enumerate}
+
+
+\subsubsection{AI Software Democratization}
+
+One of the major success stories in the field of artificial intelligence is the emergence of AI-specific software libraries such as TensorFlow, PyTorch, and Jupyter Notebooks. These tools have democratized machine learning and data science by making advanced computational capabilities accessible to students, researchers, and small organizations that previously lacked the resources to develop such tools from scratch.
+
+\subsubsection{AI Hardware Democratization}
+
+One must recognize that a significant amount of progress in AI research is conducted on campus computers that are much smaller than hyperscale AI machines or leadership-class government systems. Furthermore, many scientists have begun to use {\em desktop} computers equipped with high-powered graphics cards. Hence, it is important to have meaningful AI benchmarks available that allow for comparisons across different scales.
+
+
+\subsection{What is Software Carpentry?}
+\label{sec:towards-carp}
+
+To set the stage for why we need AI benchmark carpentry, we need to first look at how the term has been introduced and is now commonly associated with software carpentry. After a more detailed analysis of software carpentry, we define the term AI benchmark carpentry.
+
+Software Carpentry \cite{wilson2014software} was initially conceived to teach researchers in scientific fields fundamental computational and software development skills,  analogous to a hammer or level in a tool belt. Thus, non-computer scientists would be able to improve the use and development of the software they need to conduct their own research while benefiting from targeted, short educational tutorials. 
+
+Today, a global community effort has sprung up since 1998~\cite{softwarecarpentry2024} that provides a number of training materials and sessions to the scientific community to we can leverage in some extend. Recently, additional areas beyond software, such as data carpentry.
+Together, these efforts includes:
+
+\begin{itemize}
+  \item \textbf{Software Carpentry Core Efforts:} 
+  Teaches researchers foundational computing skills to enhance their productivity and efficiency in research tasks. This includes lessons in 
+  Programming with Python, Version Control with Git, The Unix Shell, Programming with R, Python, and using Git for version control.
+
+ \item \textbf{Data Carpentry Efforts:}
+  Teaches researchers skills necessary to work effectively and reproducibly with data in the context of specific domains. This includes lessons in the fiels of Astronomy, Ecology, Genomics, and Social Science with crosscutting topics such as Geospatial and Image Processing. Within those areas, are lessons such as Data Analysis and Visualization in R for Social Scientists, Foundations of Astronomical Data Science, and Introduction to the Command Line for Genomics \cite{datacarpentry2025}.
+
+  \item \textbf{Other Carpentry Efforts:}
+   Library Carpentry provides lessons for information scientists, data stewards, and roles in library science, reusing some of the Software Carpentry topics adapted in a curation context. Additional lessons available include High-Performance Computing (HPC Carpentry) \cite{reid2025hpc,HPCcarpentry2025}.
+
+\end{itemize}
+
+From this list, we see that benchmark carpentry is missing.
+
+
+\subsection{What is Benchmark Carpentry?}
+\label{sec:benchmark-carpentry}
+
+Based on our observations in the educational and scientific communities  \cite{las-frontiers-edu}, we find that similar efforts are needed to focus on benchmarking.
+This is more important as AI applications consume enormous resources, and properly scaling and using them requires a much deeper understanding of their time and space requirements.
+The hope is that, from similar benchmarks, not only can the scientist learn lessons about their own applications, but, if needed, their own benchmarks can be developed to estimate costs and effort more precisely.
+In addition, reproducible, portable benchmarks enable the selection and comparison of suitable hardware for the effort.
+
+In general, we distinguish between hardware, software, and application components that significantly impact benchmarks.
+
+On the hardware side, we deal with compute-oriented components such as CPUs, GPUs, and/or AI/neural accelerators (NPUs). Benchmarking them in the traditional way includes processing speed, core utilization, and instruction efficiency of a computer's central processing unit, data movement between xPU and main memory, to name a few. However, for AI, we also need performance in parallel computation, as well as AI workloads derived from AI kernels and applications.
+
+As many AI applications require a large amount of {\em data} to be moved between memory, disks, CPU, and GPU memory, evaluating bandwidth, latency, and throughput is critical to understanding their impact on system performance. Hence, estimating and measuring the impact of, for example, assessing read/write speeds, IOPS, and access latency to identify bottlenecks in data storage systems is important.
+
+Related to this is the {\em Network performance} metric, which measures bandwidth, latency, and packet loss to ensure efficient data transfer across systems, especially when parallel processing is used to address the scale required for good performance.
+
+Benchmark carpentry should also teach 
+
+{\em System Profiling and Monitoring} principles and tools so as to measure real-time system metrics.
+{\em Interpreting Results, Analyzing Bottlenecks}, and {\em Optimizing Performance} are essential skills to identify limitations and improve overall performance through iterative strategies.
+
+{\em Benchmark Design and Reproducibility} are similarly essential to allow comparative analyses among heterogeneous and also decentral benchmark runs.
+This includes fair, repeatable benchmarks that reflect real-world workloads and enable comparative analysis of the different components involved.

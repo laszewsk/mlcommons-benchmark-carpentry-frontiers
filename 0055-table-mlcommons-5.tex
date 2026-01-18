@@ -1,0 +1,364 @@
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.1}
+
+{\tiny
+\onecolumn
+\begin{landscape} 
+\begin{longtable}
+{|p{
+0.1\textwidth}|p{
+0.09\textwidth}|p{
+0.1\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|}
+\caption{MLCommons Benchmarks}
+\label{tab:benchmarks-mlcommons}
+\\ \hline
+\rowcolor{blue!30}
+\textbf{Benchmark Name} & \textbf{Model} & \textbf{Task} & \textbf{Application Domain / Use Case} & \textbf{Model Type / Architecture} & \textbf{Metrics / KPIs} & \textbf{Hardware} & \textbf{Notes / Description} \\
+\hline
+\endfirsthead
+\caption{MLCommons Benchmarks (Cont.)} \\
+\hline
+\rowcolor{blue!30}
+\textbf{Benchmark Name} & 
+\textbf{Model} & 
+\textbf{Task} & 
+\textbf{Application Domain / Use Case} & 
+\textbf{Model Type / Architecture} & 
+\textbf{Metrics / KPIs} & 
+\textbf{Hardware} & 
+\textbf{Notes / Description} \\
+\hline
+\endhead
+\hline
+\multicolumn{8}{|r|}{{\footnotesize Continued on next page}} \\
+\endfoot
+\hline
+\endlastfoot
+\hline
+%
+% INFERENCE: DATACENTER
+%
+\rowcolor{gray!20} \multicolumn{8}{|l|}{\textbf{MLPerf Inference: Datacenter}} \\ \hline
+ deepseek-r1 & DeepSeek R1 (671B params) & Reasoning / Code Generation & Knowledge \& Reasoning, Complex Problem Solving, Step-by-Step Planning & Large Language Model (LLM), Reasoning LLM, High context/output length (up to 20K tokens) & Accuracy: Exact Match, Code Evaluation; Latency: TTFT (Time to First Token), TPOT (Time Per Output Token)& Data Center GPUs (NVIDIA H100/H200) with massive VRAM, optimized for $671$B parameters. &The model's large output length emphasizes its use in complex reasoning chains. Requires powerful systems (e.g., multiple H100 GPUs). \\ \hline
+ dlrm-v2-99 & DLRM-v2 & Recommendation & Personalized product/content recommendation (e.g., e-commerce, social media feeds) & Deep Learning Recommendation Model (DLRM), Sparse/Dense Architecture & Throughput: Queries Per Second (QPS); Latency: 99th Percentile Latency & Data Center CPUs and GPUs (NVIDIA B200/GB200/B300), prioritizing high I/O and memory bandwidth for massive embedding tables. &Tests high-throughput, low-latency deployment for online services with a 99\% latency constraint. \\ \hline
+ dlrm-v2-99.9 & DLRM-v2 & Recommendation & Personalized product/content recommendation (e-commerce, social media feeds) & Deep Learning Recommendation Model (DLRM), Sparse/Dense Architecture & Throughput: Queries Per Second (QPS); Latency: 99.9th Percentile Latency &Data Center CPUs and GPUs (NVIDIA H200), often using higher precision to ensure quality target is met. &Tests high-throughput, very low-latency deployment for critical online services with a strict 99.9\% latency constraint. \\ \hline
+ llama2-70b-99 & Llama 2 (70B params) & Large Language Model (LLM) Inference & General text generation, chat, summarization, and understanding & LLM, Transformer-based & Throughput: Tokens Per Second (TPS); Latency: TTFT, TPOT (99th Percentile) & Data Center GPUs (e.g., AMD MI300X/MI325X, NVIDIA B200/GB200/H100/H200/L40S, MS-Intel Arc Pro B60) in multi-GPU configurations, focused on high throughput and low latency. &Represents a larger LLM workload, measuring performance under a 99\% latency constraint. \\ \hline
+ llama2-70b-99.9 & Llama 2 (70B params) & Large Language Model (LLM) Inference & General text generation, chat, summarization, and understanding & LLM, Transformer-based & Throughput: Tokens Per Second (TPS); Latency: TTFT, TPOT (99.9th Percentile) & Data Center GPUs (AMD MI300X/MI325X, NVIDIA B200/GB200/H100/H200/L40S, MS-Intel Arc Pro B60), often testing the limits of precision vs. speed trade-offs. &Represents a larger LLM workload, measuring performance under a stricter 99.9\% latency constraint. \\ \hline
+ llama3.1-8b-datacenter & Llama 3.1 (8B params) & Summarization / Text Generation & Low-cost, high-volume LLM services, interactive code assistants & LLM, Transformer-based & Accuracy: ROUGE metrics (1, 2, L); Latency: TTFT $\le$2s, TPOT $\le$100ms (Server) & Single-node systems or smaller GPU clusters, used to lower the entry barrier for the MLPerf Training suite. &Benchmarks a smaller LLM for efficient deployment in both Data Center and Edge scenarios. \\ \hline
+ llama3.1-405b & Llama 3.1 (405B params) & Large Language Model (LLM) Inference & Generative AI, high-capability models & LLM, Transformer-based & Throughput: Output Tokens per second; Latency: TTFT, TPOT &Large-scale AI Clusters and Supercomputers (requires hundreds of GPUs (NVIDIA B200/GB200/GB300/H100/H200) with high-speed interconnects). &One of the largest LLMs in the suite, demonstrating the need for advanced parallelism (tensor, pipeline) on high-end systems (e.g., NVIDIA H200). \\ \hline
+ mixtral-8x7b & Mixtral (46.7B total params) & Large Language Model (LLM) Inference & generative AI, multilingual tasks & Mixture-of-Experts (MoE) LLM (activates $\approx$13B params per token) & Throughput: Tokens Per Second (TPS); Latency &Data Center GPUs (AMD MI300X/MI325X, NVIDIA H200/RTX PRO 6000), optimizing MoE architecture for low active compute per token. &Showcases the efficiency of MoE architecture, offering high quality with lower active compute cost than dense models. \\ \hline
+ retinanet & Retinanet-ResNext50 & Object Detection & Identifying and localizing objects in images & Object Detection Model, often with ResNext backbone and FPN & Accuracy: mAP (mean Average Precision); Throughput: Samples Per Second &Data Center and Edge GPUs (NVIDIA GeForce RTX 4090/H200/L4-PCIe/L40S), measuring both throughput and latency under a $100$ms constraint. &A standard computer vision benchmark using the OpenImages dataset. \\ \hline
+ rgat & Relational Graph Attention Network & Node Classification & Graph data analysis, social network processing, knowledge graphs & Graph Neural Network (GNN), Graph Attention Network (GAT) variant & Accuracy (on node classification); Throughput: Samples Per Second & Data Center GPUs (NVIDIA B200), specifically testing performance on irregular, graph-structured data.&Addresses graph-structured data and multi-relational graphs, testing system efficiency for complex graph workloads. \\ \hline
+ stable-diffusion-xl & Stable Diffusion XL (SDXL) & Text-to-Image Generation & Generative AI for creating high-quality images from text prompts & Diffusion Model (Latent Diffusion) & Throughput: Images Per Second; Latency & Data Center and Professional GPUs (AMD MI325X,NVIDIA B200/H100/H200/L4-PCI/L40S/NVIDIA RTX PRO 6000), focusing on the speed of image generation (samples/second).&Represents the Text-to-Image Generative AI domain, measuring the speed of image synthesis. \\ \hline
+ whisper & Whisper-Large-V3 & Automatic Speech Recognition (ASR) & Converting spoken audio to text & Encoder-Decoder Transformer, Speech-to-Text Model & Accuracy: WER (Word Error Rate), Word Accuracy (Acc); Latency & Data Center GPUs (NVIDIA B200/GB200/GeForce RTX 4090/H100/H200/L4-PCIe/L40S), measuring performance on a complex sequence-to-sequence model for speech.&An ASR benchmark on multilingual audio, measuring both encoder (audio feature) and decoder (token generation) performance. \\ \hline
+%
+% HPC
+%
+\rowcolor{gray!20} \multicolumn{8}{|l|}{\textbf{MLPerf HPC}} \\ \hline
+ CosmoFlow & CosmoFlow 3D CNN & Regression & Astrophysics, Cosmology (predicting properties of the universe from simulation data) & 3D Convolutional Neural Network (3D CNN) & Time to Quality (TTQ) (e.g., Time to reach validation MAE $\le 0.124$) & Supercomputers \& Large HPC Clusters (e.g., Fugaku, Perlmutter). Stresses distributed training, 3D data handling, and fast data I/O for massive volumetric datasets ($\approx 5$ TB) GPUs used for running this benchmark: NVIDIA A100/V100.&Uses massive 3D volumetric data ($\approx 5.1$ TB). Stresses memory bandwidth and interconnect.  \\
+\hline
+ DeepCAM & DeepCAM Encoder-Decoder & Semantic Segmentation & Climate Science, Extreme Weather Prediction (identifying atmospheric rivers, tropical cyclones) & Convolutional Encoder-Decoder (e.g., U-Net or DeepLab-like) & Time to Quality (TTQ) (e.g., Time to reach validation IoU $\ge 0.82$) & Supercomputers \& Large HPC Clusters. Stresses large-scale image processing, high-dimensional data (many channels), and efficient communication on systems with thousands of GPUs (A100/P100/V100). &Trained on massive, high-resolution 2D image data ($\approx 8.8$ TB). Stresses I/O and communication efficiency. \\
+\hline
+ OpenCatalyst & DimeNet++ & Regression & Computational Chemistry, Materials Science (discovering new catalysts for energy storage) & Graph Neural Network (GNN) & Time to Quality (TTQ) (Time to reach target energy/force prediction error) & Supercomputers \& Large HPC Clusters. Stresses performance on graph-structured data (atomic systems) and complex GNN operations that require high GPU utilization. GPUs used for running this benchmark: NVIDIA A100/P100/V100. & Models atoms and bonds as a graph structure. Benchmarks complex, irregular GNN workloads at scale.  \\
+\hline
+%
+% TRAINING
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Training}} \\ \hline
+ BERT (Bidirectional Encoder Representations from Transformers) & NLP - Question Answering & General NLP, Text Understanding & Transformer (Encoder) & Time to Quality (TTQ) (F1 Score on SQuAD) & Data Center GPUs, Accelerators & CPU, Single GPU (e.g., NVIDIA A100/H100), or moderate clusters. &A foundational benchmark for Natural Language Processing tasks. \\
+\hline
+ DLRM-dcnv2 (Deep Learning Recommendation Model - DCNv2)& Recommendation Systems & E-commerce, Content Streaming, Personalized Ads & Deep Learning Recommendation Model w/ DCNv2 & Time to Quality (TTQ) ($\text{AUC}$ on Criteo 4TB) & Data Center GPUs, Specialized Accelerators &Large-scale GPU clusters with high-speed interconnects (e.g., InfiniBand) for distributed training. This benchmark was running on GPUs: NVIDIA B300/B200/GB200/H200/H100/H200.&Stresses memory bandwidth and communication for massive embedding tables. \\
+\hline
+ llama2-70b-lora & LLM Fine-Tuning & Customizing LLMs for specific enterprise tasks & Transformer with LoRA & Time to Quality (TTQ) (ROUGE Score) & Multi-GPU servers, Mid-size GPU clusters & High-end Multi-GPU servers or small clusters (e.g., systems with AMD MI300X/MI325X/MI350X/MI355X, NVIDIA B200/B300/H100/H200). &Measures the efficiency of Low-Rank Adaptation (LoRA) on a $\approx 70\text{B}$ parameter model. \\
+\hline
+ llama3.1-405b & LLM Pretraining & Generative AI, Foundational Model Development & Transformer-based LLM ($\approx 405\text{B}$ params) & Time to Quality (TTQ) (Log Perplexity) & Large-scale, Multi-node GPU clusters & Single Node or small GPU systems (e.g., a few GPUs per node) to keep the benchmark accessible.Benchmark running on GPUs: NVIDIA B200/B300/H200.&The largest, most compute-intensive benchmark for pretraining state-of-the-art LLMs.  \\
+\hline
+ RetinaNet & Object Detection & Autonomous Vehicles, Surveillance, Image Analysis & One-stage Object Detector (ResNet, FPN) & Time to Quality (TTQ) ($\text{mAP}$ on COCO) & Data Center GPUs, Cloud Instances &Single or multi-GPU systems (NVIDIA B200/H200/RTX Pro 6000), often used in both Datacenter and Edge devices for inference.&Measures performance for a core computer vision task: localizing and classifying objects. \\
+\hline
+ RGAT (Relational Graph Attention Network) & GNN - Node Classification & Drug Discovery, Social Network Analysis, Fraud Detection & Relational Graph Attention Network (R-GAT) & Time to Quality (TTQ) (Accuracy on IGBH) & Systems optimized for high-bandwidth interconnects & GPU-based systems (NVIDIA B200/B300/H100), optimized for workloads with complex, sparse data structures like graphs.&Focuses on the irregular memory access and communication patterns of Graph Neural Networks. \\
+\hline
+ Flux1 (stable-diffusion) & Text-to-Image Generation & Generative AI, Digital Art, Content Creation & Latent Diffusion Model (U-Net, Transformer) & Time to Quality (TTQ) ($\text{FID}$ and $\text{CLIP}$ Scores) & Multi-GPU servers, Cloud Instances & High-performance Single or Multi-GPU systems (especially for fast inference or training). This benchmark was running on: NVIDIA B200/GB200/GB300.&Benchmarks the training of a major generative model in the AI industry. \\
+\hline
+%
+% Inference:Edge
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Inference: Edge}} \\ \hline
+ 3D U-Net (99\%) & 3D U-Net & Medical Image Segmentation & Healthcare, Volumetric Imaging (e.g., MRI/CT) & 3D Convolutional Encoder-Decoder CNN & Accuracy (Dice Score), Latency, Throughput (QPS) & Data Center GPUs (e.g., NVIDIA A100/H100), high-performance computing (HPC) systems, specialized accelerators. &99\% of reference accuracy target. Typically runs in Offline scenario for batch processing of medical scans. \\
+\hline
+ 3D U-Net (99.9\%) & 3D U-Net & Medical Image Segmentation &Healthcare, High-Fidelity Imaging & 3D Convolutional Encoder-Decoder CNN & Accuracy (Dice Score), Latency, Throughput (QPS) & Data Center GPUs (e.g., NVIDIA A100/H100), high-performance computing (HPC) systems, specialized accelerators. &99\% of reference accuracy target. Represents a stricter quality constraint, often requiring higher-precision compute (e.g., FP16 vs. INT8). \\
+\hline
+ llama3.1-8b-edge & Llama 3.1 (8B params) & Text Generation / Summarization & Edge AI, On-device LLMs, Interactive Assistants & Quantized Transformer (Decoder-only LLM) & Tokens Per Second (TPS), Latency (TTFT, TPOT), Power & Edge devices, mobile SoCs (System-on-Chips), smaller GPUs (MS-Intel Arc Pro B60), high-end CPUs. &Benchmarks a modern, smaller LLM variant optimized for performance and low-latency on resource-constrained Edge devices. \\
+\hline
+ resnet & ResNet50-v1.5 & Image Classification & Vision, Quality Control, Surveillance	 & CNN (Residual Network) & Accuracy (Top-1), Latency, Throughput (QPS) & Data Center GPUs (NVIDIA GeForce RTX 4090/RTX-2000E), Edge devices, Mobile SoCs, CPUs, specialized accelerators. &The foundational computer vision benchmark, often used as a baseline for measuring performance and efficiency across all MLPerf tiers. \\
+\hline
+ retinanet & RetinaNet-ResNext50 & Object Detection & Autonomous Vehicles, Advanced Security Systems	 & One-stage Object Detection (often with FPN) & Accuracy (mAP - mean Average Precision), Latency, Throughput (SPS) & Data Center GPUs (NVIDIA GeForce RTX 4090/4000/2000E), Edge devices, specialized detection accelerators.&Measures the system's ability to find and localize multiple objects in images. Uses the OpenImages dataset. \\
+\hline
+ stable-diffusion-xl & Stable Diffusion XL (SDXL) & Text-to-Image Generation & Generative AI, Digital Content Creation	 & Diffusion Model (Latent Diffusion with U-Net) & Images Per Second, Latency (Time to generate an image) & Data Center GPUs (e.g., NVIDIA H100/H200, AMD MI300 series), powerful consumer-grade GPUs.&Represents the high-compute generative AI domain. Measures the speed of synthesizing high-resolution images from text prompts. \\
+\hline
+ whisper & Whisper-Large-V3 & Automatic Speech Recognition (ASR) & Speech-to-Text Services, Live Transcription	 & Encoder-Decoder Transformer & Accuracy (WER - Word Error Rate, Word Acc), Tokens Per Second & Data Center GPUs (NVIDIA GeForce RTX 4090), Edge/Client devices for real-time transcription.&A modern, high-accuracy ASR benchmark, using a Transformer architecture that handles both audio encoding and token generation. \\
+\hline
+%
+% Inference: Mobile
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Inference: Mobile}} \\ \hline
+ MLPerf Mobile/Edge & MobileNetV4-Conv-L & Image Classification, Object Detection & Edge/Mobile AI, low-latency on-device vision tasks. & CNN / MobileNet Family (V4) & Latency (ms), Throughput (Inferences/sec), Top-1/Top-5 Accuracy, Average Precision (AP). & Mobile SoCs, Specialized Mobile Accelerators (e.g., Apple Neural Engine, Edge TPUs, dedicated DSPs) &The largest convolutional-only variant of MobileNetV4. Optimized via Neural Architecture Search (NAS) for better latency-accuracy trade-offs on mobile and embedded hardware. \\
+\hline
+ MLPerf Mobile/Edge & Mobile SSD Variants & Object Detection & Edge/Mobile AI, real-time detection on resource-constrained devices. & Single Shot Detector (SSD) + Mobile Backbone & Average Precision (AP) (e.g., COCO AP), Latency (ms), FPS. & Mobile SoCs (CPU, GPU, NPU/DSP), Edge AI Accelerators& Refers to models like SSD-MobileNet V1/V2/V3 which are standard mobile benchmarks.\\
+\hline
+ MLPerf Edge & SSD-MobileNet & Object Detection (Small) & Edge/Mobile AI, detection for systems with tight latency/power budgets. & Single Shot Detector (SSD) + MobileNet Backbone & Average Precision (AP), Latency (ms). & Mobile SoCs (CPU, GPU, NPU/DSP), Edge AI Accelerators &A specific variant that is an original, primary benchmark for MLPerf Inference: Edge.\\
+\hline
+ MLPerf Mobile/Edge & MobileNet V1–V4 & Image Classification, Feature Extractor & Efficient Vision Models, low-power and low-latency inference. & CNN (V1: Depthwise Separable Convs, V2: Inverted Residuals, V3: Squeeze-and-Excitation, V4: UIB/Mobile MQA) & MACs/FLOPs, Latency (ms).& Mobile SoCs (CPU, GPU, NPU/DSP, e.g., Qualcomm Snapdragon, Apple A-series), Microcontrollers (MCUs), Edge AI Accelerators (e.g., Google Edge TPU) &A progression of architectures from Google, all focused on minimal computational cost while maintaining high accuracy, crucial for all MLPerf Edge divisions. \\
+\hline
+ MLPerf Mobile & MobileNet V4 & Image Classification, Object Detection & Universally Efficient AI, aiming for state-of-the-art accuracy-latency trade-offs. & Hybrid (Convolutional + Attention - Mobile MQA) & Latency (ms)& Mobile SoCs (CPU, GPU, NPU/DSP, e.g., Qualcomm Snapdragon) &The latest generation, featuring the Universal Inverted Bottleneck (UIB) and Mobile MQA. \\
+\hline
+ MLPerf Mobile & MOSAIC & Image Segmentation & Mobile Image Segmentation, on-device image processing. & U-Net variant with a MobileNet-style backbone. & Mean Intersection over Union (mIoU), Latency (ms).& Mobile SoCs (CPU, GPU, NPU) &A common model used for segmentation tasks in the MLPerf Mobile suite. \\
+\hline
+ MLPerf Mobile & MobileDETs & Object Detection & Edge/Mobile AI, high-speed detection for mobile chips. & Model Family derived from Neural Architecture Search (NAS) & Average Precision (AP), Latency (ms).& Mobile SoCs (NPU/DSP emphasized), Edge AI Accelerators &A family of detectors specifically optimized for latency on mobile SoCs. \\
+\hline
+ MLPerf Tiny\/Mobile & BERT-Tiny\/ DistilBERT & Natural Language Processing (NLP) Tasks (e.g., Q\&A) & Mobile\/Edge NLP, faster, smaller language understanding on local devices. & Transformer \/ Distillation Models & Latency (ms), F1 Score (SQuAD), GLUE Score. & CPUs, GPUs, Edge AI Accelerators, Mobile SoCs (optimized for low-latency) &Smaller, compressed versions of BERT achieved through knowledge distillation for resource-constrained environments. \\
+\hline
+ MLPerf Mobile & Mobile-BERT & Natural Language Processing (NLP) Tasks & Edge/Mobile NLP, task-agnostic BERT for resource-limited devices. & Compressed Transformer (Bottleneck structures, Knowledge Distillation) &Latency (ms), F1 Score (SQuAD), GLUE Score.& CPUs, GPUs, Edge AI Accelerators, Mobile SoCs (optimized for low-latency) &Achieves competitive results to BERT-Base with much higher speed and smaller size. \\
+\hline
+ MLPerf Mobile & EDSR F32B5 & Image Super-Resolution (SR) & Image Enhancement, upscaling low-resolution images for improved quality.& Enhanced Deep Super-Resolution (EDSR) Network &Latency (ms), PSNR, SSIM. & GPUs, Custom Hardware/FPGAs, specialized ISP (Image Signal Processor) components. &A common, high-quality reference model for measuring performance on image enhancement\/quality tasks.\\
+\hline
+ MLPerf Mobile & Stable Diffusion & Text-to-Image Generation & Generative AI, creating high-resolution images from text prompts. & Latent Diffusion Model (LDM) (U-Net, VAE, CLIP Text Encoder) & Images/Query Per Second (Throughput), Latency (Time-to-Image), FID/CLIP Scores. &High-end GPUs (e.g., NVIDIA A100/H100, RTX series), high-power Workstations and Data Center Accelerators. &A critical benchmark for measuring performance on large, complex generative workloads.\\
+\hline
+%
+% Tiny
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Inference: Tiny}} \\ \hline
+ MLPerf Tiny v 0.5 & Keyword Spotting Model & Audio Classification & TinyML/MCU, always-on voice assistant, device wake-word detection. &Small CNN (e.g., DS-CNN) or RNN. & Latency (ms), Energy (Joules), Area Under the ROC Curve (AUC). & Microcontrollers (MCUs) (e.g., Arm Cortex-M4\/M7), Digital Signal Processors (DSPs), Tiny Neural Network Accelerators. &Detects a specific word (e.g., "Hey Google") from a stream of audio, running on a highly constrained power budget. \\
+\hline
+ MLPerf Tiny  v 0.5 & Visual Wake Words (VWW) Model & Image Classification (Binary) & TinyML/MCU, low-power sensing, person detection, motion-activated cameras. & Small CNN (e.g., MobileNet V1/V2 variant). & Latency (ms), Energy (Joules), AUC. &MCUs, low-power vision processors, small-scale embedded systems. & Determines if a person is present in the image (person/not-person). Much simpler and smaller than general ImageNet classification. \\
+\hline
+ MLPerf Tiny  v 0.5 & Image Classification Model & Image Classification (Multi-class) & TinyML/MCU, general object recognition on ultra-low-power sensors. & Very small CNN (e.g., ResNet-8 or Micro-CNN). & Latency (ms), Energy (Joules), Top-1 Accuracy (e.g., on CIFAR-10). & MCUs with limited RAM and Flash storage. &A more complex classification task than VWW, but still constrained to a very small model size. \\
+\hline
+ MLPerf Tiny  v 0.5 & Anomaly Detection (AD) Model & Time Series Anomaly Detection &TinyML/MCU, industrial predictive maintenance, system health monitoring. & Small Autoencoder or similar lightweight model. & Latency (ms), Energy (Joules), AUC. & MCUs, industrial IoT sensors, devices monitoring vibration or sound. &Learns a baseline of normal sensor data (e.g., machine vibrations) and flags deviations as anomalies. \\
+\hline
+%
+% MLPerf Client
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Client}} \\ \hline
+ MLPerf Client & Llama 2 7B Chat & Code analysis, Content generation, Creative writing, Summarization (various lengths). &General-purpose AI, Dialogue/Chatbots, Client-side LLM inference on PCs. & Transformer, Decoder-Only, Instruction-Tuned (SFT + RLHF), 7 Billion parameters. & Time-to-First Token (TTFT), Tokens/Second (Throughput). & Client GPUs (e.g., AMD Radeon, Intel Arc), Integrated NPUs (e.g., Intel Core Ultra, AMD Ryzen AI), Data Center GPUs (e.g., NVIDIA A100/H100) for server-side inference. &A foundational model in the benchmark for measuring core client-side LLM performance.\\
+\hline
+ MLPerf Client & Llama 3.1 8B Instruct (8B parameters) & Generative AI workloads: Code analysis, Content generation, Creative writing, Summarization. &General-purpose AI, Instruction Following, Client-side LLM inference on PCs. & Transformer, Decoder-Only, Instruction-Tuned, 8 Billion parameters. & Time-to-First Token (TTFT) (Latency), Tokens/Second (Throughput). & Client PCs and Data Center/Cloud-based GPUs (optimized for both low-latency "Time to First Token" and high-throughput "Tokens Per Second"). &An updated and highly capable open-weight model, demonstrating improved performance and alignment over Llama 2. \\
+\hline
+ MLPerf Client & Phi 3.5 Mini Instruct & Reasoning (Math, Code, Logic), Long Context Query \& Summarization (up to 128K tokens).&Memory/Compute Constrained Environments, Low-Latency Applications, On-device deployment (AI PCs, mobile). & Dense Decoder-Only Transformer, Instruction-Tuned, 3.8 Billion parameters. & Time-to-First Token (TTFT) (Latency), Tokens/Second (Throughput). & Client GPUs, NPUs, and potentially high-end mobile/edge processors (optimized for on-device deployment). &A highly efficient and lightweight model optimized for speed and strong reasoning despite its small size.\\
+\hline
+ MLPerf Client & Phi 4 Reasoning 14B & Complex Reasoning (multi-step math, scientific, coding, planning), Generating detailed chain-of-thought traces. & Agentic applications, High-accuracy problem-solving, Applications requiring explainability. & Dense Decoder-Only Transformer, Reasoning-Focused SFT (and possible RLHF for Plus variant), 14 Billion parameters. & Time-to-First Token (TTFT) (Latency), Tokens/Second (Throughput), Accuracy on reasoning tasks. & High-performance Client PCs (Workstations) and Data Center GPUs (due to its larger size and focus on complex, token-intensive reasoning). &Included as an experimental model in the benchmark, specifically designed to emphasize logical and complex problem-solving.\\
+\hline
+%
+% MLPerf Storage
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Storage}} \\ \hline
+ MLPerf Storage & ResNet-50 & I/O Workload for Image Classification Training &General-purpose computer vision, low-latency image processing. & Convolutional Neural Network (CNN) & Max Supported Accelerators, Aggregate Throughput (MiB/s), Accelerator Utilization ($\ge 90\%$ required). & Data Center GPUs (NVIDIA A100/H100), Edge AI Accelerators, and high-end CPUs (widely used across all MLPerf divisions: Data Center, Edge, Tiny). &High IOPS Demand. Characterized by highly concurrent, random reads of many small data samples ($\approx 150 \text{ KB}$ each), stressing metadata and IOPS capability.\\
+\hline
+ MLPerf Storage & 3D U-Net & I/O Workload for Medical Image Segmentation Training & Healthcare/Radiology, Medical Image Analysis, 3D data processing. &3D U-Net (3D CNN) &Max Supported Accelerators, Aggregate Throughput (GiB/s), Accelerator Utilization ($\ge 90\%$ required). &High-end Data Center GPUs (NVIDIA A100/H100) and specialized high-throughput storage systems (MLPerf Storage benchmark focus).&High Bandwidth Demand. Characterized by concurrent random reads of very large data files ($\approx 140 \text{ MB}$ each), stressing sustained data throughput.\\
+\hline
+ MLPerf Storage & CosmoFlow & I/O Workload for Scientific Parameter Prediction Training & Scientific High-Performance Computing (HPC), Astrophysics. &3D Convolutional Neural Network (3D CNN) &Max Supported Accelerators, Aggregate Throughput (GiB/s), Accelerator Utilization ($\ge 70\%$ required). & Supercomputers \& HPC Clusters: Requires massive scale distributed training across hundreds or thousands of GPUs (e.g., utilizing NVIDIA H100s, Intel Gaudi, and specialized high-speed interconnects like InfiniBand). &CPU-Intensive Workload. Uses medium-sized samples ($\approx 2 \text{ MB}$), but the client-side processing is more CPU-heavy, leading to a slightly lower required accelerator utilization threshold.\\
+\hline
+%
+% MLPERF AUTOMOTIVE
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Automotive}} \\ \hline
+\hline
+ MLPerf Automotive & SSD-ResNet50 & 2D Object Recognition and Segmentation &
+ADAS / Collision Avoidance, Lane Departure & Single Shot Detector (SSD) with ResNet-50 Backbone &
+Latency, Throughput, $mAP$ (Accuracy) &Edge AI Accelerators, Embedded GPUs, and Automotive System-on-Chips (SoCs).& Baseline benchmark for camera-based detection on high-res (8MP) images. Used in v0.5. \\
+\hline
+ MLPerf Automotive & BEVFormer-Tiny & Camera-based 3D Object Detection & Autonomous Driving (L2+ to L4), Environmental Perception & Bird's Eye View (BEV) Transformer-based Network &
+Latency, Throughput, $\text{mAP}$ (Accuracy) & High-compute Automotive SoCs, next-generation AI accelerators (specifically targeting transformer and multi-sensor fusion capabilities). &Represents state-of-the-art camera-only 3D perception. Used in MLPerf Auto v0.5. \\
+\hline
+ MLPerf Automotive & DeepLabV3Plus / PointPainting & Semantic Segmentation (as a component of 3D Detection) & Lidar-Camera Sensor Fusion, 3D Perception & DeepLabV3+ (for Segmentation) + PointPillars (for 3D Detection) & Latency ($p99.9$ percentile), Throughput, Accuracy) &Safety-critical Automotive SoCs, purpose-built AI processors for ADAS/AV, often requiring high-reliability and low-latency performance.&
+DeepLabV3+ is the 2D segmentation part of the PointPainting sensor fusion pipeline. Used in MLPerf Inference v5.0 Automotive. \\
+\hline
+%
+% MLPERF Training:HPC
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLPerf Training:HPC}} \\ \hline
+\hline
+MLPerf Training:HPC & CosmoFlow &Prediction of Cosmological Parameters ($\Omega_m, \sigma_8, n_s, H$) &
+Astrophysics, Cosmology, Scientific Simulation Parameter Prediction & 3D Convolutional Neural Network (3D CNN)&
+Time-to-Train (Total time to reach a target quality metric), Aggregate Throughput (Models trained per unit of time in weak scaling). &Supercomputers \& Large Clusters (e.g., NVIDIA Selene, Perlmutter, Fugaku), utilizing thousands of interconnected High-Performance GPUs (e.g., NVIDIA A100/H100) and high-speed parallel file systems.&Trained on 3D volumetric data (dark matter distributions) from N-body simulations. The large, volumetric data introduces significant I/O challenges and stresses high-bandwidth interconnects and storage. \\
+\hline
+MLPerf Training:HPC & DeepCAM & Semantic Segmentation of Extreme Weather Events (e.g., atmospheric rivers, tropical cyclones) &
+Climate Science, Weather Forecasting, Earth System Modeling & Convolutional Encoder-Decoder (U-Net variant) & Time-to-Train (Total time to reach a target quality metric), Aggregate Throughput (Models trained per unit of time in weak scaling). & Supercomputers \& Large Clusters, demanding high I/O bandwidth to handle the massive 8.8 TB climate datasets and requiring excellent strong-scaling performance. This benchmark was running on NVIDIA V100/A100.&Trained on massive, high-resolution, multi-channel images (e.g., $768 \times 1152$ pixels with $16$ channels). Features high computational intensity and large memory footprint per sample. \\
+\hline
+MLPerf Training:HPC & OpenCatalyst & Prediction of energy and forces for molecular systems (AI for materials science) & Catalyst Discovery, Computational Chemistry, Materials Science, Energy Storage &
+Graph Neural Network (GNN), specifically DimeNet++ & Time-to-Train (Total time to reach a target quality metric), Aggregate Throughput (Models trained per unit of time in weak scaling). & Supercomputers \& Large Clusters, typically emphasizing the performance of GNNs, which stress different aspects of the system, like memory access patterns and graph-specific operations. This benchmark was running on NVIDIA V100/A100.& Predicts quantum mechanical properties of catalyst systems. Stresses complex data structures (graphs) and large-scale parallel processing. Uses the massive OC20 dataset. \\
+\hline
+%
+% SCIENCE
+%
+\rowcolor{gray!20}\multicolumn{8}{|l|}{\textbf{MLCommons Science}} \\ \hline
+\hline
+MLCommons Science & Cloud Mask &  image processing / segmentation & Earth Observation, Segmentation model for the pixel classification in satellite images & U-Net deep neural network  &training and inference timing and scalability on the training across a number of GPUs;runtime of training and inference. & HPC Clusters \& High-Performance GPUs (e.g., NVIDIA A100/V100) running distributed training frameworks like PyTorch or TensorFlow, often benchmarked for large-scale data I/O. & Focuses on identifying and isolating cloud cover in high-resolution satellite imagery for subsequent analysis. \\ 
+\hline
+MLCommons Science & STEMDL & A universal classifier for the space group of solid-state materials.
+ & Scientific Machine Learning (General benchmark suite) &CNN: ResNet, VGG, DenseNet &  top1 accuracy and F1 score (Macro)& HPC Systems of all sizes, used for general performance comparison across different hardware architectures and scaling tests. This benchmrak was running NVIDIA A100/V100.& The goals of this benchmark are to: (1) explore the suitability of machine learning algorithms in the advanced analysis of Convergent beam electron diffraction (CBED) and (2) produce a machine learning algorithm capable of overcoming intrinsic difficulties posed by scientific datasets. \\
+\hline
+MLCommons Science & CANDLE UNO & Cancer Drug Response Prediction &Life Sciences / Personalized Medicine   & Neural Networks(MLP)& TTT, Prediction Accuracy & HPC Systems (e.g., Summit, Polaris) and Cloud Environments, stressing both compute performance and workflow management for parameter sweep tasks.  This benchmark was running NVIDIA A100.& Benchmarks deep learning models for predicting the response of various cancer cell lines to different therapeutic compounds. \\
+\hline
+MLCommons Science & Earthquake & TEvolOp Earthquake Forecasting Model &Earthquake Science & Neural Networks(MLP)- recurrent neural networks and transformers &Nash Sutcliffe efficiency &HPC \& Big Data Systems, requiring efficient handling of large, continuous time-series datasets and high-throughput data processing. This benchmark was running on NVIDIA V100.& Benchmarks deep learning models for predicting the response of various cancer cell lines to different therapeutic compounds. \\
+\hline 
+%
+% AlgoPerf
+%
+\rowcolor{gray!20}\multicolumn{7}{|l|}{\textbf{MLCommons AlgoPerf}} \\ \hline
+\hline
+AlgoPerf &  Criteo 1TB & Click-Through Rate (CTR) Prediction & Large-scale Recommender Systems, Digital Advertising & DLRM-Small (Deep Learning Recommendation Model) &Time-to-Result (Time to reach a target AUC) & Datacenter CPUs/GPUs with high memory bandwidth (HBM) due to massive embedding tables, and highly optimized network I/O. & Stresses memory access and sparse feature embedding computations due to the large, sparse Criteo 1TB dataset. Represents a common commercial workload. \\
+\hline 
+AlgoPerf &  FastMRI & k-space MRI Reconstruction & Medical Imaging, Healthcare Diagnostics & U-Net (Convolutional Encoder-Decoder) &Time-to-Result (Time to reach a target PSNR / SSIM)&High-Performance GPUs and dedicated AI accelerators, as the model must run with high accuracy and low latency for clinical use.&Focuses on accelerating the image formation process from raw MRI data. U-Net is a standard model for semantic segmentation and image-to-image translation tasks.\\
+\hline 
+AlgoPerf &  ImageNet & Image Classification & General-purpose Computer Vision & ResNet-50 and Vision Transformer (ViT) variants & Time-to-Result (Time to reach a target Top-1 Accuracy & General-Purpose GPUs (Training/Inference), Edge Devices, and Mobile SoCs, as it is a widely-used test across all compute scales. &The quintessential computer vision workload. Includes two major architecture types (CNN and Transformer) to test algorithm generalizability.\\
+\hline
+AlgoPerf & LibriSpeech  &Speech Recognition / ASR (Automatic Speech Recognition)& Voice Assistants, Transcription Services & Conformer and DeepSpeech variants & Time-to-Result (Time to reach a target Word Error Rate (WER)) & Datacenter/Cloud GPUs (for large-scale ASR), Edge/Mobile Processors (for on-device assistants). &Tests algorithms on sequential data. Conformer is a hybrid CNN/Transformer architecture common in modern ASR.\\
+\hline
+AlgoPerf & OGBG  &Graph Property Prediction & Scientific Machine Learning, Drug Discovery, Social Networks & GNN (Graph Neural Network) & Time-to-Result (Time to reach a target ROC-AUC) &Datacenter CPUs/GPUs with high-speed interconnects due to the irregular, sparse nature of graph-structured data. &Uses the Open Graph Benchmark (OGB) dataset. This workload stresses algorithms in domains that rely on non-Euclidean data structures.\\
+\hline
+AlgoPerf & WMT  & Machine Translation (En-De) &Natural Language Processing (NLP), Global Communication & Transformer (Base Architecture) & Time-to-Result (Time to reach a target BLEU Score) &Datacenter CPUs/GPUs with specialized Tensor Cores for efficient processing of the Transformer's self-attention mechanism.& A standard, large-scale sequence-to-sequence task, famous for being the original domain of the Transformer architecture.\\
+\hline
+%
+% AILuminate
+%
+\rowcolor{gray!20}\multicolumn{7}{|l|}{\textbf{MLCommons AILuminate}} \\ \hline
+AILuminate Safety v1.0 & System Under Test (SUT) (Any LLM-based general-purpose chat system)  & Assess Baseline AI Safety and Reliability &Pre-deployment Validation, Regulatory Compliance, Vendor Comparison & LLMs and AI Chat Systems (Text-to-Text), potentially with guardrails/filters &Overall Safety Grade (5-tier scale: Poor to Excellent), Violation Rate (\% of unsafe responses), Per-Hazard Performance &The AI System itself (typically hosted in a Datacenter/Cloud) is the system under test (SUT). The evaluation is performed by a separate, specialized Safety Evaluator Model (often a tuned LLM ensemble). &Assesses safety against 12 Hazard Categories (e.g., Violent Crimes, Hate, Suicide \& Self-Harm). Uses a tuned ensemble of safety evaluator models for grading. Focuses on single-turn, content-only hazards.\\
+\hline
+AILuminate Jailbreak Benchmark v0.5 & System Under Test (SUT) (Any LLM-based general-purpose chat system)  & Quantify Resilience to Adversarial "Jailbreak" Attacks & AI Security, Robustness Testing, Defense Mechanism Comparison & LLMs (Text-to-Text) and Vision-Language Models (VLMs) (Text+Image-to-Text) & Resilience Gap (Drop in safety performance from baseline to under-attack), Jailbreak Success Rate &The AI System (SUT) is tested in a Datacenter/Cloud environment. The benchmark focuses on the input (adversarial prompts) and the system's subsequent failure rate under attack conditions. & v0.5 is an initial release establishing the framework. It specifically measures the degradation of safety when a system is subjected to prompts designed to bypass its safety filters ("jailbreaks").\\
+\hline
+\end{longtable}
+\end{landscape} 
+\twocolumn
+
+}
+\clearpage
+
+
+%
+% AILuminate
+%
+
+
+\onecolumn
+\begin{landscape}
+
+{\tiny
+\begin{longtable}
+{|p{
+0.1\textwidth}|p{
+0.1\textwidth}|p{
+0.1\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|p{
+0.2\textwidth}|}
+\caption{Large Language Model Benchmark Details}
+\label{tab:llm_benchmarks_long} \\
+\hline
+\rowcolor{blue!30}
+\textbf{Benchmark Name} & \textbf{Model} & \textbf{Task} & \textbf{Application Domain / Use Case} & \textbf{Model Type / Architecture} & \textbf{Metrics / KPIs} & \textbf{Notes / Description} \\
+\hline
+\endfirsthead
+
+\rowcolor{blue!30}\multicolumn{7}{c}%
+{{\bfseries \tablename\ \thetable{} -- Continued from previous page}} \\
+\toprule
+\textbf{Benchmark Name} &
+\textbf{Model} &
+\textbf{Task} &
+\textbf{Application Domain / Use Case} &
+\textbf{Model Type / Architecture} &
+\textbf{Metrics / KPIs} &
+\textbf{Notes / Description} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{7}{r}{{\footnotesize Continued on next page}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+\hline
+\rowcolor{gray!20}\multicolumn{7}{|l|}{\textbf{Commercial/Proprietary LLMs (API/Systems)}} \\
+\hline
+LLM Inference & Claude 3.5 Haiku 20241022 & Generative AI & General Purpose, Light Reasoning & Large Transformer (Proprietary) & TTFT, TPOT, Throughput, MMLU (Quality) & A faster, smaller version in the Claude 3.5 family. \\
+\hline
+LLM Inference & Claude 3.5 Sonnet 20241022 & Generative AI & Complex Reasoning, Data Processing & Large Transformer (Proprietary) & TTFT, TPOT, Throughput, MMLU (Quality) & Mid-tier model focusing on balance of speed and intelligence. \\
+\hline
+LLM Inference & Mistral Large 2402 Moderated & Generative AI & Enterprise Chatbots, Content Moderation & MoE/Dense Transformer (Proprietary) & TTFT, TPOT, Throughput, Safety Index & Flagged as moderated; emphasis on safety and reliable output. \\
+\hline
+LLM Inference & Amazon Nova Lite v1.0 & Generative AI & AWS Services, Embedded Use Cases & Large Transformer (Proprietary) & Latency, Throughput, Cost/Token & Lightweight, cloud-optimized model. \\
+\hline
+LLM Inference & Gemini 1.5 Pro (API, with option) & Generative AI / Multimodal & Long Context, Multi-Source Reasoning & MoE/Dense Transformer (Proprietary, Multimodal) & TTFT, Throughput, Latency, RAG/Context Recall & Known for its massive context window. \\
+\hline
+LLM Inference & Gemini 2.0 Flash 001 & Generative AI / Multimodal & High-Speed Chat, Real-time Tasks & Dense Transformer (Proprietary, Multimodal) & p99 Latency, Throughput & Focuses on speed and efficiency for low-latency needs. \\
+\hline
+LLM Inference & Gemini 2.0 Flash Lite & Generative AI & Edge/Client-Side Inference & Dense Transformer (Proprietary, Small) & Energy Efficiency, Latency & Highly optimized for resource-constrained environments. \\
+\hline
+LLM Inference & GPT-4o & Generative AI / Multimodal & Real-time Conversation, Vision Integration & Dense Transformer (Proprietary, Multimodal) & TTFT, TPOT, Low-Latency Response & All-in-one model for low-latency multimodal interactions. \\
+\hline
+LLM Inference & GPT-4o mini & Generative AI & Quick, Cost-Effective Tasks & Dense Transformer (Proprietary, Small) & Cost/Token, Throughput & Optimized for efficiency and scaling simple tasks. \\
+\hline
+LLM Inference & Minustral 8B 24.10 (API) & Generative AI & General Text Generation & MoE/Dense Transformer (Proprietary) & Latency, Throughput & Represents a competitive, smaller model in a commercial API. \\
+\hline
+\rowcolor{gray!20}\multicolumn{7}{|l|}{\textbf{Open-Source/Bare Models (Used for Training or Deployment)}} \\
+\hline
+LLM Inference & Minustral 8B 24.10 Moderation & Generative AI & General Text Generation, Safety Research & MoE/Dense Transformer (Open-weights) & Latency, Safety Compliance & Open-weight version with a focus on safety. \\
+\hline
+LLM Inference & Gemma 2 9b & Generative AI & Fine-tuning, Edge Deployment & Dense Transformer (Open-weights) & Perplexity, MMLU, Throughput & Smaller model from the Gemma family, good for fine-tuning. \\
+\hline
+LLM Inference & Phi 3.5 MoE Instruct & Generative AI & Instruction Following, Small Scale Reasoning & MoE (Open-weights, Small) & MMLU, HumanEval (Code) & Instruction-tuned, likely using a small Mixture-of-Experts. \\
+\hline
+LLM Inference & Phi 4 & Generative AI & Research, Prototyping & Dense Transformer (Open-weights, Small) & Perplexity, BLEU (Generation) & Successor in the Phi family, typically very small. \\
+\hline
+LLM Inference & Athene V2 Chat Hf & Generative AI & Open Chatbot Deployment & Dense Transformer (Open-weights, Fine-tuned) & TTFT, TPOT, Chat Metrics & An instruction-tuned model from the Hugging Face ecosystem. \\
+\hline
+LLM Inference & Aya Expanse 8B Hf & Generative AI & Multilingual Tasks, Text Translation & Dense Transformer (Open-weights) & BLEU (Translation), Accuracy & Focused on broad language coverage. \\
+\hline
+LLM Inference & Cohere C4Ai Command A 03 2025 Hf & Generative AI & Enterprise RAG, Instruction Following & Dense Transformer (Open-weights) & Contextual Recall, RAG Latency & Cohere model variant used in the Hugging Face ecosystem. \\
+\hline
+LLM Inference & Llama 3.1 405B Instruct & Generative AI & State-of-the-Art Reasoning, Long Context & Dense Transformer (Open-weights) & TTFT, Throughput, MMLU & An extremely large, cutting-edge open-weight model (used in MLPerf). \\
+\hline
+LLM Inference & Llama 3.1 8b Instruct FP8 & Generative AI & Edge/Quantized Deployment & Dense Transformer (Quantized) & Inference Accuracy, Memory Footprint & Highly optimized for efficient computation using 8-bit precision. \\
+\hline
+LLM Inference & Llama 3 1 Tulu 3 8B Hf & Generative AI & General Chat, Fine-tuning Research & Dense Transformer (Open-weights, Fine-tuned) & Alpaca Eval, Human Preference & A variant of Llama tuned for instruction following. \\
+\hline
+LLM Inference & Mistralai Mistral Large 2402 & Generative AI & Complex Reasoning, RAG & MoE/Dense Transformer (Open-weights) & TTFT, TPOT, MMLU & Open-weight version of Mistral's flagship model. \\
+\hline
+LLM Inference & Olmo 2 0325 32b Instruct & Generative AI & Research, Reproducible AI & Dense Transformer (Open-weights) & Perplexity, Training Speed & High-parameter model focused on openness and research. \\
+\hline
+LLM Inference & Olmo 2 1124 13B Instruct Hf & Generative AI & Instruction Following, General Chat & Dense Transformer (Open-weights) & TTFT, Throughput & Smaller, instruction-tuned version of the Olmo family. \\
+\hline
+LLM Inference & Phi 3.5 Mini Instruct & Generative AI & Mobile/Edge Inference, Simple Tasks & Dense Transformer (Open-weights, Small) & Latency, MMLU & Ultra-small model optimized for fast responses. \\
+\hline
+LLM Inference & Qwen1 5 110B Chat Hf & Generative AI & Multi-Language Chat, High Accuracy & Dense Transformer (Open-weights) & C-Eval, MMLU, Throughput & High-parameter model known for strong Chinese/general performance. \\
+\hline
+LLM Inference & Yi 1 5 34B Chat Hf & Generative AI & General Purpose, Instruction Following & Dense Transformer (Open-weights) & MMLU, C-Eval, Latency & Mid-to-large size model focusing on quality chat performance. \\
+\hline
+LLM Inference & Ai21Labs Ai21 Jamba Large 1.5 Azure & Generative AI & Cloud Deployment, Enterprise Apps & Hybrid MoE/Dense Transformer & Throughput, Latency & A large model known for its hybrid architecture, deployed via Azure. \\
+\hline
+LLM Inference & Google Gemma 3 27B It Hf Nebius & Generative AI & Cloud Deployment, Fine-tuning & Dense Transformer (Open-weights, Fine-tuned) & TTFT, TPOT, Cloud Efficiency & Gemma model deployed on the Nebius cloud platform. \\
+\hline
+LLM Inference & Llama 3.3 70B Instruct Turbo Together & Generative AI & Fast, High-Quality Instruction Following & Dense Transformer (Open-weights) & Latency, Throughput, Cost & A large model optimized for speed via the Together API. \\
+\hline
+LLM Inference & Mistral Large 24.11 & Generative AI & Enterprise AI, High Performance & MoE/Dense Transformer (Open-weights) & Throughput, MMLU, Reasoning & A very recent high-performance model. \\
+\hline
+LLM Inference & Qwq 32B Hf & Generative AI & General Purpose, Instruction Following & Dense Transformer (Open-weights) & Latency, Throughput & A mid-sized model in the open-weight ecosystem. \\
+\hline
+LLM Inference & OLMo 7b 0724 Instruct & Generative AI & Research, Instruction Following & Dense Transformer (Open-weights) & Perplexity, Speed & Smaller, instruction-tuned model for general tasks. \\
+
+\end{longtable}
+}
+    
+\end{landscape}
+\twocolumn
+
+
+
+\clearpage

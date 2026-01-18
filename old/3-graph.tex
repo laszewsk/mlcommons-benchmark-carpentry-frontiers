@@ -1,0 +1,122 @@
+
+\begin{figure*}[p!]
+\centering
+\resizebox{0.4\textheight}{!}{
+\begin{forest}
+skan tree={
+    grow'=0,
+    align=center,
+    draw,
+    rounded corners,
+    minimum height=1.5em,
+    minimum width=5em,
+    inner sep=3pt,
+    s sep=7pt,
+    l sep=15pt,
+    edge={->, >={Stealth}},
+    font=\sffamily\footnotesize,
+    fill=blue!10,
+}
+[Benchmark\\Carpentry
+  [Software\\Carpentry
+    [Linux Shell
+      [Storage tools]
+      [Network tools]
+      [Code Management
+        [Git]
+      ]
+    ]
+    [Queuing System
+      [SLURM]
+      [LSF]
+    ]
+    [Language Support
+      [Python]
+      [C/C++]
+      [Others]
+    ]
+    [System Support
+      [Baremetal]
+      [Virtual Machine]
+      [Container
+        [Singularity]
+        [Kubernetes]
+      ]
+    ]
+    [System\\Components
+      [HPC]
+      [GPU]
+    ]
+    [Tools
+      [Shell
+        [gprof]
+      ]
+    ]
+    [Instrumentation
+      [StopWatch]
+      [PAPI]
+      [Profiling
+        [Omnipath]
+      ]
+    ]
+    [Programming
+      [StopWatch]
+    ]
+    [Scripting
+      [StopWatch]
+    ]
+    [Automation]
+  ]
+  [Runtime Support
+       [Automation]
+       [Monitoring]
+       [Instrumentation \cite{cloudmesh-stopwatch,cloudmesh-gpu}]
+       [Checkpointing \cite{las-2023-mlcommons-edu-eq}]
+       [Benchmarking \cite{cloudmesh-ee}]
+       [Reproducibility \cite{cloudmesh-ee}
+           [cloudmesh FAIR suppport \cite{cloudmesh-ee}]
+       ]
+  ]
+  [Applications
+    [AI
+      [cloudmesh FAIR\\support]
+      [MLCommons]
+      [Surrogates]
+      [Simulation]
+    ]
+  ]
+  [Metric
+    [Time
+      [FLOPS]
+    ]
+    [Space]
+    [Temperature]
+  ]
+  [Environment
+    [Energy
+      [PUE]
+    ]
+    [Carbon Footprint
+      [Tax Credits]
+    ]
+    [Geographical\\Diversity]
+    [Renewable\\Resources]
+  ]
+  [FAIR]
+  [Dessimination
+    [Notebooks]
+    [Scripts
+      [Code]
+    ]
+    [Repositories
+      [Data]
+    ]
+  ]
+]
+\end{forest}
+}
+\caption{Scheduling challenges applied to all levels. We added not
+     all but selected publications that we worked on as part of these
+     workflow challenges.} 
+  \label{F:graph-challenges}
+\end{figure*}

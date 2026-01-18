@@ -1,0 +1,225 @@
+\section{Towards a formal specification for AI benchmarks}
+\label{sec:formal}
+
+
+As part of the MLCommons Science Working group meetings, we have identified that ingredients of ML benchmarks include:
+
+\begin{enumerate}
+\item Datasets (such as images, application specific scientific data, time series)
+\item Tasks to be performed 
+\item Methods to perform these tasks (such as machine learning models, language models)
+\item Metrics (runtime; accuracy; efficiency computed from the resources required for executing the task, such as  
+  space, 
+  memory usage, 
+  energy efficiency, 
+  power draw)
+\item ML oriented performance impacts such as Latency impacted by the time per inference, Throughput for the  inferences per second, 
+and training time to reach target accuracy.
+
+\item Replication which includes the ability to replicate the experiment while at the same time being able in a structured fashion to compare the results.
+\end{enumerate}
+
+\subsection{Formalization}
+\label{sec:towards-formal}
+
+To formalize the specification of a benchmark we introduce the following notation
+
+\[  B = (I, D, T~or~W, M, C, R, V) \]
+
+\[
+\begin{array}{ll}
+B & = \text{Benchmark} \\
+I & = \text{Infrastructure} \\
+D & = \text{Dataset} \\
+T,W & = \text{Scientific Task or Workflow}\\
+M & = \text{Metrics} \\
+C & = \text{Constraint} \\
+R & = \text{Results} \\
+V & = \text{Version or Timestamp}
+\end{array}
+\]
+
+Further we define the task to be executed as an application applied to a set of parameters.
+
+\[ T = (A, P) \]
+
+\[
+\begin{array}{ll}
+A & = \text{Application} \\
+P & = \text{Parameters}
+\end{array}
+\]
+
+Alternative to a task, a workflow W can be used, if it contains multiple tasks that need to be conducted to achieve the scientific task (see Section \ref{sec:workflow}). 
+
+Each of $B, I, D, T, M, R, A$ can have constraints $C_c$, where 
+
+\[c \in \{B, I, D, T, M, R, A\}\]
+
+In case of static benchmarks, many of the parameters may be fixed. However, when defining dynamic benchmarks, we define a metric that is to be minimized while allowing a predefined set of parameters of the benchmark to be variable. Let $B_i(M)$ denote a benchmark with a fixed metric M and variations in I, D, T, C, R  specified by i. We try to identify the minimum 
+
+\[ min \{ B_i(..., M, ...)(S_j) \mid \forall_j M(S_j)\} \]
+
+where $M(S_j)$ is the value of the solution for the metric and $S_j$ identifies a solution parameter set for the given metric. Please note that due to the statistical nature of the AI algorithms used in the benchmark, multiple solutions exist. However, we are not suggesting to conduct an exhaustive search of all possible solutions.
+
+Let us assume M denotes the scientific accuracy of the benchmark; then, we look for the best scientific solution. Frequently, other restrictions are applied to the benchmark to make it tractable. While it is common to restrict the dataset, variation of the tested algorithm (the function we minimize) is often desired, since the scientific community is often not only interested in comparing hardware, but also in finding the best algorithmic solution. Such a solution can then be further studied with respect to efficiency or cost metrics.
+
+Next, we briefly describe each of the parts that comprise a benchmark in more detail.
+
+\subsection{Infrastructure}
+\label{sec:towards-infra}
+
+Infrastructure refers to the computational and software environment required to execute the scientific task.
+
+This includes computational hardware, software libraries, operating systems, and cloud platforms, but also power related infrastructure to operate the resources.
+In many cases some of these parameters are targeted by the benchmark for comparison (e.g., different types of GPUs).
+As a guiding principle, an attempt should be made for each single benchmark to be clearly described with as many infrastructure parameters as possible. This will foster a clear description, reproducibility, and comparability of the benchmark.
+
+Clearly defined infrastructure will help with (a) reproducibility, as it ensures results can be reproduced across different environments, (b) fairness, as it identifies clearly the differences between different hardware and  software used, (c) scalability as through comparison we can identify various scalability issues and properties, (d) efficiency, as we can assess  resource use in regards to common metrics such as time, space, energy, and cost.
+
+\subsection{Dataset}
+\label{sec:towards-dataset}
+
+A dataset or multiple datasets provide the input data for the scientific task to be performed.
+Datasets in benchmarking need to be stratified into training data (used to develop a machine learning model by direct interaction with the data), validation data (used to develop a machine learning model by indirect interaction, i.e., hyperparameter tuning), and test data (used to evaluate machine learning model performance after training).
+If the benchmark is concerned with hardware performance, not training any machine learning model, only a test dataset might be needed.
+In many cases, it is important to provide different sizes of data sets to enable (a) a small set for fast development of the approach, and (b) a larger set that fosters scientific accuracy with longer run-times.
+Intermediary sizes are also sometimes needed to adapt to available resource constraints to compare them on different scales.
+Data should always be sufficiently described through metadata or documentation so their context within the scientific application can be determined.
+Together, these facilitate the establishment of (a) a ground truth that serves as the basis for evaluating scientific accuracy (b) a relevant and representative example that is influential for the scientific application, and (c) the identification of bias for data-driven applications.
+
+We distinguish two different data sets: static and dynamic.
+If behavior can be tested statically, this is to be preferred; introduction of hyperparameters into a testing setup results in combinatorial explosion of possibilities, making some benchmarking approaches intractable or prohibitively expensive. In such case, constraints could be posed to restrict the benchmark to the most meaningful hyperparameters. In fact, doing this as part of the workflow could be an integral part of the benchmark. 
+For instance, a standard runtime test of a given compute task on different GPUs does not require dynamic datasets, as it is not expected that the results will change over time; the hardware parameters are fully specified.
+Recent efforts have shown that, in some cases, we need to consider live data ingestion into benchmarks, for example, in earth science or health care applications, to support real-time predictions.
+We term such datasets {\em living datasets}, which are continuously updated with new data, edge cases, or corrections. Such living data sets are a special case of dynamic datasets.
+Such living datasets could be real-time data, but they could also be simulated using a static dataset while ingesting the data over time. While modifying the dataset the benchmark could evolve over time as the data available may be growing or become more accurate, supporting the need to identify the most accurate solution.
+
+Living datasets allow us to maintain the relevance of a benchmarking task over time while simultaneously reacting to changes in the benchmarked systems.
+
+It can also be used to adapt the benchmark to issues like over- and underfitting.
+
+One additional aspect is that it can be useful to simulate such datasets and observe the changes of the benchmark when such data sets are utilized. Activities such as developing digital twins promote such approaches.
+
+\subsection{Scientific Task}
+\label{sec:towards-task}
+\label{sec:workflow}
+
+The scientific task identifies the core challenge being evaluated while precisely identifying the purpose of the evaluated components. 
+Typical tasks include classification, translation, reasoning, time series prediction, and planning.
+Through its precise definition, it sets the scope of the benchmark and introduces the community to the task to be executed and/or measured.
+
+In more complex situations, the task itself may be a scientific workflow comprised of interacting components. In that case we may use a graph specification of the scientific task that uses subtasks that interact through edges indicating data flows and temporal executions. In that case we can use $W$ instead of $T$ as the specification of a workflow with properly augmented edges. Each task could have its own benchmark.
+
+Formally, $W = (T, E)$, where  $T$ represents the collection of all tasks 
+
+\[
+T = \{t_1, t_2, t_3, \dots, t_n\}
+\]
+
+where $n$ is the total number of tasks, and 
+ $E$ indicates the dependencies between the tasks.
+ 
+\[
+E = \{(t_i, t_j) \mid t_i, t_j \in T, t_i \ne t_j\}
+\]
+
+where $(t_i, t_j) = (t_j, t_i)$.
+
+The introduction of Workflows into the formal definition is also motivated by the recent introduction of {\em Agentic AI frameworks} to support automation and benchmarking of it.
+
+\subsection{Metrics}
+\label{sec:towards-metrics}
+
+Metrics are quantitative measures used to assess the relative performance of the tested system in completing the scientific task.
+It has been shown in much previous work that the selection of the metric is the most crucial part of the benchmarking process.
+
+The choice of metric determines many other aspects of the benchmarking purpose.
+For instance, by choosing runtime (e.g., wall clock time) as the main metric, it is strongly implied that the benchmark's main purpose is to find the fastest hardware or algorithmic implementation.
+By choosing an accuracy metric (e.g., F1 score), it is instead implied that the predictive performance (e.g., in classification tasks) is the target of the benchmark.
+Complex metrics can visualize trade-offs between the primitive metrics; for instance, a benchmark for the efficiency of a classification algorithm can weight its F1 score against the runtime (per sample inference speed), model size (in parameters), and energy requirements.
+
+Implemented in this way, metrics can be used to establish a ranking of the benchmarked components, given they were measured in similar circumstances and under similar constraints.
+
+\subsection{Constraints}
+\label{sec:towards-constraints}
+
+In many cases, it is necessary to constrain the benchmark to make the comparison tractable.
+This may include limits to training, inference, model size, or the amount of data used. 
+Introducing constraints can (a) improve fairness while executing the benchmark (b) address operational real-world limitations, and (c) simplify the experimental setup.
+Constraints can be applied to any component of the benchmark, e.g., $C_I$, $C_D$, etc.
+
+\subsection{Results}
+\label{sec:towards-res}
+
+A benchmark must produce clear easy to comprehend results to allow evaluation of the task performed and to perform unambiguous performance evaluation.
+As described above, a major determinant of the informativeness of a benchmark is the choice of metrics.
+Performance can be evaluated on main metrics (e.g., accuracy or runtime), but often also includes a grid search of various methods, models, and hyperparameters.
+To simplify comparison, metric dashboards with charts and tables, as well as error analysis, are recommended.
+This allows (a) analysis of progress over time, (b) informing stakeholders about model capabilities, (c) identifying limitations of the tested methods, and (d) establishing a potential leader board for selecting suitable candidates that may be applicable to similar scientific tasks.
+
+
+\begin{comment}
+
+\input{3-graph}
+\input{4-graph-mlcommons}
+
+
+Geoffrey noted many sources already available for Science benchmarks
+
+MLCommons Science Working Group
+
+MLCommons HPC Working Group
+
+FastML Inference benchmarks for HEP covering different interesting regions in latency-datarate space  230322 mlcommons science.pdf t https://arxiv.org/abs/2207.07958 https://github.com/fastmachinelearning/fastml-science 
+
+NSF HDR ML Challenge https://www.nsfhdr.org/mlchallenge 
+
+UVA FAIR SBI Initiative including some of 
+CaloChallenge packaged for easy use
+CaloChallenge 2022: A Community Challenge for Fast Calorimeter Simulation http://arxiv.org/abs/2410.21611 https://arxiv.org/abs/2406.12898 
+
+Google WeatherBench2 https://sites.research.google/weatherbench/ https://arxiv.org/abs/2308.15560 
+
+SciML-Bench from RAL, UK https://github.com/stfc-sciml/sciml-bench
+
+There are also Big Data benchmarks such as BigDataBench https://www.benchcouncil.org/BigDataBench
+
+Links pointed out that may be useful:
+please add here, also add small paragraph what they contribute
+Life Science Benchmarking Examples (Gavin Farrell)
+https://openebench.bsc.es/ - registry hosting benchmarking efforts ons specific life science challenges
+Challenge examples include protein prediction for intrinsically disordered proteins i.e. the ones not possible to currently predict in AlphaFold due to their flexibility - https://caid.idpcentral.org/challenge (CAID)
+Also the CASP challenge also related to protein prediction: https://predictioncenter.org/index.cgi 
+Also the Dream challenges in bioinformatics where they target benchmarking and optimizing specific issues: example \url{https://dreamchallenges.org/olfactory-mixtures-prediction-challenge/} 
+\url{https://sab.noaa.gov/wp-content/uploads/4.0-DL4NWP_NOAAResponse_Nov2024.pdf} 
+
+\end{comment}
+
+\begin{comment}
+This document collects the ideas about what is needed for researchers to familiarize themselves with benchmarking. In particular, it will help by supporting the MLCommons community to educate the next generation of researchers to familiarize them with benchmarking. 
+ 
+\TODO{IN THE NEXT SECTIONS WE WANT TO DESCRIBE EACH OF THEM  IN MORE DETAIL}
+
+\TODO{INTEGRATE THE HIERARCHY DIAGRAMS}
+
+\TODO{INTEGRATE THE TABLES AND MAKE A SURVEY OF BENCHMARKS}
+
+\TODO{Integrate \url{https://www.nature.com/articles/s42254-022-00441-7}, also paper with Gregor}
+
+\TODO{OLDER NOTES:}
+
+HPC benchmarking
+TOP500
+Green 500 and HPC innovation: requires monitoring of instantaneous power consumption (levels 1, 2, 3)
+Desktop benchmarking
+specint/float (int8..in32 and FP64 down to FP8)
+Processors and their cores: sockets and NUMA issues
+GPUs: on-node accelerator connectivity
+filesystem
+. . .
+Compute center benchmarking
+Which resources and applications are we interested in, 
+Which dimensionalities are measured and what is the objective
+\end{comment}
+

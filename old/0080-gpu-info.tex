@@ -1,0 +1,69 @@
+\section{GPU Information}
+\label{sec:gpuInfo}
+
+\begin{table*}[htb]
+\caption{Power Consumption, Core Count, and Performance of Popular GPUs. lets remove junk gpus. e.g. anything before 3070.}
+\label{tab:gpu_power_consumption}
+
+\centering
+\resizebox{1.0\textwidth}{!}{
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{GPU Model}              & \textbf{Manufacturer} & \textbf{Architecture} & \textbf{Release Year} & \textbf{TDP (Power Consumption)} & \textbf{Core Count}        & \textbf{Performance (FLOPS)} \\ 
+\hline
+\hline
+\textbf{NVIDIA GeForce RTX 4090} & NVIDIA               & Ada Lovelace          & 2022                 & 450 W                        & 16,384 CUDA Cores           & 82.6 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce RTX 4080} & NVIDIA               & Ada Lovelace          & 2022                 & 320 W                        & 9,728 CUDA Cores            & 49.0 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce RTX 4070 Ti} & NVIDIA             & Ada Lovelace          & 2023                 & 285 W                        & 7,680 CUDA Cores            & 40.0 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce RTX 3070 Ti} & NVIDIA             & Ampere                & 2021                 & 290 W                        & 6,144 CUDA Cores            & 22.0 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce RTX 3070}  & NVIDIA               & Ampere                & 2020                 & 220 W                        & 5,888 CUDA Cores            & 20.0 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce RTX 3060 Ti} & NVIDIA             & Ampere                & 2020                 & 200 W                        & 4,864 CUDA Cores            & 16.2 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce GTX 1660 Ti} & NVIDIA             & Turing                & 2019                 & 120 W                        & 1,536 CUDA Cores            & 5.4 TFLOPS (FP32)            \\ \hline
+\textbf{AMD Radeon RX 7900 XTX}   & AMD                  & RDNA 3                & 2022                 & 355 W                        & 6,144 Stream Processors     & 61.0 TFLOPS (FP32)           \\ \hline
+\textbf{AMD Radeon RX 7900 XT}    & AMD                  & RDNA 3                & 2022                 & 300 W                        & 5,120 Stream Processors     & 53.3 TFLOPS (FP32)           \\ \hline
+\textbf{AMD Radeon RX 6800 XT}    & AMD                  & RDNA 2                & 2020                 & 300 W                        & 4,608 Stream Processors     & 20.0 TFLOPS (FP32)           \\ \hline
+\textbf{AMD Radeon RX 6800}       & AMD                  & RDNA 2                & 2020                 & 250 W                        & 3,840 Stream Processors     & 16.2 TFLOPS (FP32)           \\ \hline
+\textbf{AMD Radeon RX 5700 XT}    & AMD                  & RDNA 1                & 2019                 & 225 W                        & 2,560 Stream Processors     & 9.6 TFLOPS (FP32)            \\ \hline
+\textbf{AMD Radeon RX 5600 XT}    & AMD                  & RDNA 1                & 2020                 & 150 W                        & 2,304 Stream Processors     & 7.2 TFLOPS (FP32)            \\ \hline
+\textbf{NVIDIA Titan RTX}         & NVIDIA               & Turing                & 2018                 & 280 W                        & 4,608 CUDA Cores            & 16.3 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce GTX 1080 Ti} & NVIDIA             & Pascal                & 2017                 & 250 W                        & 3,584 CUDA Cores            & 11.3 TFLOPS (FP32)           \\ \hline
+\textbf{NVIDIA GeForce GTX 1660 Super} & NVIDIA           & Turing                & 2019                 & 125 W                        & 1,408 CUDA Cores            & 5.0 TFLOPS (FP32)            \\ \hline
+\textbf{AMD Radeon RX 580}        & AMD                  & Polaris               & 2017                 & 185 W                        & 2,304 Stream Processors     & 6.2 TFLOPS (FP32)            \\ \hline
+\textbf{AMD Radeon RX 570}        & AMD                  & Polaris               & 2017                 & 150 W                        & 2,048 Stream Processors     & 5.0 TFLOPS (FP32)            \\ \hline
+\textbf{NVIDIA H100 Tensor Core}  & NVIDIA               & Hopper                & 2022                 & 700 W                        & 18,432 CUDA Cores           & 60.0 TFLOPS (FP32)           \\ \hline
+\end{tabular}
+}
+
+\end{table*}
+
+
+\begin{table*}[htb]
+\caption{Power Consumption, Core Count, and Performance of GPUs for Data Centers}
+\label{tab:gpu_energy_cores_flops-2}
+\centering
+\resizebox{1.0\textwidth}{!}{
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{GPU Model}             & \textbf{TDP (Power Consumption)} & \textbf{Core Count}         & \textbf{Performance (FP32 FLOPS)} & \textbf{Notes} \\ 
+\hline
+\hline
+\textbf{NVIDIA RTX PRO 6000}    & 600 W                            & 24,064 CUDA Cores           & 82.6 TFLOPS                    & Blackwell Architecture, Professional Use \\ \hline
+\textbf{NVIDIA HGX H200}        & 700 W                            & 18,432 CUDA Cores           & 60.0 TFLOPS                    & For Data Centers, AI Workloads \\ \hline
+\textbf{NVIDIA Rubin NVL144}    & TBD                              & TBD                         & 50.0 PFLOPS                    & Future Release, Ultra AI Inference \\ \hline
+\textbf{AMD Instinct MI350}     & TBD                              & TBD                         & TBD                            & AMD's High-Performance GPU Series \\ \hline
+\textbf{NVIDIA GeForce RTX 4090} & 450 W                            & 16,384 CUDA Cores           & 82.6 TFLOPS                    & Ada Lovelace, Consumer \\ \hline
+\textbf{NVIDIA GeForce RTX 4080} & 320 W                            & 9,728 CUDA Cores            & 49.0 TFLOPS                    & Ada Lovelace, High-End GPU \\ \hline
+\textbf{NVIDIA Titan RTX}       & 280 W                            & 4,608 CUDA Cores            & 16.3 TFLOPS                    & Turing Architecture, High-End Computing \\ \hline
+\textbf{AMD Radeon RX 7900 XTX}  & 355 W                            & 6,144 Stream Processors     & 61.0 TFLOPS                    & RDNA 3, Gaming \\ \hline
+\textbf{AMD Radeon RX 6800 XT}  & 300 W                            & 4,608 Stream Processors     & 20.0 TFLOPS                    & RDNA 2, Consumer GPU \\ \hline
+\end{tabular}
+}
+\end{table*}
+
+\TODO{Gregor suggest time value  of energy consumption or wattage per core}
+
+\TODO{Gregor suggests tf per consumption or energy.]}
+
+\subsection{Energy: Related research}
+
+Surveys, most relevant papers

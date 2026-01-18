@@ -1,0 +1,212 @@
+
+
+\begin{comment}
+
+
+\begin{table*}[hptb]
+  \centering
+  \caption{
+  Energy- or carbon-efficiency benchmarks (B) and tools (T) used in scientific-HPC research.  Metrics use ``/'' for ``per''; ``;'' separates multiple items; ``+'' appears only where a spec explicitly combines two values into one score
+  %Benchmarks, tools, and initiatives that publish energy‑ or carbon‑efficiency metrics for Scientific‑HPC workloads.
+  }
+  \label{tab:hpc_energy_catalog}
+  %\renewcommand{\arraystretch}{1.1}
+  %\setlength{\tabcolsep}{4pt}
+  \rowcolors{2}{white}{lightgray}
+  \begin{tabularx}{1.0\textwidth}{|llllX|}
+    \toprule
+    & \headerfont\textbf{(B)enchmark or (T)ool}
+    & 
+    & \headerfont\textbf{Core metric(s) } %\& data captured} 
+    & \headerfont\textbf{Typical Benchmarking Use}\\ 
+    \midrule
+\mmB & SPECpower\_ssj2008           & \cite{specpower}            & W/transaction; ops/W                & Enterprise-server rankings; ENERGY STAR compliance \\
+\mmB & SPEC\,SERT$^{2}$             & \cite{sert2}                & Server-Efficiency-Rating = kWh + perf    & EU Lot 9 certification; vendor datasheets \\
+\mmB & TPC-Energy                   & \cite{tpcenergy}            & Wh/DB phase                            & OLTP/warehouse energy cost studies \\
+\mmB & JouleSort                    & \cite{joulesort}            & records/J                              & Storage-I/O contests; I/O-stack tuning \\
+\mmB & Green500                     & \cite{green500}             & GFLOPS/W (HPL or HPL-AI)               & Global supercomputer energy ranking \\
+\mmB & HPCG-Power                   & \cite{hpcgpower}            & GFLOPS/W (HPCG)                        & Memory-bound tuning; procurement add-on to TOP500 \\
+\mmB & HPL-MxP (HPL-AI)             & \cite{hplmxphplai}          & mixed-precision GFLOPS/W               & GPU/TPU evaluation for AI-optimised LINPACK \\
+\mmB & MLPerf Power                 & \cite{mlperfpower}          & J; avg W; J/sample; J/epoch       & Official energy track for MLPerf submissions \\
+\mmB & MLPerf Tiny                  & \cite{mlperftiny}           & $\mu$J/inference (MCU)             & Edge-AI board comparison; ultra-low-power design \\
+\mmB & CoreMark-PRO Power           & \cite{coremarkpro}          & iterations/s/W (SoC)                 & Pre-silicon DVFS sweeps; embedded RFPs \\ 
+\mmB & UL Procyon AI Power          & \cite{procyon}              & images/W; fps/W                     & Smartphone \& laptop AI-inference benchmarks \\
+\mmB & CANDLE Power Study           & \cite{candlepowerstud}      & J/epoch; GFLOPS/W                   & DOE accelerator procurement guidance \\
+\mmB & LULESH/miniFE Energy       & \cite{luleshminifeene}      & J/iteration                            & DVFS + autotuning baselines \\
+\mmB & ExaSMR Power Benchmark       & \cite{exasmrpowerbenc}      & J/neutron; energy-vs-accuracy curve   & Energy budget strategy in nuclear simulations \\
+\mmB & EE-HPC-WG Energy Benchmark   & \cite{eehpcwgenergybe}      & draft node/job spec; JSON trace       & Toward common HPC energy standard \\
+\mmB & HPC-AI500 Energy Track       & \cite{hpcai500energyt}      & planned: GFLOPS/W; tokens/J         & Mixed AI/HPC cluster evaluations \\
+\mmB & PARSEC-3.1 Energy Extension  & \cite{parsec31energye}      & W; J via PAPI-RAPL; J/op; EDP       & Pre-silicon DVFS research \\
+\mmB & CosmoFlow-Power              & \cite{cosmoflow2019}        & J/epoch; GFLOPS/W                   & CNN scaling on 15 k+ GPUs \\
+\mmB & HACC Energy Add-on           & \cite{hacc2020power}        & J/particle update                      & N-body cosmology power studies \\
+\mmB & DeepCAM-Energy               & \cite{deepcam2020power}     & J/epoch (UNet)                         & Climate-analytics accelerator studies \\
+\mmB & OpenIFS-Energy               & \cite{openifsenergy2023}    & kWh/model-day; W timeline             & Weather-model node comparison \\
+\mmB & GROMACS-EE                   & \cite{gromacsee2024}        & J/ns; W/GPU                         & MD clock-vs-accuracy trade-offs \\
+\mmB & NAMD-Power                   & \cite{namdpower2019}        & Energy-Delay-Product (ApoA1)             & Summit node DVFS optimisation \\
+\mmB & QE Energy Suite              & \cite{qeenergy2022}         & J/SCF step; GFLOPS/W                & DFT GPU-offload studies \\
+\mmB & VASP-Power Harness           & \cite{vasppower2023}        & W; kWh/MD step                        & Materials-science accelerator compare \\
+\mmB & OpenFOAM-Energy              & \cite{openfoamenergy2021}   & J/1k iterations                       & CFD partitioning \& mesh tuning \\
+\mmB & InSAR-AI Power Kit           & \cite{insarpower2024}       & J/satellite scene                      & Edge-to-cloud EO inference cost \\
+\mmB & H3D-Energy                   & \cite{h3denergy2023}        & J/hydrology timestep                & Hydrology model DVFS exploration \\ \hline\hline  
+\mmT & PTDaemon/SERT Energy       & \cite{specptdaemonser}      & calibrated W; kWh (node)                & Lab reproducibility; Lot 9 labels \\
+\mmT & Scaphandre                   & \cite{scaphandre}           & W; kWh (process/node, Prometheus)     & Slurm dashboards; power-cap feedback \\
+\mmT & Kepler                       & \cite{kepler}               & W/pod; J/pod (eBPF)                 & Energy observability in K8s clusters \\
+\mmT & CodeCarbon                   & \cite{codecarbon}           & kWh; kg CO\(_2\)e (process)             & Rapid CO\(_2\) estimation in pipelines \\
+\mmT & CarbonTracker                & \cite{carbontracker}        & measured + predicted kWh; CO\(_2\)e     & Scheduling DL jobs in low-carbon hours \\
+\mmT & PowerPACK/Mont-Blanc       & \cite{powerpackmontbl}      & W; J for MPI/OpenMP mini-apps         & Network-topology \& DVFS studies \\
+\mmT & Cray PAT Energy Counters     & \cite{craypatenergyco}      & J/function; avg W                     & Kernel hotspot hunting on Shasta \\
+\mmT & IBM PowerAPI (pmlib)         & \cite{ibmpowerapipmli}      & kWh (job/process)                      & Energy-aware scheduling on Summit \\
+\mmT & NVIDIA DCGM Energy           & \cite{nvidiadcgmenerg}      & W; J (GPU) \@ 1Hz; telemetry           & GPU power-cap discovery; Green500 \\
+\mmT & Intel VTune Power            & \cite{intelvtunepower}      & package W; J/function                 & Roofline-vs-energy tuning on Xeon \\ 
+
+\bottomrule   
+  \end{tabularx}
+\end{table*}
+
+
+ 
+ 
+ %  \mmB & SPECpower\_ssj2008 & \cite{specpower}            & Watts per transaction; ops/W & Enterprise‑server energy rankings and ENERGY STAR compliance \\  
+ % B  & SPEC SERT$^{2}$  & \cite{sert2}                   & Server Efficiency Rating (kWh+perf)& Lot 9 regulatory testing; vendor datasheets \\  
+ % B  & TPC‑Energy  & \cite{tpcenergy}                    & Watt‑hours per database phase & Energy‑cost analysis for OLTP/warehousing appliances \\  
+ % B  & JouleSort  & \cite{joulesort}                     & Records per Joule  B  & Storage‑I/O hardware contests; I/O stack optimisation \\  
+ % B  & Green500  & \cite{green500}                       & GFLOPS/W (HPL/HPL‑AI) & Global supercomputer energy‑efficiency ranking \\  
+ % B  & HPCG‑Power  & \cite{hpcgpower}                    & GFLOPS/W (HPCG) & Memory‑bound workload tuning; procurement add‑on to TOP500 \\  
+ %  \mmB & HPL‑MxP (HPL‑AI)  & \cite{hplmxphplai}            & Mixed‑precision GFLOPS/W & AI‑optimised LINPACK evaluation for next‑gen GPUs/TPUs \\  
+ %   \mmB & MLPerf Power  & \cite{mlperfpower}                & Joules, avg W; J/sample or J/epoch & Official energy track for MLPerf submissions (training + inference) \\  
+ %   \mmB & MLPerf Tiny  & \cite{mlperftiny}                  & $\mu$J/inference on MCU & Edge‑AI board comparisons; ultra‑low‑power design \\  
+ %  \mmB & CoreMark‑PRO Power  & \cite{coremarkpro}          & Iterations/s/W for SoCs & Pre‑silicon DVFS sweeps; embedded RFPs \\  
+ %  \mmB & UL Procyon AI Power  & \cite{procyon}             & Images/W; fps/W \& Smartphone & laptop AI inference benchmarks \\  
+ %   \mmB & CANDLE Power Study  & \cite{candlepowerstud}      & Joules/epoch; GFLOPS/W for ResNet‑50 & DOE accelerator procurement guidelines \\  
+ %  \mmB & LULESH/miniFE Energy  & \cite{luleshminifeene}    & Joules per iteration & Baseline for DVFS + autotuning papers \\  
+ %  \mmB & ExaSMR Power Benchmark  & \cite{exasmrpowerbenc}  & Energy vs neutron‑transport accuracy & Energy budget strategy in nuclear simulations \\  
+ %  \mmB & EE‑HPC‑WG Energy Benchmark  & \cite{eehpcwgenergybe}& Draft node/job spec (JSON, RAPL|NVML) & Toward a common HPC energy standard \\  
+ %  \mmB & HPC‑AI500 Energy Track  & \cite{hpcai500energyt}  & Planned GFLOPS/W + tokens/J & Mixed AI/HPC cluster evaluations \\  
+ %  \mmB & PARSEC‑3.1 Energy Extension  & \cite{parsec31energye} & Watts \& Joules via PAPI‑RAPL; J/op, EDP & Pre‑silicon DVFS research \\  
+ %  \mmB & CosmoFlow‑Power  & \cite{cosmoflow2019}           & Joules/epoch; GFLOPS/W & Cosmology CNN scaling on 15k+ GPUs \\  
+ %  \mmB & HACC Energy Add‑on  & \cite{hacc2020power}        & Joules per particle update & N‑body cosmology power studies \\  
+ %  \mmB & DeepCAM‑Energy  & \cite{deepcam2020power}         & Joules/epoch for UNet cloud segmentation & Climate analytics accelerator studies \\  
+ %  \mmB & OpenIFS‑Energy  & \cite{openifsenergy2023}        & kWh per model‑day; W timeline & Weather/climate node comparison \\  
+ %  \mmB & GROMACS‑EE  & \cite{gromacsee2024}                & Joules/ns; Watts/GPU & MD clock‑vs‑accuracy trade‑offs \\  
+ %  \mmB & NAMD‑Power  & \cite{namdpower2019}                & Energy‑Delay Product for ApoA1 & Summit node DVFS optimisation \\  
+ %  \mmB & QE Energy Suite  & \cite{qeenergy2022}            & Joules per SCF step; GFLOPS/W & DFT GPU‑offload studies \\  
+ %  \mmB & VASP‑Power Harness  & \cite{vasppower2023}        & Watts \& kWh per MD step & Materials science accelerator comparisons \\  
+ %  \mmB & OpenFOAM‑Energy  & \cite{openfoamenergy2021}      & Joules per 1k solver iterations & CFD partitioning \& mesh tuning \\  
+ %  \mmB & InSAR‑AI Power Kit  & \cite{insarpower2024}       & Joules per satellite scene & Edge‑to‑cloud EO inference cost models \\  
+ %  \mmB & H3D‑Energy  & \cite{h3denergy2023}                & Joules per hydrology timestep & Hydrology model DVFS exploration \\ 
+ %  \hline
+ %  \hline
+ %  \mmT & PEC PTDaemon/SERT Energy  & \cite{specptdaemonser} & Calibrated Watts/kWh per node & Lab‑to‑lab reproducibility; EU Lot 9 server labels \\  
+ % \mmT & Scaphandre  & \cite{scaphandre}                    & Process \& node Watts/kWh (Prometheus) & Job‑level carbon dashboards; power‑cap feedback in Slurm \\  
+ % \mmT & Kepler  & \cite{kepler}                            & Watts/Joules per K8s pod via eBPF & Energy observability in cloud‑native HPC \& AI clusters \\
+ %   \mmT & CodeCarbon  & \cite{codecarbon}                   & kWh
+ %    \& kg CO\textsubscript{2}e per process & Rapid CO$_2$ estimation in research pipelines \\  
+ %  \mmT & CarbonTracker  & \cite{carbontracker}             & Predicted + measured energy/CO$_2$e & Scheduling long DL trainings to low‑carbon hours \\  
+ %  \mmT & PowerPACK/Mont‑Blanc  & \cite{powerpackmontbl}  & Joules \& Watts for MPI/OpenMP mini‑apps & Network topology \& DVFS studies without full apps \\  
+ %   \mmT & Cray PAT Energy Counters  & \cite{craypatenergyco}& Per‑function Joules and avg W & Hot‑spot hunting on XC/Shasta systems \\  
+ %   \mmT & IBM PowerAPI (pmlib)  & \cite{ibmpowerapipmli}    & Job \& process kWh streams & Energy‑aware scheduling on Summit/Sierra \\  
+ %  \mmT & NVIDIA DCGM Energy  & \cite{nvidiadcgmenerg}      & GPU Watts \& Joules \@ 1 Hz + telemetry & Optimal GPU power cap discovery; Green500 validation \\  
+ %  \mmT & Intel VTune Power Analysis  & \cite{intelvtunepower}& Package Watts; energy‑per‑function & Roofline‑vs‑energy tuning on Xeon/AMX CPUs \\  
+ %  \bottomrule
+  
+%% CANDLE appears as a `C' because it is a published collection of measured results rather than a runnable code base
+
+
+\end{comment}
+
+% \begin{table*}[htbp]
+% \centering
+% \caption{Energy- and Carbon-Efficiency Benchmarks (B) and Tools (T) Used in Scientific-HPC Research. Metrics use ``/'' for ``per''; ``;'' separates multiple items; ``+'' appears only where a specification explicitly combines two values into one score.}
+% \label{tab:hpc_energy_catalog}
+% \renewcommand{\arraystretch}{1.2}
+% \begin{tabular}{|p{1.2cm}|p{3.3cm}|p{3.2cm}|p{8.2cm}|}
+% \hline
+% \rowcolor{blue!20} 
+% \textbf{Type} & \textbf{Benchmark / Tool} & \textbf{Core Metric(s)} & \textbf{Typical Benchmarking Use} \\ 
+% \hline
+% \hline
+% \rowcolor{gray!20}
+% \multicolumn{4}{|l|}{\textbf{(B)enchmarks}} \\ 
+% \hline
+% B & SPECpower\_ssj2008 & W/transaction; ops/W & Enterprise-server rankings; ENERGY STAR compliance \\ 
+% \hline
+% \mmB & SPEC SERT$^{2}$ & Server-Efficiency-Rating = kWh + perf & EU Lot 9 certification; vendor datasheets \\ 
+% \hline
+% \mmB & TPC-Energy & Wh/DB phase & OLTP/warehouse energy cost studies \\ 
+% \hline
+% \mmB & JouleSort & records/J & Storage-I/O contests; I/O-stack tuning \\ 
+% \hline
+% \mmB & Green500 & GFLOPS/W (HPL or HPL-AI) & Global supercomputer energy ranking \\ 
+% \hline
+% \mmB & HPCG-Power & GFLOPS/W (HPCG) & Memory-bound tuning; procurement add-on to TOP500 \\ 
+% \hline
+% \mmB & HPL-MxP (HPL-AI) & mixed-precision GFLOPS/W & GPU/TPU evaluation for AI-optimized LINPACK \\ 
+% \hline
+% \mmB & MLPerf Power & J; avg W; J/sample; J/epoch & Official energy track for MLPerf submissions \\ 
+% \hline
+% \mmB & MLPerf Tiny & $\mu$J/inference (MCU) & Edge-AI board comparison; ultra-low-power design \\ 
+% \hline
+% \mmB & CoreMark-PRO Power & iterations/s/W (SoC) & Pre-silicon DVFS sweeps; embedded RFPs \\ 
+% \hline
+% \mmB & UL Procyon AI Power & images/W; fps/W & Smartphone \& laptop AI-inference benchmarks \\ 
+% \hline
+% \mmB & CANDLE Power Study & J/epoch; GFLOPS/W & DOE accelerator procurement guidance \\ 
+% \hline
+% \mmB & LULESH/miniFE Energy & J/iteration & DVFS + autotuning baselines \\ 
+% \hline
+% \mmB & ExaSMR Power Benchmark & J/neutron; energy-vs-accuracy curve & Energy budget strategy in nuclear simulations \\ 
+% \hline
+% \mmB & EE-HPC-WG Energy Benchmark & draft node/job spec; JSON trace & Toward common HPC energy standard \\ 
+% \hline
+% \mmB & HPC-AI500 Energy Track & planned: GFLOPS/W; tokens/J & Mixed AI/HPC cluster evaluations \\ 
+% \hline
+% \mmB & PARSEC-3.1 Energy Extension & W; J via PAPI-RAPL; J/op; EDP & Pre-silicon DVFS research \\ 
+% \hline
+% \mmB & CosmoFlow-Power & J/epoch; GFLOPS/W & CNN scaling on 15k+ GPUs \\ 
+% \hline
+% \mmB & HACC Energy Add-on & J/particle update & N-body cosmology power studies \\ 
+% \hline
+% \mmB & DeepCAM-Energy & J/epoch (UNet) & Climate-analytics accelerator studies \\ 
+% \hline
+% \mmB & OpenIFS-Energy & kWh/model-day; W timeline & Weather-model node comparison \\ 
+% \hline
+% \mmB & GROMACS-EE & J/ns; W/GPU & MD clock-vs-accuracy trade-offs \\ 
+% \hline
+% \mmB & NAMD-Power & Energy-Delay-Product (ApoA1) & Summit node DVFS optimization \\ 
+% \hline
+% \mmB & QE Energy Suite & J/SCF step; GFLOPS/W & DFT GPU-offload studies \\ 
+% \hline
+% \mmB & VASP-Power Harness & W; kWh/MD step & Materials-science accelerator comparison \\ 
+% \hline
+% \mmB & OpenFOAM-Energy & J/1k iterations & CFD partitioning \& mesh tuning \\ 
+% \hline
+% \mmB & InSAR-AI Power Ki\mT & J/satellite scene & Edge-to-cloud EO inference cost \\ 
+% \hline
+% \mmB & H3D-Energy & J/hydrology timestep & Hydrology model DVFS exploration \\ 
+% \hline
+% \hline
+% \rowcolor{gray!20}
+% \multicolumn{4}{|l|}{\textbf{(T)ools}} \\ 
+% \hline
+% \mmT & PTDaemon / SERT Energy & calibrated W; kWh (node) & Lab reproducibility; Lot 9 labels \\ 
+% \hline
+% \mmT & Scaphandre & W; kWh (process/node, Prometheus) & Slurm dashboards; power-cap feedback \\ 
+% \hline
+% \mmT & Kepler & W/pod; J/pod (eBPF) & Energy observability in Kubernetes clusters \\ 
+% \hline
+% \mmT & CodeCarbon & kWh; kg CO\(_2\)e (process) & Rapid CO\(_2\) estimation in pipelines \\ 
+% \hline
+% \mmT & CarbonTracker & measured + predicted kWh; CO\(_2\)e & Scheduling DL jobs in low-carbon hours \\ 
+% \hline
+% \mmT & PowerPACK / Mont-Blanc & W; J for MPI/OpenMP mini-apps & Network-topology \& DVFS studies \\ 
+% \hline
+% \mmT & Cray PAT Energy Counters & J/function; avg W & Kernel hotspot hunting on Shasta \\ 
+% \hline
+% \mmT & IBM PowerAPI (pmlib) & kWh (job/process) & Energy-aware scheduling on Summit \\ 
+% \hline
+% \mmT & NVIDIA DCGM Energy & W; J (GPU) @ 1Hz; telemetry & GPU power-cap discovery; Green500 \\ 
+% \hline
+% \mmT & Intel VTune Power & package W; J/function & Roofline-vs-energy tuning on Xeon \\ 
+% \hline
+% \end{tabular}
+% \end{table*}

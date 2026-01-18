@@ -1,0 +1,248 @@
+\subsection{Energy Benchmarking}
+\label{sec:energy}
+
+Energy consumption is a critical component of  ML benchmarking. Training and inference with modern AI systems can require enormous computational resources. 
+
+
+To illustrate the issue, we have provided in Table \ref{tab:energy-chatgpt} and Figure \ref{fig:energy-consumption} the energy required to train various ChatGPT models (some of which are estimated as no public data has been released \cite{sciencefeedback2024energy,kaplan2020scaling}, such as GPT-5 and GPT-6). The training of a single large-scale language model (GPT-3) consumes approximately 1,287 MWh placing it in the same range as the annual energy usage of about 130 U.S. households, according to U.S. Energy Information Administration (EIA) statistics on average residential electricity consumption \cite{EIA_Electricity_Price_2025,eia2024residential,WECEnergy,patterson2021carbon,jegham2025hungryaibenchmarkingenergy,baeldung2023energy}. 
+
+For the U.S. Department of Energy (DOE) leadership-class machines, such as those hosted at Oak Ridge National Laboratory (see Table \ref{tab:ornl-energy}), we find documented and significant progress toward exascale, but at the cost of increased energy consumption that more than doubled during the last generational upgrade. However, the Peak Performance per energy unit has increased significantly, and compared to Jaguar's initial values, Frontier has improved by a factor of 209, thus becoming relatively more efficient despite overall energy consumption needs.
+
+
+\begin{table}[tb]
+\centering
+\caption{Estimated Energy Consumption of GPT Models for Training and Inference 
+(Based on \cite{brown2020language, patterson2021carbon, medium2023gpt4carbon, 
+extremenetworks2023energy, epochai2024compute, hackernoon2024dirtysecret}).}
+\label{tab:energy-chatgpt}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Model} & \textbf{\makecell{Training Energy\\(MWh)}} & \textbf{\makecell{Inference Energy\\(per 1M queries, MWh)}} \\
+\hline
+\hline
+GPT-3 & $\sim$1,287 \cite{baeldung2023energy,patterson2021carbon} & $\sim$50--100 \\
+\hline
+GPT-4 & 51,773--62,319 \cite{medium2023gpt4carbon,extremenetworks2023energy} & $\sim$600--1,000 \\ \hline 
+GPT-5 & $>$60,000 (estimated) \cite{epochai2024compute,hackernoon2024dirtysecret} & $\sim$800--1,200 \\ \hline
+GPT-6 & 80,000--100,000 (projected) \cite{epochai2024compute} & $\sim$1,000--1,500 \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=1.0\linewidth]{images/gpt_energy_comparison.pdf}
+    \caption{Energy Consumption for ChatGPT Training and Inferencing 1 Million Queries. (Data for GPT-5 and 6 are estimates). %\TODO{(Data for GPT-5 and 6 are estimates).} 
+    }
+    \label{fig:energy-consumption}
+\end{figure}
+
+
+\begin{table}[tb]
+
+    \caption{Evolution of the Leadership Class Supercomputer at Oak Ridge National Laboratory}
+    \label{tab:ornl-energy}
+    
+    \resizebox{\columnwidth}{!}{
+        \begin{tabular}{|l|c|l|r|r|r|r|r|}
+            \hline
+            \textbf{Machine} & \textbf{Year} & \textbf{Architecture} & $R_{max}$ Scaling & \textbf{\makecell{$R_{max}$ \\ PFlops/s}} & \textbf{\makecell{$R_{peak}$ \\ PFlops/s}} & \textbf{\makecell{Power\\ (MW)}} & \textbf{\makecell{$R_{max}/$Power\\(PF/MW)}} \\
+            \hline
+            \hline
+            Jaguar\cite{BlandRogers2009-jaguar}       & 2009 & Multi-core CPU  & 1 &    1941 &    2628 & 7  & 277.29 \\
+            \hline
+            Titan\cite{Bland2012-titan}               & 2012 & Hybrid CPU/GPU  & 9.06 &   17590 &   27113 & 9  & 1954.44  \\
+            \hline
+            Summit\cite{WombleShankar2019-summit}     & 2017 & Hybrid CPU/GPU  & 76.6 &  148600 &  200795 & 13  & 11430.77  \\
+            \hline
+            Frontier\cite{AtchleyZimmer2023-frontier} & 2022 & Hybrid CPU/GPU  & 697.1 & 1353000 & 2055717 & 29  & 46655.17  \\
+            \hline
+        \end{tabular}
+    }
+
+    \smallskip
+    {\tiny~~ $^*$PF=\emph{Theoretical peta–floating-point operations per second}; $1\;\text{PF}=10^{15}\text{FLOPS}.$
+    
+    $R_{max}$ = maximal LINPACK performance achieved.
+    $R_{peak}$ = theoretical peak performance.
+    }
+\end{table}
+
+Carbon-emission measurements also help provide a more detailed understanding of associated energy impacts.
+
+\begin{comment}
+The following examples highlight this issue and directly impact budget and sustainability decisions.
+
+\noindent
+\textbf{Case 1 – Oak Ridge’s \emph{Frontier}.} %
+The Frontier exascale system draws
+\(24.6\;\text{MW}\) at LINPACK load and is housed in a data hall whose measured PUE is \(1.03\)\,\cite{DOE_Frontier_Power2023}. At the July 2025 U.S.\ industrial tariff of
+\$0.081 kWh\(^{-1}\)\,\cite{EIA_Electricity_Price_2025} the annual electricity bill is: $24.6\;\text{MW}\times 8\,760\;\text{h\,yr}^{-1}\times\$0.081
+  \;\approx\;\$17.5\,\text{M}/\text{yr}.$  The Tennessee Valley Authority reported a residual grid intensity of
+\(360\;\text{g\,CO}_{2}\text{e\,kWh}^{-1}\) for 2024\footnote{TVA
+Sustainability Report (2025), \url{https://tva.com/environment/environmental-stewardship/sustainability}.} so Frontier emits
+\(\sim\!78\;\text{kt\,CO}_{2}\text{e\,yr}^{-1}\), equivalent to the
+territorial footprint of \(\sim\!12\,000\) EU residents
+(Eurostat 2024, 6.5 t cap\(^{-1}\))\,\cite{Eurostat_GHG_2024}.
+
+%\vspace{4pt}
+\noindent
+\textbf{Case 2 – Google hyperscale fleet.} %
+Google’s 2023 environmental report lists a \emph{fleet-wide} PUE of
+\(\mathbf{1.10}\) (industry mean 1.58)\,\cite{Google_PUE_2023} yet company-wide GHG emissions still rose to
+\(14.3\;\text{Mt\,CO}_{2}\text{e}\) in 2023, up 49 \% since
+2019\,\cite{Google_Sustainability_2024}.   % <5>
+Internal modeling shows that deferring non-urgent ML jobs to periods of
+low grid-carbon intensity cuts emissions by 10–20 \%; Google plans to
+combine that policy with a 115 MW geothermal PPA coming online in Nevada
+in 2026\,\cite{Google_Geothermal_2023}.   % <6>
+
+\end{comment}
+
+If we only focus on traditional benchmarks using metrics such as FLOPS or latency, we provide performance insights but overlook {\em energy-to-solution}, which measures the total energy required to complete a task. Without perspective, researchers and practitioners focus on optimizing for speed at the expense of sustainability and cost efficiency. 
+
+Thus, we believe it is important to make energy benchmarks an important aspect of AI benchmarks. Energy benchmarking ought to address the following:
+
+\begin{itemize}
+     \item Quantify the environmental footprint of AI workloads (carbon emissions, renewable vs. non-renewable energy use).
+     \item Highlight economic tradeoffs in large-scale computing (cloud costs, datacenter efficiency). 
+     \item Guide hardware and algorithmic choices towards a more effective architecture.
+     \item Support policy and funding decisions by providing transparent data on sustainability. 
+ \end{itemize}
+
+Energy-aware benchmarks help ensure that AI development aligns with broader goals of responsible computing, making results reproducible, performant, and economically and environmentally sustainable. 
+
+Thus, we see several opportunities. First, we need to make energy benchmarks more prominent and provide materials and tutorials as part of AI benchmark carpentry to educate the community. Second, we must ensure that not only the most expensive hardware, such as leadership-class and hyper-scale data centers, is used, but also medium- and even small-scale hardware, so that democratizing energy benchmarks within the community is easy to implement. This way, measurements of even smaller AI-based scientific applications can integrate energy consumption into their benchmarks, and meaningful comparisons with traditional algorithms that do not use AI can be drawn. Third, we must ensure that energy metrics and logs can be accessed and uniformly integrated into the AI benchmarks.
+
+\subsubsection{AI Energy Benchmark Carpentry}
+
+To support AI energy benchmark carpentry efforts, we need to address the following issues:
+
+\begin{itemize}
+\item Conduct a relevant survey of existing efforts
+\item Identify metrics useful for AI benchmarks 
+\item Identify how to leverage existing and create new leaderboards focusing on energy metrics
+\item Identify simple-to-use blueprints as part of the carpentry efforts that can not only be replicated and reused, but also serve as a basis for newly developed benchmarks.
+\item Conduct community outreach to offer carpentry tutorials that focus on AI benchmarks instead of just AI software and services.
+\item Identify how to obtain and integrate meaningful and practical metrics (e.g., data centers may not provide uniform access to energy data) so that energy data collection and access become part of carpentry efforts.
+\end{itemize}
+
+Strategies to integrate energy into AI benchmarks for carpentry efforts include improving access to metrics, including the creation of logs during runtime that:
+
+\begin{itemize}
+    \item Log ambient temperature and humidity.
+    \item Log sample power at regular intervals or averages over the run.
+    \item Store the logging data in an easy-to-parse format (CSV, JSON, YAML) 
+    \item Upload results as artifacts in support of the FAIR principle and make available for comparison.
+\end{itemize}
+
+Next, we discuss some of the aspects that need to be addressed in more detail.
+
+
+\subsubsection{Energy Metrics}
+
+There are various energy metrics to consider, including metrics that may not historically received attention. It is also important to identify metrics for leaderboards, but they must be obtained in a way that allows fair, informed comparisons. Hence, it is important to document how the experiment should be conducted rather than just referring to the metric. In principle, blueprints should be used and adapted to make comparisons across hardware and software easier. Energy metrics are used across different layers of the AI benchmark infrastructure, which is similar to classical HPC infrastructure. We provide an example of using different metrics on the various layers in Figure \ref{fig:energy-metric-layer}. Such diagrams should be integrated into the blueprints provided to users to simplify understanding the benchmarks' energy scope.
+
+\input{graph-energy-layered.tex}
+
+As part of the energy augmentation, a clear purpose for the benchmark metric should be stated. 
+Such examples should be collected as part of the experiment's metadata so they can be leveraged and serve as a motivator for other benchmarks. In our example from Figure \ref {fig:energy-metric-layer}, the purpose for each metric is as follows:
+
+
+\begin{enumerate}%[label=\arabic*.,leftmargin=0pt,labelsep=1em,align=left]
+
+\item {\bf Device/Micro-architectural Layer (\mmD})
+\begin{itemize}
+        \item {\em Energy per flop} or {\em Energy per inference}: Measures the energy consumed to perform a single computational operation (a floating-point operation or an inference).
+        \item {\em Temperature sensors}: {\em Related Logging (Non-KPI):} {\em Inlet and Outlet Temperature Sensors}: Logged because {\em thermal headroom} directly bounds the safe {\em Dynamic Voltage and Frequency Scaling (DVFS)} ranges.
+\end{itemize}
+\item {\bf Job/System Layer (\mmJ)}
+\begin{itemize}
+
+        \item {\em Kilowatt-hour (kWh)}: The total energy consumed by a specific job or set of jobs over its duration.
+        \item {\em Energy--Delay Product (EDP)}: A combined metric of energy and time (energy $\times$ delay) used to assess the overall efficiency of a computation. Lower EDP generally indicates better performance and efficiency.
+\end{itemize}
+
+\item {\bf Facilities/Data Center Layer (\mmF)}
+\begin{itemize}
+
+        \item {\em Power Usage Effectiveness (PUE)}: A ratio that measures how efficiently a data center uses energy. An ideal PUE is 1.0 (meaning the IT equipment uses all energy).
+        {\em Data Center Infrastructure Efficiency (DCiE)}: The reciprocal of PUE, expressed as a percentage. It shows the percentage of total data center energy used by IT equipment.
+\end{itemize}
+
+\end{enumerate}
+
+This tiered structure, along with a detailed purpose statement for each metric, allows for meaningful comparisons and decision-making at every level of the computing infrastructure.
+
+To identify commonly used metrics, we conducted an initial survey of tools and benchmarks related to energy, which we present in 
+Table \ref{tab:hpc_energy_catalog}, while listing their typical benchmark use.
+
+Common requirements for such metrics include obtaining measurements at low cost, sharing results with metadata augmentations, and integrating them into potential leaderboards. 
+We believe we have to go beyond established leaderboards such as {\em Green500} and the {\em MLPerf Power}, which already influence processor road-maps and procurement calls~\cite{Scogland11Green500,Tschand24MLPerfPower}, to raise awareness of the energy impact on real-world scientific applications.
+
+\renewcommand{\arraystretch}{1.1}
+\begin{table*}[hptb]
+  \centering
+  \caption{Energy- or Carbon-Efficiency (B)enchmarks and (T)ools used in Scientific-HPC research.}
+  \label{tab:hpc_energy_catalog}
+
+  \resizebox{\textwidth}{!}{%
+  \begin{tabular}{|lllll|}
+  \hline
+\rowcolor{blue!20} 
+    & \headerfont\textbf{(B)enchmark or (T)ool}
+    & 
+    & \headerfont\textbf{Core metric(s) } %\& data captured} 
+    & \headerfont\textbf{Typical Benchmarking Use}\\ 
+\hline
+\hline
+\rowcolor{gray!20} \multicolumn{5}{|l|}{Benchmark}\\ \hline
+\mmB & SPECpower\_ssj2008           & \cite{specpower}            & W/transaction; ops/W                & Enterprise-server rankings; ENERGY STAR compliance \\ \hline
+\mmB & SPEC\,SERT$^{2}$             & \cite{sert2}                & Server-Efficiency-Rating = kWh + perf    & EU Lot 9 certification; vendor datasheets \\ \hline
+\mmB & TPC-Energy                   & \cite{tpcenergy}            & Wh/DB phase                            & OLTP/warehouse energy cost studies \\ \hline
+\mmB & JouleSort                    & \cite{joulesort}            & records/J                              & Storage-I/O contests; I/O-stack tuning \\ \hline
+\mmB & Green500                     & \cite{green500}             & GFLOPS/W (HPL or HPL-AI)               & Global supercomputer energy ranking \\ \hline
+\mmB & HPCG-Power                   & \cite{hpcgpower}            & GFLOPS/W (HPCG)                        & Memory-bound tuning; procurement add-on to TOP500 \\ \hline
+\mmB & HPL-MxP (HPL-AI)             & \cite{hplmxphplai}          & mixed-precision GFLOPS/W               & GPU/TPU evaluation for AI-optimised LINPACK \\ \hline
+\mmB & MLPerf Power                 & \cite{mlperfpower}          & J; avg W; J/sample; J/epoch       & Official energy track for MLPerf submissions \\ \hline
+\mmB & MLPerf Tiny                  & \cite{mlperftiny}           & $\mu$J/inference (MCU)             & Edge-AI board comparison; ultra-low-power design \\ \hline
+\mmB & CoreMark-PRO Power           & \cite{coremarkpro}          & iterations/s/W (SoC)                 & Pre-silicon DVFS sweeps; embedded RFPs \\ \hline 
+\mmB & UL Procyon AI Power          & \cite{procyon}              & images/W; fps/W                     & Smartphone \& laptop AI-inference benchmarks \\ \hline
+\mmB & CANDLE Power Study           & \cite{candlepowerstud}      & J/epoch; GFLOPS/W                   & DOE accelerator procurement guidance \\ \hline
+\mmB & LULESH/miniFE Energy       & \cite{luleshminifeene}      & J/iteration                            & DVFS + autotuning baselines \\ \hline
+\mmB & ExaSMR Power Benchmark       & \cite{exasmrpowerbenc}      & J/neutron; energy-vs-accuracy curve   & Energy budget strategy in nuclear simulations \\ \hline
+\mmB & EE-HPC-WG Energy Benchmark   & \cite{eehpcwgenergybe}      & draft node/job spec; JSON trace       & Toward common HPC energy standard \\ \hline
+\mmB & HPC-AI500 Energy Track       & \cite{hpcai500energyt}      & planned: GFLOPS/W; tokens/J         & Mixed AI/HPC cluster evaluations \\ \hline
+\mmB & PARSEC-3.1 Energy Extension  & \cite{parsec31energye}      & W; J via PAPI-RAPL; J/op; EDP       & Pre-silicon DVFS research \\ \hline
+\mmB & CosmoFlow-Power              & \cite{cosmoflow2019}        & J/epoch; GFLOPS/W                   & CNN scaling on 15 k+ GPUs \\ \hline
+\mmB & HACC Energy Add-on           & \cite{hacc2020power}        & J/particle update                      & N-body cosmology power studies \\ \hline
+\mmB & DeepCAM-Energy               & \cite{deepcam2020power}     & J/epoch (UNet)                         & Climate-analytics accelerator studies \\ \hline
+\mmB & OpenIFS-Energy               & \cite{openifsenergy2023}    & kWh/model-day; W timeline             & Weather-model node comparison \\ \hline
+\mmB & GROMACS-EE                   & \cite{gromacsee2024}        & J/ns; W/GPU                         & MD clock-vs-accuracy trade-offs \\ \hline
+\mmB & NAMD-Power                   & \cite{namdpower2019}        & Energy-Delay-Product (ApoA1)             & Summit node DVFS optimisation \\ \hline
+\mmB & QE Energy Suite              & \cite{qeenergy2022}         & J/SCF step; GFLOPS/W                & DFT GPU-offload studies \\ \hline
+\mmB & VASP-Power Harness           & \cite{vasppower2023}        & W; kWh/MD step                        & Materials-science accelerator compare \\ \hline
+\mmB & OpenFOAM-Energy              & \cite{openfoamenergy2021}   & J/1k iterations                       & CFD partitioning \& mesh tuning \\ \hline
+\mmB & InSAR-AI Power Kit           & \cite{insarpower2024}       & J/satellite scene                      & Edge-to-cloud EO inference cost \\ \hline
+\mmB & H3D-Energy                   & \cite{h3denergy2023}        & J/hydrology timestep                & Hydrology model DVFS exploration \\ \hline \hline\hline  
+\rowcolor{gray!20} \multicolumn{5}{|l|}{Tool}\\ \hline
+\mmT & PTDaemon/SERT Energy       & \cite{specptdaemonser}      & calibrated W; kWh (node)                & Lab reproducibility; Lot 9 labels \\ \hline
+\mmT & Scaphandre                   & \cite{scaphandre}           & W; kWh (process/node, Prometheus)     & Slurm dashboards; power-cap feedback \\ \hline
+\mmT & Kepler                       & \cite{kepler}               & W/pod; J/pod (eBPF)                 & Energy observability in K8s clusters \\ \hline
+\mmT & CodeCarbon                   & \cite{codecarbon}           & kWh; kg CO\(_2\)e (process)             & Rapid CO\(_2\) estimation in pipelines \\ \hline
+\mmT & CarbonTracker                & \cite{carbontracker}        & measured + predicted kWh; CO\(_2\)e     & Scheduling DL jobs in low-carbon hours \\ \hline
+\mmT & PowerPACK/Mont-Blanc       & \cite{powerpackmontbl}      & W; J for MPI/OpenMP mini-apps         & Network-topology \& DVFS studies \\ \hline
+\mmT & Cray PAT Energy Counters     & \cite{craypatenergyco}      & J/function; avg W                     & Kernel hotspot hunting on Shasta \\ \hline
+\mmT & IBM PowerAPI (pmlib)         & \cite{ibmpowerapipmli}      & kWh (job/process)                      & Energy-aware scheduling on Summit \\ \hline
+\mmT & NVIDIA DCGM Energy           & \cite{nvidiadcgmenerg}      & W; J (GPU) \@ 1Hz; telemetry           & GPU power-cap discovery; Green500 \\ \hline
+\mmT & Intel VTune Power            & \cite{intelvtunepower}      & package W; J/function                 & Roofline-vs-energy tuning on Xeon \\ \hline 
+\mmT & Cloudmesh GPU & \cite{cloudmesh-gpu} & Power Draw; Temperature & Temperature and energy frequency traces \\ \hline
+  \end{tabular}
+  }
+\end{table*}
+
+
+\subsubsection{Leveraging Previous Work}
+
+As we can see from the table, a large number of tools and benchmarks exist, and we can leverage them to work towards a FAIR-based approach on energy benchmarks. This is all the more important when developing concise carpentry and democratization efforts. The distinction in the layered architecture for energy benchmarks also helps, as it is often not possible or desirable to address all layers at once. It is evident that energy benchmarking, in itself, is a complex research topic, and that carpentry efforts must be established to bring this knowledge forward and enhance AI benchmarks into AI energy benchmarks.

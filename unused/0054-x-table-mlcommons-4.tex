@@ -1,0 +1,43 @@
+
+\begin{table*}[htb]
+\caption{MLCommons Benchmark Overview. \TODO{improve this table.}}
+\label{tab:mlcommons-benchmarks}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.2\textwidth}|p{0.3\textwidth}|}
+\hline
+\rowcolor{blue!30} \textbf{MLPerf Benchmark Name} & \textbf{Task Type} & \textbf{Application Area} & \textbf{Model Types} & \textbf{Metrics} & \textbf{Supported Platforms} & \textbf{Benchmark Features} \\
+\hline
+\hline
+Training & Training (AI models) & AI research, deep learning & CNNs, RNNs, Transformers, etc. & Throughput (samples/sec), Latency (ms) & GPUs (NVIDIA, AMD), TPUs, CPUs, Custom accelerators & Measures training performance for deep learning models \\
+\hline
+Inference & Inference (AI models) & AI, machine learning, real-time inference & CNNs, Transformers, BERT, etc. & Throughput (samples/sec), Latency (ms) & GPUs (NVIDIA, AMD), TPUs, CPUs, edge devices & Focuses on real-time inference for vision, NLP, etc. \\
+\hline
+Tiny & Inference (Edge devices) & Edge AI, IoT & CNNs, Transformers, DNNs & Throughput (samples/sec), Latency (ms) & Edge devices (Raspberry Pi, mobile devices, etc.) & Inference on low-power devices, small models \\
+\hline
+HPC & High-Performance Computing & Scientific computing, AI, supercomputing & DNNs, RNNs, HPC workloads & Time-to-solution, Throughput (samples/sec) & Supercomputers, HPC clusters & High-performance computing with AI applications \\
+\hline
+Supercomputing/HPC & Training (AI models) & AI, supercomputing & Large-scale DNNs, GPT, etc. & Throughput, Time-to-solution & Supercomputers, multi-node setups & Large-scale training with distributed computing \\
+\hline
+Vision & Inference (Computer Vision) & Computer vision, autonomous driving, surveillance & CNNs, YOLO, ResNet & Throughput (fps), Latency (ms) & GPUs, TPUs, CPUs, edge devices & Focus on visual processing and autonomous systems \\
+\hline
+Natural Language Processing (NLP) & Inference (Text processing) & Natural Language Processing, AI chatbots & Transformers, BERT, GPT & Throughput (samples/sec), Latency (ms) & GPUs, TPUs, CPUs, mobile devices & NLP-focused models like BERT, GPT, etc. \\
+\hline
+Audio & Inference (Audio processing) & Speech recognition, Audio processing & RNNs, CNNs, Transformers & Latency (ms), Throughput & GPUs, TPUs, CPUs, mobile devices & Optimized for speech and audio processing \\
+\hline
+Data-Centric & Training (AI models) & Data-driven AI tasks & CNNs, RNNs, Transformers, etc. & Time-to-solution, Accuracy, Throughput & GPUs (NVIDIA, AMD), TPUs, custom accelerators & Focus on data-centric machine learning tasks \\
+\hline
+OpenAI & Training (AI models) & OpenAI-style generative models & GPT, BERT, Transformer-based models & Training speed, Time-to-solution & GPUs (NVIDIA), TPUs, CPUs & Focus on OpenAI-style models like GPT and BERT \\
+\hline
+\TODO{Science} & Scientific application accuracy & Eartchquake, Cloudmask, others & Time series, ??? & Scientific accuraccy & Supported platforms & depends on application (NVIDIA, AMD) \\
+\hline
+\end{tabular}
+}
+\TODO{somehow the table column names got lost, readd them.}
+\TODO{add hpc benchmarks}
+\TODO{add mlcommons science benchamrkas}
+\TODO{add AILuminate benchmarks}
+\TODO{are any of these benchmarks listed in the github ontology}
+\TODO{are any benchmarks from the github ontology listed from lcommons that are not listed in this table.}
+\TODO{we hae a simplified table that we want to hide or even complete so that we may use that instead?}
+
+\end{table*}

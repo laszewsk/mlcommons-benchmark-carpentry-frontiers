@@ -1,0 +1,46 @@
+\providecommand{\normal}[1]{#1}
+
+\begin{table*}[htbp]
+\centering
+\caption{MLCommons Benchmark Suites and Included Workloads (v5.x, 2025)}
+\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.5\textwidth}|}
+\hline
+\rowcolor{blue!30} \textbf{MLPerf Suite} & \textbf{Category} & \textbf{Workloads / Models Included} \\ 
+\hline
+\hline
+\normal{Inference: Datacenter} & Vision, Language, Recommendation, GNN, Audio & 
+ResNet50-v1.5 (Image Classification); RetinaNet (Object Detection); 3D-UNet (Medical Segmentation); Stable Diffusion / SDXL (Text-to-Image); DLRM-DCNv2 (Recommendation); BERT-Large (QA); LLaMA 2 70B / LLaMA 3.1 405B / Mixtral 8×7B / GPT-J (LLMs, Summarization, QA); Whisper / RNN-T (Speech); R-GAT (GNN); PointPainting (3D Object Detection) \\ 
+\hline
+\normal{Training} & Vision, Language, Recommendation, Diffusion, Graph, RL & 
+ResNet-50 (Classification); Mask R-CNN (Detection); 3D U-Net (Segmentation); DLRM/DCNv2 (Recommendation); LLaMA 2 70B, LLaMA 3.1 8B/405B (LLMs); Stable Diffusion v2 / FLUX.1 (Image Generation); R-GAT (Graph NN); RNN-T (Speech); Mini-Go (Reinforcement Learning) \\ 
+\hline
+\normal{Inference: Edge} & Edge AI / On-device Vision and NLP & 
+MobileNet V1–V4 (Classification); SSD-MobileNet (Detection); On-device NLP and Vision tasks for latency/power benchmarking \\ 
+\hline
+\normal{Inference: Mobile} & Mobile AI & 
+MobileNetV4-Conv-L (Classification); Mobile SSD variants (Detection); Small-scale on-device inference benchmarks for smartphones/tablets \\ 
+\hline
+\normal{Inference: Tiny} & TinyML / MCU workloads & 
+Image Classification (TinyML models); Audio Keyword Spotting; Visual Wake Words; Motion Classification (MCU-friendly models) \\ 
+\hline
+\normal{Client} & Client-side LLMs & 
+LLaMA 2 7B Chat; LLaMA 3.1 8B Instruct; Phi 3.5 Mini Instruct; Phi 4 Reasoning 14B (Code, Reasoning, Summarization tasks) \\ 
+\hline
+\normal{Storage} & Storage and Data Pipeline & 
+Workloads simulate data ingestion, preprocessing, and I/O for Vision (ResNet), NLP (BERT), and Recommendation (DLRM) pipelines \\ 
+\hline
+\normal{AlgoPerf} & Algorithm Efficiency & 
+ResNet-50 (ImageNet); ViT (Vision Transformer); U-Net (MRI reconstruction); DLRMsmall (Criteo CTR); DeepSpeech / Conformer (Speech); OGBG (Graph); plus other algorithmic testbeds (8 total workloads) \\ 
+\hline
+\normal{Automotive} & Autonomous Driving & 
+PointPainting (3D Object Detection, Waymo Dataset) \\ 
+\hline
+\normal{AILuminate} & AI Safety / Robustness & 
+Safety, Jailbreak, and Risk Evaluation workloads across LLMs (AILuminate v0.5 benchmark) \\ 
+\hline
+\normal{HPC} & & \\ 
+\hline
+\normal{Science} & & \\
+\hline
+\end{tabular}
+\end{table*}

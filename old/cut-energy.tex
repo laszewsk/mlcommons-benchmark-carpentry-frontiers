@@ -1,0 +1,137 @@
+
+\begin{comment}
+
+\TODO{this may be possible to be integrated in the table as a column, where we note on which level the benchmark is, that seems real useful}
+
+\emph{One scalar per machine}—ideal for non-experts and procurement:
+\textsc{SPECpower\_ssj2008}, \textsc{SERT2}, \textsc{TPC-Energy}, \textsc{JouleSort}, \textsc{Green500}, \textsc{HPCG-Power}, \textsc{HPL-MxP}, \textsc{MLPerf Power}, and \textsc{MLPerf Tiny}.
+Their scores appear in vendor brochures, ENERGY-STAR dossiers, and EU Lot 9 conformity reports~\cite{EU_Lot9_Guidance}. %% EU2019_424,
+
+\paragraph{Instrumentation frameworks.}
+\TODO{What is an instrumentation framework}
+
+Calibrated telemetry collectors—\textsc{SPEC PTDaemon}+RAPL/NVML, \textsc{Scaphandre}, \textsc{Kepler}, IBM \textsc{PowerAPI}, NVIDIA
+\textsc{DCGM Energy}, Intel \textsc{VTune Power}, Cray \textsc{PAT Energy}—provide the 1 Hz power traces that optimization research needs.
+
+\paragraph{Mini-apps and carbon wrappers.}
+\TODO{What are Mini-apps and carbon wrappers.}
+Power-augmented kernels (\textsc{LULESH-Power}, \textsc{CosmoFlow-Power}, \textsc{GROMACS-EE}, \dots) and wrappers (\textsc{CodeCarbon}, \textsc{CarbonTracker}) translate joules into kg CO\(_2\)e or cost, completing the silicon-to-sustainability loop.
+
+\end{comment}
+
+\input{table-energy}
+
+\begin{comment}
+%----------------------------------------------------
+\subsection{Energy Metrics}
+\label{sec:energy-metrics}
+
+\TODO{Old title is a bit too complex and mixes layers with concrete metric names, thus we can not use: Metric Layers, Temperature, and DCiE}
+
+\TODO{Maybe we should say: As we can see form Table \ref{tab???} a plethora of energy related metrics exists. Software Carpentry and Democratizing efforts must educate users about them but also must possibly focus on the most useful or accepted once. Besides listing the actual energy used another important metric is the carbon emission. This is especially important is carbon emission as it has become world wide a measure for the impact on the environment. This motivates also many stakeholders to work towards zero carbon emission ... Think this over ...
+Other metrics such as temperature, ... may be intermediate measurements if energy or carbon emission may not be immediately available.
+}
+
+\textit{Why it matters for carpentry.}  
+\TODO{ i like the layer specific vs log but these are as you point out different things. SO one should look for what is measured and possibly establish the layer in a diagram and put the abstraction into it}
+Layer-specific metrics tell authors \emph{what to log} and reviewers \emph{how to compare} submissions that run on very different hardware. Device-level energy per flop or inference pinpoints micro-architectural hot-spots; job-level kWh and Energy–Delay Product drive power-cap schedulers; facility-level PUE and DCiE satisfy CSR reporting. Although temperature is not itself a KPI, inlet and outlet sensors are logged because thermal headroom bounds safe DVFS ranges.
+
+%------------------------------------------------------
+\subsection{From On-Chip Counters to Carbon APIs} %% Instrumentation: 
+\label{sec:energy:instr}
+
+\textit{Why it matters for carpentry.} By funneling RAPL, NVML, and PM\_COUNTER readings through a uniform 1 Hz JSON trace, the kit ensures that the power data looks the same on a laptop or an exascale node. On-chip counters deliver sub-second energy samples; for leaderboard runs, these are cross-checked with an external power analyzer driven by \textsc{SPEC PTDaemon}. Cluster collectors (\textsc{Scaphandre},
+IBM \textsc{PowerAPI}, NVIDIA \textsc{DCGM Energy}) stream calibrated data to Prometheus, and carbon wrappers (\textsc{CodeCarbon}, \textsc{CarbonTracker}) tag each joule with live grid-intensity kg CO\(_2\)e factors. Figure~\ref{fig:pipeline} shows the resulting
+acquire $\rightarrow$ normalize $\rightarrow$ KPI flow.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.22]{images/kpi.pdf}
+  \caption{Measurement workflow adopted by the energy-carpentry kit. Raw counter data are calibrated, normalized to J/kWh, converted to kg CO\(_2\)e via grid-intensity APIs, and aggregated into per-job KPIs. \TODO{this figure does not address the meter challang as the meters are on differnt levels. this seems to be here the application level not the center level. Also we have multiple meters ... the reason this seems incomplete is that on chip counter is on same level as external meter? Also we can plug in an external meter onto the CPU or GPU if we are real ambitious which I think has been done at SDSC. We do not need to mention this though ... as for this discussion to detailed. }}
+  \label{fig:pipeline}
+\end{figure}
+
+%----------------------------------------------------------------------
+\subsection{A Generalized Survey Framework}
+\label{sec:energy:survey}
+
+\textit{Why it matters for carpentry.}  
+This three-stage template lets any new benchmark publish FAIR, trace-backed energy data with minimal extra code.
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Acquisition} — log 1 Hz power from counters \emph{and} a calibrated wall-plug meter.
+  \item \textbf{Normalisation} — convert to J, kWh, kg CO\(_2\)e and derive GFLOPS/W, EDP, etc.
+  \item \textbf{Reporting} — bundle traces + metadata in the \texttt{EE-HPC-WG} JSON schema and archive under a DOI.
+\end{enumerate}
+
+%----------------------------------------------------------------------
+\subsection{Trade-offs and Scaling Limits}
+\label{sec:energy:tradeoffs}
+
+\textit{Why it matters for carpentry.}  
+The kit lets any lab replicate these studies and contribute points to the communal dashboard. Capping an A100 at 300 W saves 11\%  energy for a 1\% speed loss~\cite{nvidiadcgmenerg}; HPL-MxP more than doubles GFLOPS/W over FP64~\cite{hplmxphplai}; CosmoFlow energy/epoch flattens beyond 8,000 GPUs
+\cite{cosmoflow2019}. Figure~\ref{fig:tdp_scatter} contextualizes these results against historical CPU/GPU TDP trends.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{images/tdp_vs_cpu-gpu.pdf}
+  %\caption{Thermal-design power (TDP) and core/SM counts of flagship CPUs and GPUs, 2007–2025. Marker size~\(\propto\)TDP; color encodes parallel units. Linear fits show power budgets rising faster than on-chip parallelism.}
+  \caption{\TODO{move this figure after the table from ORNL. and say this is what happens in the community. There is a citation missing where the data comes from... or is it self made? is the thermal design power important as we also consider flops. so should it be power/flops? to normalize, if so would that not be smaller in principal.} Evolution of flagship CPU and GPU power envelopes (2007–2025). Marker size scales with thermal design power (TDP); color encodes the advertised number of cores/SMs. The diverging linear trends reveal that peak power is growing faster than on-chip parallelism—a widening gap that any reproducible energy benchmark must capture and normalize if results are to remain portable across hardware generations.}
+  \label{fig:tdp_scatter}
+\end{figure}
+
+
+
+%------------------------------------------------------
+\subsection{Datacenter Benchmarks in Practice}
+\label{sec:energy:dcbench}
+
+\textit{Why it matters for carpentry.}  
+Highlighting which suites dominate procurement reveals coverage gaps the community can fill with new, open benchmarks that reuse the kit. SPECpower/SERT target CPUs; TPC-Energy and JouleSort probe storage; Green500, HPCG-Power, and HPL-MxP rank full HPC systems; MLPerf Power adds AI accelerators. Combined, they span \SI{1}{\micro\watt} $\rightarrow$ \SI{1}{\mega\watt}, yet still under-sample graph and streaming workloads~\cite{Tschand24MLPerfPower}.
+
+
+\end{comment}
+
+\begin{comment}
+    
+\noindent
+\textbf{Software levers are already effective.}
+Two independent field trials confirm double-digit abatements:
+
+\begin{itemize}
+  \item \emph{S.C.A.L.E} for OpenShift at ING Bank reduced cluster-level CO\(_2\)e by 20 \% across 300 nodes while meeting SLA deadlines
+       ~\cite{ING_SCALE_2024}.   % <7>
+  \item The \emph{GREEN} plug-in for Slurm achieved an 18 \% reduction on a 512-GPU testbed with \(<\!3\)\,\% throughput penalty
+       ~\cite{GREEN_Slurm_2025}.   % <8>
+\end{itemize}
+
+\noindent
+\emph{Implication.} At present, U.S.\ prices every megawatt of IT load costs roughly \$0.7 M yr\(^{-1}\); a 15 \% carbon-aware shift therefore saves six figures annually—before any carbon price is applied. As Frontier approaches 30 MW and commercial AI clouds exceed 100 MW,
+optimizing \emph{\$per joule} and \emph{kg CO\(_2\)e per job} is no longer optional; it is as material as FLOPS-per-joule.
+
+%%------------------------------------------------------
+\subsection{Next Steps: From Point Results to FAIR Energy Data}
+\label{sec:energy:agenda}
+
+\textit{Why it matters for carpentry.}  
+These recommendations turn isolated measurements into a living,
+community resource—mirroring the paper’s call for dynamic, open
+benchmarks.
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Maintain sensor accuracy \(\le3\)\,\%.} Calibrate against
+        a traceable meter before every campaign; publish offsets.
+  \item \textbf{Release the trace, not just the point.} Archive 1 Hz
+        power data + metadata under a DOI in the EE-HPC-WG JSON format.
+  \item \textbf{Broaden workload coverage.} Extend suites to graph,
+        streaming, and quantum kernels so 2025 optimizations remain
+        valid in 2030.
+  \item \textbf{Community dashboard.} A public leaderboard plotting
+        GFLOPS/W vs kg CO\(_2\)e/step will let users rank systems,
+        providers showcase progress, and regulators audit compliance.
+\end{enumerate}
+
+Treating energy and carbon as first-class results—and making the
+supporting data openly accessible—ensures that the next wave of HPC-AI
+breakthroughs is not only \emph{fast} but demonstrably \emph{sustainable}.
+\end{comment}

@@ -1,0 +1,19 @@
+
+\subsection{Existing Monitoring Tools in DL and AI}
+\label{sec:benchmarks-monitor}
+
+Alongside active development, the PyTorch team has developed several state of the art monitoring and profiling systems.
+The most prominent is the PyTorch Profiles which provides detailed performance metrics, GPU utilization tracking and operator efficiency. It also integrates with TensorBoard for model training and visualization.
+There is also the torch.monitor module, that provides a better system logging infrastructure to understand model diagnostics.
+
+There are also paired tools that involve both diagnostics and debugging. Cockpit~\cite{DBLP:journals/corr/abs-2102-06604}, provides real-time monitoring of gradient distributions and curvature, aiding in hyperparameter tuning.
+All of these tools come equipped with native benchmarking through TorchBench~\cite{zhao2024deepcontextcontextawarecrossplatformcrossframework}. 
+There is also the torch-analyzer for layer-wise runtime and memory mapping statistics.
+Holistic profiling solutions have also been developed.
+DeepContext links program contexts across execution levels to provide fine-grained performance insights~\cite{zhao2024deepcontextcontextawarecrossplatformcrossframework}.
+
+{happy to keep adding more details on visualizations and evaluations for tf and torch. If not one has claimed it - KM}
+
+others
+
+what many experiment monitoring tools exist, i remember that some companies possibly open source tools offer the collection of multiple results so they can be compared to find best models. Which are they?

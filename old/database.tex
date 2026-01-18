@@ -1,0 +1,87 @@
+\section{Database}
+
+\TODO{Victor}
+
+\TODO{should the database aspet refocused, but FAIRNESS and correctness be the new focus?}
+\TODO{why is database benchmarking important for AI?}
+
+Database benchmarking has evolved alongside the development of database management systems (DBMS), reflecting shifts in technology, user requirements, and industry standards. The practice began in the late 1970s and early 1980s as relational databases like IBM's System R\cite{Orlowski2013IBMSystemR} and Oracle gained traction. Early efforts were largely ad hoc, focusing on custom performance tests run by vendors or researchers to evaluate throughput, query latency, and concurrency.
+
+The need for standardized, repeatable benchmarking led to the creation of formal benchmarks by the Transaction Processing Performance Council (TPC)\cite{wikipedia-TPC} in the late 1980s. The TPC-C benchmark, introduced in 1992, became the gold standard for evaluating online transaction processing (OLTP) systems. It simulated a wholesale supplier workload and provided metrics like transactions per minute (tpmC), enabling fair performance comparisons across vendors. Soon after, TPC-H was developed for decision support systems, offering a set of complex queries to test analytical processing capabilities.
+
+In the 2000s, as web applications and cloud computing rose to prominence, new data models and access patterns emerged. This shift led to the introduction of alternative benchmarks such as the Yahoo! Cloud Serving Benchmark (YCSB) \cite{wikipedia-YCSB} in 2010, which targeted NoSQL databases like Cassandra and MongoDB. YCSB allowed benchmarking of scalability and latency under read/write-intensive workloads, making it ideal for cloud-native and distributed systems.
+
+More recently, the explosion of real-time data processing, streaming systems, and hybrid workloads has given rise to benchmarks like CH-benCHmark\cite{tum.de-CH-benCHmark} (within the BenchBase suite\cite{cmu-db-BenchBase} and combining OLTP and OLAP) and custom workload generators tailored for HTAP and AI-driven systems. Open-source communities and organizations now emphasize workload-specific benchmarking, simulating real production scenarios over synthetic tests.
+
+Today, database benchmarking continues to evolve, incorporating aspects such as energy efficiency, cost-performance trade-offs, multi-tenancy, and observability. While no single benchmark fits all modern needs, benchmarking remains a cornerstone of performance evaluation, guiding system design, vendor selection, and tuning for both on-premises and cloud-based deployments.
+
+Database benchmarking has faced several challenges stemming from vendor manipulation and attempts to game the system. In 1993, Oracle introduced a feature called "discrete transaction" \cite{Shanley1998TPCOrigin} solely to inflate its TPC-A benchmark scores—despite having no practical relevance. This prompted the TPC to revise its rules in TPC-C Revision 1.1 to eliminate such tactics. 
+
+“\textit{\textbf{In response to concerns about vendors embedding "benchmark specials"—features designed solely to inflate benchmark scores without real-world value—the TPC enacted Clause 0.2 in September 1993}}“
+
+The clause, which took effect in TPC-A and TPC-B in June 1994, became a cornerstone of the TPC’s commitment to fair and meaningful benchmarking. 
+
+Academic scrutiny also led to pushback from vendors; after studies exposed poor performance in some systems, Oracle and others imposed the so-called "DeWitt Clause"\cite{wikipedia-DavidDeWitt} which prohibited publishing benchmark results without vendor approval—curbing openness and transparency in performance research. 
+
+More recently, in 2021, Nvidia \cite{Quach2021Nvidia-tweaked-TPCx-BB} modified parts of the TPCx-BB benchmark using Python to better leverage GPU acceleration. This violated established benchmark protocols, and the TPC responded by reinforcing strict adherence to benchmark specifications to maintain fairness and comparability.
+
+Benchmarking databases in the public cloud introduces additional challenges compared to on-premise setups, particularly regarding data persistence and compute reliability. While on-premise systems offer stable, predictable environments, cloud platforms like AWS require careful selection of instance types and storage. Spot Instances\cite{Busser2023AmazonEc2SpotBestPractices}, though cost-effective, are interruptible and can result in data loss if paired with ephemeral instance store volumes. To ensure meaningful, durable benchmarks, it’s essential to use persistent storage \cite{Amazon-DataPersistence} like EBS, avoid volatile compute options during tests, and adhere to practices that preserve both data integrity and benchmark validity.
+
+Cloud-managed databases, particularly those employing eventual consistency models, may not guarantee immediate data durability or meet strict high-availability requirements. In systems like Amazon DynamoDB or certain configurations of Amazon Aurora, writes may appear acknowledged before being fully propagated, which can risk temporary data visibility gaps or, in failure scenarios, potential data loss \cite{Amazon-WhatisNoSQL}. For applications requiring strong consistency and zero data loss, it’s critical to understand the trade-offs and select consistency models and backup strategies that match the reliability requirements.
+
+There are research \cite{Jianfeng2024Evaluatology}  analyzing the manipulation of performance metrics for misleading advantage highlights the need to adopt evaluatological principles—emphasizing rigor, transparency, and context-aware evaluation—to ensure fair and meaningful benchmarking.
+
+Here are some thoughts about how to avoid Benchmark Gaming
+
+\begin{enumerate}
+    \item \textbf{Design for Real-World Relevance}
+
+ Benchmarks must simulate \textbf{realistic workloads}, not synthetic ones that reward optimizations irrelevant to actual use.
+
+ \textit{Avoid “benchmark specials”—features or configurations optimized only to score well but not used in real deployments.}
+
+    \item \textbf{Transparent Assumptions and Metrics}
+
+ Clearly define \textbf{evaluation criteria}, \textbf{data sources}, \textbf{workload configurations}, and \textbf{measurement conditions}.
+
+ \textit{Transparency deters manipulation by making gaming attempts obvious and easy to audit.}
+
+    \item \textbf{Multi-Dimensional Evaluation}
+
+ Use a \textbf{suite of diverse metrics} instead of a single number (e.g., latency + cost + fault tolerance), reducing incentives to overfit on one.
+
+ \textit{Encourages balanced system performance rather than gaming one dimension.}
+
+    \item \textbf{Independent Verification and Open Benchmarking}
+
+ Evaluations should be \textbf{independently reproducible} and ideally peer-reviewed or community-reviewed.
+
+ \textit{“Reproducibility” is an antidote to undisclosed tweaks or proprietary enhancements.}
+
+    \item \textbf{Evaluative Integrity Policies (Ex Ante Rules)}
+
+ Use \textbf{ex ante benchmark rules} (like TPC Clause 0.2) that prohibit techniques with no practical deployment value.
+
+ \textit{Ex ante governance avoids post hoc disputes and makes expectations clear.}
+
+    \item \textbf{Benchmark Contextualization}
+
+ Interpret results within the \textbf{specific use-case context} (e.g., small-scale dev vs large-scale production) to avoid overgeneralization.
+
+ \textit{Prevents vendors from gaming by cherry-picking contexts that suit their strengths.}
+
+    \item \textbf{Evaluatological Reflexivity}
+
+ Continuously \textbf{reflect and revise} the benchmark based on how it's used or misused in practice.
+
+ \textit{A living benchmark resists ossification and evolving forms of gaming.}
+\end{enumerate}
+
+Despite the evolution of benchmarking into a more rigorous and transparent discipline, recent practices—especially those involving AMD versus Nvidia benchmarking—reflect many of the field’s longstanding challenges. While AMD-sponsored benchmarks often highlight architectural strengths tailored to their hardware, Nvidia’s benchmarking efforts emphasize their own GPU advantages, leading to a competitive environment where each vendor’s tests are carefully crafted to showcase favorable results. This situation echoes historical patterns of benchmark manipulation, such as Oracle’s “discrete transaction” optimization in the 1990s or Nvidia’s more recent unauthorized modifications to the TPCx-BB benchmark to better leverage GPU acceleration. These examples illustrate how benchmarking can devolve into a “pay-to-win” marketing exercise, where curated workloads, selective metrics, and hand-tuned configurations prioritize vendor advantage over independent evaluative rigor. As a result, benchmarking risks losing reproducibility, transparency, and real-world relevance, misleading users and distorting fair performance comparisons. This underscores the critical need for evaluatological principles—such as clear contextualization, multi-dimensional metrics, open verification, and strict ex ante governance—to maintain credibility. Without these safeguards, vendor-sponsored benchmarking in the AMD versus Nvidia arena risks becoming an arms race of promotional claims rather than a reliable guide for users and decision-makers.
+
+\section{Lessons Learned}
+ \TODO{What lessons do we learn from database benchmarking from AI?}
+
+ \TODO{What impact has it not only on databases useing AI, but on other aspects of benchmarks?}
+
+ \TODO{convert refernces to bibtex and use \cite{??}}

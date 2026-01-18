@@ -1,0 +1,549 @@
+
+%%% --------------  Appendix to record abbreviations in the Energy section --------------
+\appendix
+\section {Appendix A \,–\, Glossary of Acronyms, Symbols, and Metrics}
+\label{app:glossary}
+
+\TODO{we only need one glossary, so we need to merge them.}
+
+\noindent
+All abbreviations and shorthand used in  the paper are defined next.  Units follow SI unless noted.
+
+\begin{description}\setlength\itemsep{4pt}
+
+% ============= General HPC / AI terms =================================
+\item[\textbf{AI}] \textit{Artificial Intelligence}
+\item[\textbf{CSR}] \textit{Corporate Social Responsibility}
+\item[\textbf{Exascale}] Computers capable of \(\ge 10^{18}\) FLOPS
+\item[\textbf{HPC}] \textit{High-Performance Computing}
+\item[\textbf{LLM}] \textit{Large Language Model}
+\item[\textbf{PPA}] \textit{Power-Purchase Agreement} (long-term energy contract)
+\item[\textbf{RFP}] \textit{Request for Proposal}
+\item[\textbf{ROI}] \textit{Return on Investment}
+\item[\textbf{WG}] \textit{Working Group}
+
+% ============= Power-measurement counters =============================
+\item[\textbf{RAPL}] \textit{Running Average Power Limit} (Intel/AMD CPU counter)
+\item[\textbf{NVML}] \textit{NVIDIA Management Library} (GPU power API)
+\item[\textbf{PM\_COUNTER}] HPE Cray node-level power register
+
+% ============= Benchmarks / suites ====================================
+\item[\textbf{Green500}] Supercomputer ranking by GFLOPS/W
+\item[\textbf{HPCG}] \textit{High-Performance Conjugate Gradient} benchmark
+\item[\textbf{HPL}] Classic LINPACK FP64 benchmark
+\item[\textbf{HPL-MxP / HPL-AI}] Mixed-precision LINPACK
+\item[\textbf{MLPerf}] MLCommons benchmark family (Training, Inference, Power, Tiny)
+\item[\textbf{SPEC}] \textit{Standard Performance Evaluation Corporation}
+\item[\textbf{TPC}] \textit{Transaction Processing Council}
+
+% ============= Tools / profilers ======================================
+\item[\textbf{CodeCarbon}] Python wrapper that logs kWh and kg CO\(_2\)e
+\item[\textbf{DCGM}] \textit{Data-Centre GPU Manager} (NVIDIA)
+\item[\textbf{Kepler}] eBPF-based energy probe for Kubernetes
+\item[\textbf{PowerAPI}] IBM process/job power-stream library
+\item[\textbf{PTDaemon}] SPEC’s Power and Temperature Daemon
+\item[\textbf{Scaphandre}] Prometheus exporter for RAPL/NVML
+\item[\textbf{VTune}] Intel performance and power profiler
+
+% ============= Schedulers / orchestration =============================
+\item[\textbf{K8s}] Common shorthand for \textit{Kubernetes}
+\item[\textbf{Slurm}] \textit{Simple Linux Utility for Resource Management}
+
+% ============= Metrics and units ======================================
+\item[\textbf{Cores / SMs}] CPU cores or GPU \textit{Streaming Multiprocessors}
+\item[\textbf{DCiE}] \textit{Data-Centre-Infrastructure Efficiency} \(=1/\text{PUE}\)
+\item[\textbf{EDP}] \textit{Energy–Delay Product} \(=\text{Energy}\times\text{Runtime}\)
+\item[\textbf{GFLOPS}] \(10^{9}\) floating-point operations / s
+\item[\textbf{GFLOPS/W}] GFLOPS per watt (energy efficiency)
+\item[\textbf{Hz}] Hertz (samples per second); 1 Hz = 1 s\(^{-1}\)
+\item[\textbf{J}] Joule (energy); 1 J = 1 W × 1 s
+\item[\textbf{J/epoch, J/sample}] Energy per training epoch or inference sample
+\item[\textbf{kWh}] Kilowatt-hour; \(1~\text{kWh}=3.6\times10^{6}\) J
+\item[\textbf{kg CO\(_2\)e}] Kilograms of carbon-dioxide equivalent
+\item[\textbf{KPI}] \textit{Key Performance Indicator}
+\item[\textbf{PUE}] \textit{Power Usage Effectiveness}\;
+      \(\displaystyle\frac{P_{\text{facility}}}{P_{\text{IT}}}\)
+\item[\textbf{cPUE}] \textit{Compute-only PUE}\;
+      \(\displaystyle\frac{P_{\text{compute}}}{\rho\,P_{\text{facility}}}\)
+\item[\textbf{SM}] \textit{Streaming Multiprocessor} (GPU core block)
+\item[\textbf{TDP}] \textit{Thermal-Design Power} (max sustained device power)
+\item[\textbf{W}] Watt (instantaneous power); 1 W = 1 J s\(^{-1}\)
+\item[\textbf{“/”}] In metric notation denotes “per” (e.g.\ J / step)
+\item[\textbf{“;”}] Separates two distinct metrics or use-cases
+\item[\textbf{“+”}] Indicates a composite score that sums two quantities
+\item[\textbf{$\mu$J}] Micro-Joule (\(10^{-6}\) J)
+
+% ============= Data formats / FAIR ====================================
+\item[\textbf{FAIR}] \textit{Findable, Accessible, Interoperable, Reusable}
+\item[\textbf{JSON}] \textit{JavaScript Object Notation} (machine-readable)
+\item[\textbf{Prometheus}] Open-source time-series database and exposition format
+\item[\textbf{Zenodo DOI}] Digital Object Identifier issued by Zenodo repository
+
+\end{description}
+
+\TODO{Not sure how we ended up with 2 glossaries, but these must be merged}
+
+\section{Appendix - Abbreviations}
+
+\newcounter{abbrcategory}
+\newcommand{\abbrsection}[1]{\stepcounter{abbrcategory}\vspace{0.5em}\noindent\underline{\textbf{\theabbrcategory. #1}}\vspace{0.2em}}
+
+\section*{Abbreviations}
+\label{sec:appendix}
+
+
+\abbrsection{AI / ML Core}
+\begin{description}
+\item[AI] Artificial Intelligence
+\item[DeepONet] Deep Operator Network
+\item[FNO] Fourier Neural Operator
+\item[LLM] Large Language Model
+\item[ML] Machine Learning
+\item[PINN] Physics-Informed Neural Network
+\end{description}
+
+\abbrsection{Benchmark Suites and Efforts}
+\begin{description}
+\item[ARC] AI2 Reasoning Challenge
+\item[AristoBench] A benchmark based on U.S. science exam questions
+\item[BioASQ] A benchmark for biomedical question answering
+\item[CORE-Bench] A benchmark for computational reproducibility
+\item[Galactica Eval] A benchmark measuring scientific writing capabilities
+\item[Green500] A ranking of the most energy-efficient supercomputers
+\item[HPC AI500] A benchmark suite for evaluating deep learning at HPC scale
+\item[HPCG] High Performance Conjugate Gradient Benchmark
+\item[HPL] High-Performance LINPACK benchmark
+\item[IO500] Benchmark suite evaluating HPC storage performance
+\item[Kaggle] An online platform hosting data science and AI competitions
+\item[LAB-Bench] A benchmark for evaluating AI models on laboratory research tasks
+\item[MLPerf] MLCommons Performance benchmark suite
+\item[MLPerf HPC] A benchmark extension measuring machine learning workloads in HPC environments
+\item[MMLU] Massive Multitask Language Understanding benchmark
+\item[PDEBench] A benchmark for solving Partial Differential Equations using ML
+\item[SCIQ] A benchmark for science-focused inference and QA
+\item[SciEval] A benchmark for multi-domain scientific reasoning
+\item[SciSafeEval] A benchmark measuring safety alignment in scientific contexts
+\item[SPEC] Standard Performance Evaluation Corporation
+\item[SPEC HPC] A benchmark suite measuring HPC system performance on real-world applications
+\item[STREAM] A synthetic benchmark measuring sustainable memory bandwidth
+\item[TOP500] The official list of the 500 most powerful supercomputers in the world
+\end{description}
+
+
+\abbrsection{Carpentry and Education}
+\begin{description}
+\item[Data Carpentry] Focused on teaching data management and analysis skills
+\item[FAIR] Findable, Accessible, Interoperable, Re-usable
+\item[HPC Carpentry] Training modules focused on teaching HPC skills
+\item[Library Carpentry] Teaching software and data skills for library professionals
+\item[Software Carpentry] A community-driven effort to teach foundational computing skills
+\end{description}
+
+
+\abbrsection{Energy and Power Metrics}
+\begin{description}
+\item[CO₂e] Carbon Dioxide Equivalent
+\item[CSR] Corporate Social Responsibility
+\item[DCiE] Data-Centre-infrastructure Efficiency ($P_{\mathrm{IT}}/P_{\mathrm{fac}}$)
+\item[EDP] Energy–Delay Product
+\item[Energy-to-Solution] Total energy consumed to complete a task
+\item[GFLOPS] Giga Floating-Point Operations per Second
+\item[GFLOPS/W] GFLOPS per Watt (energy efficiency metric)
+\item[J/epoch] Joules per training epoch
+\item[J/sample] Joules per sample
+\item[J/step] Joules per simulation step
+\item[kg CO$_2$e] Kilograms of carbon-dioxide equivalent
+\item[kg CO$_2$e/job] Kilograms CO$_2$e emitted per completed job
+\item[KPI] Key Performance Indicator
+\item[kWh] Kilowatt-hour
+\item[PUE] Power Usage Effectiveness ($P_{\mathrm{fac}}/P_{\mathrm{IT}}$)
+\item[TDP] Thermal Design Power
+\item[cPUE] Compute-Only Power Usage Effectiveness
+\item[Wh/DB-phase] Watt-hours per database phase (TPC-Energy metric)
+\end{description}
+
+
+\abbrsection{Energy Benchmark Suites}
+\begin{description}
+\item[HPCG-Power] Energy-aware version of HPCG
+\item[HPL-MxP] Mixed-Precision High Performance LINPACK
+\item[JouleSort] Benchmark measuring energy efficiency of sorting tasks
+\item[MLPerf Power] Extension tracking Joules/sample and energy performance
+\item[MLPerf Tiny Power] Subset focusing on constrained edge devices
+\item[SPECpower] A benchmark suite measuring server energy efficiency
+\item[SERT] Server Efficiency Rating Tool (SPEC)
+\item[TPC-Energy] Database and transaction workloads with energy measurement
+\end{description}
+
+
+\abbrsection{Energy Measurement Tools}
+\begin{description}
+\item[CarbonTracker] Tool for tracking ML training emissions
+\item[CodeCarbon] Python package estimating CO$_2$ emissions
+\item[DCGM] Data-Centre GPU Manager (NVIDIA)
+\item[ElectricityMap] API for real-time grid carbon intensity
+\item[Kepler] Kubernetes-based Efficient Power Level Exporter
+\item[NVML] NVIDIA Management Library
+\item[PM\_COUNTER] HPE-Cray node-level power counter
+\item[PowerAPI] Software library for energy measurement
+\item[Prometheus] Open-source monitoring toolkit
+\item[PTDaemon] SPEC Power Temperature Daemon
+\item[RAPL] Running Average Power Limit (Intel/AMD on-chip power counter)
+\item[Scaphandre] Open-source energy monitoring agent
+\item[VTune] Intel VTune Profiler
+\item[WattTime] API for marginal emissions signals
+\end{description}
+
+
+\abbrsection{Formal Benchmark Notation}
+\begin{description}
+\item[A, P] Application and Parameters – Task components
+\item[B] Benchmark – Formal specification $B = (I, D, T, M, C_B, R)$
+\item[C\_B, C\_c] Benchmark and Component Constraints
+\item[D] Dataset – Input data used in benchmarks
+\item[I] Infrastructure – Hardware and software environment
+\item[M] Metrics – Quantitative performance measures
+\item[R] Results – Benchmark outputs and analysis
+\item[T] Scientific Task – Core task to be evaluated, $T = (A, P)$
+\end{description}
+
+
+\abbrsection{HPC and Infrastructure}
+\begin{description}
+\item[API] Application Programming Interface
+\item[CAPEX/OPEX] Capital / Operating Expenditure
+\item[CPU] Central Processing Unit
+\item[DOE] U.S. Department of Energy
+\item[DVFS] Dynamic Voltage and Frequency Scaling
+\item[EIA] Energy Information Administration (U.S.)
+\item[EU] European Union
+\item[GPU] Graphics Processing Unit
+\item[HPC] High-Performance Computing
+\item[IOPS] Input/Output Operations Per Second
+\item[MLCommons] An open engineering consortium that develops machine learning benchmarks, datasets, and best practices
+\item[MPI] Message Passing Interface
+\item[PPA] Power-Purchase Agreement
+\item[RFP] Request for Proposal
+\item[SME] Small and Medium-sized Enterprise
+\item[SM] Streaming Multiprocessor (GPU core block)
+\item[TVA] Tennessee Valley Authority
+\end{description}
+
+\abbrsection{Languages and Tools}
+\begin{description}
+\item[QA] Question Answering
+\item[R] A programming language for statistical computing
+\item[SQL] Structured Query Language
+\end{description}
+
+
+\abbrsection{Standards and Groups}
+\begin{description}
+\item[DOI] Digital Object Identifier
+\item[EE-HPC WG] Energy Efficient HPC Working Group
+\end{description}
+
+
+\abbrsection{Tools and Monitoring}
+\begin{description}
+\item[MLflow] An open-source platform for managing the ML lifecycle
+\item[OmniStat] AMD's monitoring and management interface
+\item[PyTorch Profiler] A tool for performance analysis of PyTorch models
+\item[Slurm] Simple Linux Utility for Resource Management
+\item[TensorBoard] Visualization toolkit for TensorFlow
+\item[TorchInfo] A Python package for summarizing PyTorch models
+\item[Vampir] A performance analysis tool for parallel applications
+
+\end{description}
+
+
+% % \section*{Abbreviations}
+
+% % %\section*{Abbreviations}
+
+% % \begin{description}
+
+% % % --- AI / ML Core ---
+% % \item[AI] Artificial Intelligence – Computational systems that perform tasks typically requiring human intelligence, such as learning, reasoning, or perception.
+
+% % \item[ML] Machine Learning – A subset of AI focused on algorithms that improve performance automatically through data-driven learning.
+
+% % \item[LLM] Large Language Model – AI models trained on massive corpora of text, capable of generating human-like language and powering applications such as chatbots.
+
+% % \item[PINN] Physics-Informed Neural Network – A deep learning model that incorporates physical laws into the training process, often used for solving PDEs.
+
+% % \item[FNO] Fourier Neural Operator – A deep learning architecture designed for solving partial differential equations efficiently.
+
+% % \item[DeepONet] Deep Operator Network – A neural network architecture for learning operators mapping between function spaces.
+
+% % % --- HPC and Infrastructure ---
+% % \item[HPC] High-Performance Computing – The use of supercomputers and parallel processing to solve large and complex computational problems.
+
+% % \item[GPU] Graphics Processing Unit – Specialized hardware originally for graphics rendering, now widely used for accelerating machine learning and scientific computing.
+
+% % \item[CPU] Central Processing Unit – The main processor of a computer, optimized for sequential instruction execution.
+
+% % \item[MPI] Message Passing Interface – A standard for parallel programming on distributed-memory systems, widely used in HPC.
+
+% % \item[IOPS] Input/Output Operations Per Second – A common metric to measure storage system performance.
+
+% % \item[PUE] Power Usage Effectiveness – A metric for data center energy efficiency, defined as the ratio of total facility energy to the energy consumed by computing equipment.
+
+% % \item[CO₂e] Carbon Dioxide Equivalent – A standardized unit to compare emissions of different greenhouse gases based on their global warming potential.
+
+% % % --- Benchmark Suites and Efforts ---
+% % \item[TOP500] The official list of the 500 most powerful supercomputers in the world, ranked by LINPACK performance.
+
+% % \item[Green500] A ranking of the most energy-efficient supercomputers in the world.
+
+% % \item[HPCG] High Performance Conjugate Gradient Benchmark – An alternative to LINPACK designed to better represent real-world scientific and engineering workloads.
+
+% % \item[STREAM] A synthetic benchmark measuring sustainable memory bandwidth (MB/s) and computational balance.
+
+% % \item[IO500] Benchmark suite evaluating HPC storage performance, combining bandwidth and metadata operations.
+
+% % \item[SPEC HPC] A benchmark suite from the Standard Performance Evaluation Corporation measuring HPC system performance on real-world applications.
+
+% % \item[HPC AI500] A benchmark suite for evaluating deep learning at HPC scale, measuring both accuracy and throughput.
+
+% % \item[MLPerf] A benchmark suite developed by MLCommons to evaluate machine learning training and inference performance across diverse systems.
+
+% % \item[MLPerf HPC] A benchmark extension measuring machine learning workloads in HPC environments, including compute, memory, I/O, and communication.
+
+% % \item[Kaggle] An online platform hosting data science and AI competitions, including benchmark-style community challenges.
+
+% % % --- Scientific AI Benchmarks ---
+% % \item[PDEBench] A benchmark for solving Partial Differential Equations (PDEs) using ML and operator learning models.
+
+% % \item[LAB-Bench] A benchmark for evaluating AI models on laboratory research assistance tasks.
+
+% % \item[SciEval] A benchmark for multi-domain scientific reasoning, synthesis, and QA tasks.
+
+% % \item[SciSafeEval] A benchmark measuring safety alignment of AI systems in scientific contexts.
+
+% % \item[CORE-Bench] A benchmark for computational reproducibility and execution of scientific tasks.
+
+% % \item[Galactica Eval] A benchmark measuring scientific writing and knowledge recall capabilities of language models.
+
+% % \item[ARC] AI2 Reasoning Challenge – Benchmark for commonsense and science QA at the K–12 level.
+
+% % \item[AristoBench] A benchmark based on U.S. science exam questions (e.g., Regents exams).
+
+% % \item[SCIQ] A benchmark dataset for science-focused sentence-level inference and QA.
+
+% % \item[BioASQ] A benchmark for biomedical question answering and document retrieval.
+
+% % \item[MedQA] A benchmark for medical QA, based on U.S. Medical Licensing Exam (USMLE) questions.
+
+% % \item[MMLU] Massive Multitask Language Understanding benchmark – Evaluates cross-domain academic knowledge, with science/math subsets.
+
+% % % --- Carpentry and Education ---
+% % \item[Software Carpentry] A community-driven effort to teach foundational computing skills to researchers in science.
+
+% % \item[Data Carpentry] A sister effort focusing on teaching data management, cleaning, and analysis skills.
+
+% % \item[Library Carpentry] A carpentry initiative teaching software and data skills for library and information science professionals.
+
+% % \item[HPC Carpentry] Training modules within the Carpentries focused on teaching HPC skills, including job scheduling, parallel computing, and workflows.
+
+% % \item[FAIR] Findable, Accessible, Interoperable, and Reusable – A set of guiding principles for scientific data and software management.
+
+% % % --- Tools and Monitoring ---
+% % \item[NVML] NVIDIA Management Library – A C-based API for monitoring and managing NVIDIA GPU devices.
+
+% % \item[OmniStat] AMD’s monitoring and management interface, providing functionality similar to NVIDIA’s NVML.
+
+% % \item[Slurm] Simple Linux Utility for Resource Management – An open-source workload manager widely used in HPC systems.
+
+% % \item[TensorBoard] Visualization toolkit for TensorFlow that provides interactive dashboards for training progress, metrics, and profiling.
+
+% % \item[TorchInfo] A Python package for summarizing PyTorch models, showing layers, parameter counts, and memory requirements.
+
+% % \item[PyTorch Profiler] A tool for performance analysis of PyTorch models, helping developers identify bottlenecks in training and inference.
+
+% % \item[MLflow] An open-source platform for managing the ML lifecycle, including experimentation, reproducibility, deployment, and monitoring.
+
+% % \item[Vampir] A performance analysis tool for parallel applications, offering detailed insights into execution traces on HPC systems.
+
+% % % --- Formal Benchmark Notation ---
+% % \item[B] Benchmark – Formal specification $B = (I, D, T, M, C_B, R)$.
+
+% % \item[I] Infrastructure – Hardware and software environment required to execute a benchmark.
+
+% % \item[D] Dataset – Input data used in benchmarks for training or evaluating AI models.
+
+% % \item[T] Scientific Task – The core task to be evaluated, e.g., classification, prediction, reasoning.
+
+% % \item[M] Metrics – Quantitative measures to assess benchmark performance (accuracy, latency, throughput, energy).
+
+% % \item[R] Results – Benchmark outputs, including accuracy, performance, and error analysis.
+
+% % \item[A, P] Application and Parameters – Task components: $T = (A, P)$.
+
+% % \item[C\_B, C\_c] Benchmark and Component Constraints – Rules applied to benchmarks or components for fairness, reproducibility, and comparability.
+
+% % % --- Languages and Tools ---
+% % \item[SQL] Structured Query Language – Standard language for managing and querying relational databases.
+
+% % \item[R] A programming language for statistical computing and graphics, widely used in data science.
+
+% % \item[QA] Question Answering – A task type in NLP benchmarks where systems answer questions posed in natural language.
+
+% % % --- Energy and Power Metrics ---
+% % \item[Energy-to-Solution] A metric capturing the total energy consumed to complete a computational task.
+
+% % \item[GFLOPS/W] Giga Floating-Point Operations per Second per Watt – Efficiency metric used in Green500 rankings.
+
+% % \item[J/sample] Joules per sample – Energy efficiency metric used in MLPerf Power benchmarks.
+
+% % \item[kWh] Kilowatt-hour – A unit of energy commonly used for electricity consumption billing.
+
+% % \item[EDP] Energy–Delay Product – A combined metric to balance performance (time-to-solution) and energy efficiency.
+
+% % \item[PUE] Power Usage Effectiveness – Ratio of total facility power consumption to IT equipment power.
+
+% % \item[cPUE] Compute-Only Power Usage Effectiveness – A refinement of PUE focusing solely on compute power vs. total facility power.
+
+% % \item[DCiE] Data Center Infrastructure Efficiency – Reciprocal of PUE, measuring IT power over facility power.
+
+% % \item[TDP] Thermal Design Power – Maximum amount of heat a chip (CPU/GPU) is expected to generate under typical workloads.
+
+% % \item[CSR] Corporate Social Responsibility – A company’s accountability framework, often including energy and emissions reporting.
+
+% % \item[KPI] Key Performance Indicator – Quantifiable metrics (e.g., J/op, GFLOPS/W, CO$_2$e) for energy/performance benchmarking.
+
+% % % --- Energy Benchmark Suites ---
+% % \item[SPECpower] A benchmark suite measuring server energy efficiency under varied workloads.
+
+% % \item[SERT] Server Efficiency Rating Tool – SPEC benchmark targeting CPU and server-level efficiency.
+
+% % \item[TPC-Energy] Transaction Processing Performance Council’s benchmark for database and transaction workloads with energy measurement.
+
+% % \item[JouleSort] Benchmark measuring energy efficiency of large-scale sorting tasks.
+
+% % \item[Green500] Ranking of the most energy-efficient supercomputers in the world (GFLOPS/W).
+
+% % \item[HPCG-Power] Energy-aware version of the High Performance Conjugate Gradient benchmark.
+
+% % \item[HPL-MxP] Mixed-Precision High Performance LINPACK – Benchmark variant improving FLOP/W metrics by using reduced precision.
+
+% % \item[MLPerf Power] Extension of MLPerf benchmarks that tracks Joules/sample and energy-related performance of AI accelerators.
+
+% % \item[MLPerf Tiny Power] Subset of MLPerf benchmarks focusing on constrained edge devices with energy measurements.
+
+% % % --- Energy Measurement Tools ---
+% % \item[PTDaemon] SPEC Power Temperature Daemon – Anchors external power meter calibration for standardized benchmark energy measurements.
+
+% % \item[Scaphandre] Open-source energy monitoring agent that integrates with Prometheus for real-time power monitoring.
+
+% % \item[Kepler] Kubernetes-based Efficient Power Level Exporter – Collects and exposes power usage metrics in containerized workloads.
+
+% % \item[PowerAPI] A software library and framework for energy measurement and analysis at process and system level.
+
+% % \item[DCGM] NVIDIA Data Center GPU Manager – Provides GPU monitoring, management, and power measurement APIs.
+
+% % \item[RAPL] Running Average Power Limit – Intel’s on-chip energy metering interface providing per-component energy samples.
+
+% % \item[PM\_COUNTER] Generic hardware performance/energy counters for tracking system-level power usage.
+
+% % \item[VTune] Intel VTune Profiler – Performance and energy analysis tool that provides fine-grained profiling data.
+
+% % \item[Prometheus] Open-source monitoring toolkit used to scrape, store, and query system and application metrics, including energy data.
+
+% % \item[ElectricityMap] API that provides real-time carbon intensity of electricity grids worldwide.
+
+% % \item[WattTime] API that provides marginal emissions signals for carbon-aware workload scheduling.
+
+% % \item[CodeCarbon] Open-source Python package that estimates the CO$_2$ emissions of computing tasks based on energy usage and grid intensity.
+
+% % \item[CarbonTracker] Tool to track and report energy consumption and carbon emissions of machine learning training runs.
+
+% % % --- Standards and Groups ---
+% % \item[EE-HPC WG] Energy Efficient HPC Working Group – Community effort to standardize energy measurement, benchmarking, and reporting in HPC.
+
+% % \item[DOI] Digital Object Identifier – Persistent identifier used for publishing datasets and benchmark results.
+
+
+
+% % \end{description}
+
+
+
+
+% % \begin{description}
+
+% % \item[AI] Artificial Intelligence – Computational systems that perform tasks typically requiring human intelligence, such as learning, reasoning, or perception.
+
+% % \item[A, P] Application and Parameters – Formal elements used to define a scientific task $T = (A, P)$ in benchmark notation.
+
+% % \item[B] Benchmark – A formal specification of a performance evaluation setup, defined as $B = (I, D, T, M, C_B, R)$.
+
+% % \item[C\_B] Benchmark Constraint – Constraints applied to the benchmark as a whole, such as time, scale, or accuracy limitations.
+
+% % \item[C\_c] Component Constraint – A constraint applied to any component $c \in \{B, I, D, T, M, R, A\}$.
+
+% % \item[CO₂e] Carbon Dioxide Equivalent – A standardized unit to compare emissions of different greenhouse gases based on their global warming potential.
+
+% % \item[D] Dataset – Input data used in benchmarks for training or evaluating AI models. May be static or a {\em living dataset} (continuously updated).
+
+% % \item[DOE] U.S. Department of Energy – Federal agency supporting scientific research, including large-scale AI and HPC initiatives such as the Trillion Parameter Consortium.
+
+% % \item[GPU] Graphics Processing Unit – Specialized hardware originally for graphics rendering, now widely used for accelerating machine learning and scientific computing.
+
+% % \item[Green500] A ranking of the most energy-efficient supercomputers in the world.
+
+% % \item[HPC] High-Performance Computing – The use of supercomputers and parallel processing to solve large and complex computational problems.
+
+% % \item[HPC AI500] A benchmark suite for evaluating deep learning at HPC scale, measuring both accuracy and throughput.
+
+% % \item[HPCG] High Performance Conjugate Gradient Benchmark – An alternative to LINPACK designed to better represent real-world scientific and engineering workloads.
+
+% % \item[I] Infrastructure – Hardware and software environment required to execute a benchmark.
+
+% % \item[IO500] Benchmark suite evaluating HPC storage performance, combining bandwidth and metadata operations.
+
+% % \item[Kaggle] An online platform hosting data science and AI competitions, including benchmark-style community challenges.
+
+% % \item[LLM] Large Language Model – AI models trained on massive corpora of text, capable of generating human-like language and powering applications such as chatbots.
+
+% % \item[ML] Machine Learning – A subset of AI focused on algorithms that improve performance automatically through data-driven learning.
+
+% % \item[MLCommons] An open engineering consortium that develops machine learning benchmarks, datasets, and best practices for industry and academia.
+
+% % \item[MLPerf] A benchmark suite developed by MLCommons to evaluate machine learning training and inference performance across diverse systems.
+
+% % \item[MLPerf HPC] A benchmark extension measuring machine learning workloads in HPC environments, including compute, memory, I/O, and communication.
+
+% % \item[MLflow] An open-source platform for managing the machine learning lifecycle, including experimentation, reproducibility, deployment, and monitoring.
+
+% % \item[M] Metrics – Quantitative measures to assess benchmark performance, including accuracy, latency, throughput, energy, and cost.
+
+% % \item[MPI] Message Passing Interface – A standard for parallel programming on distributed-memory systems, widely used in HPC.
+
+% % \item[NVML] NVIDIA Management Library – A C-based API for monitoring and managing NVIDIA GPU devices, including power, memory, and thermal metrics.
+
+% % \item[OmniStat] AMD’s monitoring and management interface, providing functionality similar to NVIDIA’s NVML for GPU performance and telemetry.
+
+% % \item[PUE] Power Usage Effectiveness – A metric for data center energy efficiency, defined as the ratio of total facility energy to the energy consumed by computing equipment.
+
+% % \item[R] Results – The output of a benchmark, including accuracy, performance metrics, error analysis, and comparative rankings.
+
+% % \item[Slurm] Simple Linux Utility for Resource Management – An open-source workload manager widely used in HPC systems to schedule and allocate computing resources.
+
+% % \item[SPEC HPC] A benchmark suite from the Standard Performance Evaluation Corporation measuring HPC system performance on real-world applications.
+
+% % \item[STREAM] A synthetic benchmark measuring sustainable memory bandwidth (MB/s) and computational balance.
+
+% % \item[T] Scientific Task – The core task to be evaluated by a benchmark, e.g., classification, prediction, or reasoning.
+
+% % \item[TensorBoard] Visualization toolkit for TensorFlow that provides interactive dashboards for training progress, metrics, and performance profiling.
+
+% % \item[TorchInfo] A Python package for summarizing PyTorch models, showing layers, parameter counts, and memory requirements.
+
+% % \item[PyTorch Profiler] A tool for performance analysis of PyTorch models, helping developers identify bottlenecks in training and inference.
+
+% % \item[TOP500] The official list of the 500 most powerful supercomputers in the world, ranked by LINPACK performance.
+
+% % \item[Vampir] A performance analysis tool for parallel applications, offering detailed insights into execution traces on HPC systems.
+
+% % \end{description}

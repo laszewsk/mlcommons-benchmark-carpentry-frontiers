@@ -1,0 +1,29 @@
+
+\subsection{Limitations}
+\label{sec:benchmarks-limits}
+
+\subsubsection{Data Contamination}
+\label{sec:benchmarks-limits-dataContam}
+
+\TODO{ This section stand a bit on its own and may need to be integrated better}
+
+Data contamination occurs when evaluation data overlaps with training data, inflating performance metrics and undermining the validity of benchmarks~\cite{xu2024benchmark}.
+This issue arises from the use of large-scale internet-derived corpora in LLM training, leading to unintentional exposure to benchmark data~\cite{xu2024benchmark}. Contamination can take various forms, including exact duplication, syntactic paraphrasing, and exposure to annotation guidelines~\cite{chen2025recent, sainz2023nlp}, resulting in misleading performance evaluations and distorted comparisons between models. While post-hoc detection methods, such as n-gram matching and masked input memorization, help identify contamination, they often fail due to the scale and opacity of pretraining data~\cite{chen2025recent, deng2023investigating, wu2024antileakbench}.
+Canary strings, unique, deliberately inserted markers, offer an additional layer of defense by enabling detection of specific data leakage during model training.
+By embedding these strings into the benchmark dataset, it becomes possible to track whether a model has memorized benchmark data, alerting researchers to potential contamination when the model generates these canary strings during evaluation~\cite{roberts2023data, ishida2025can}.
+Recent proposals for dynamic benchmarking aim to mitigate contamination by generating evaluation data after a model's training period, though challenges remain in standardizing these methods~\cite{chen2025recent, zhu2023dyval, zhu2024dyval, chen2025dynamic}.
+Addressing data contamination is crucial for ensuring the reliability and fairness of LLM evaluations.
+
+\subsubsection{Lack of Real-World Relevance}
+\label{sec:benchmarks-limits-relev}
+
+Many widely used evaluations optimize for convenience—clean inputs, single-turn prompts, and static i.i.d.\ test sets—rather than the messy, constraint-laden settings in which models are actually deployed~\cite{liang2023holistic, kiela2021dynabench}.
+In production, inputs are noisy, multimodal, and multilingual; tasks are multi-step with tool use (retrieval, code, APIs) and human-in-the-loop escalation; operating conditions impose budgets (latency, compute, and dollar cost), compliance and privacy constraints, and reliability requirements under distribution shift (temporal, geographic, domain)~\cite{koh2021wilds, liang2023holistic}.
+Benchmarks that ignore these realities routinely overestimate model utility and under-measure risk~\cite{ribeiro2020beyond, kiela2021dynabench}.
+To restore ecological validity, benchmark carpentry should (\romannumeral1) start from ``task stories'' that specify user roles, context, constraints, and success criteria; (\romannumeral2) include end-to-end workflows that require planning, grounding, and tool integration—not just short answers—via interactive, execution-based tasks~\cite{majumdar2025redteamingaired, liu2024agentbench, miehling2025agenticaineedssystems, li2023api, xiong2025butterfly, xie2024osworld}; (\romannumeral3) pair quality metrics with operational ones (latency percentiles, cost per task, failure/abstention rates) and safety metrics (harmful content, data leakage, policy non-compliance)~\cite{gehman2020realtoxicityprompts}; and (\romannumeral4) stress-test robustness with shifted and ``messy'' inputs, long-tail slices, and adversarial/red-team cases~\cite{koh2021wilds, nie2020adversarial, zheng2025all}.
+In short, a benchmark should be a faithful proxy for the real job to be done—reflecting workflows, constraints, and risks—not merely a collection of decontextualized questions.
+
+\subsubsection{Reproducibility and Interpretability Challenges}
+\label{sec:benchmarks-limits-reprod}
+
+\TODO{TBD}

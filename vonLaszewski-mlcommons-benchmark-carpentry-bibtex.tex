@@ -1,0 +1,65 @@
+% vonLaszewski-mlcommons-benchmark-carpentry-biblatex.tex
+
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\input{paper-format}
+
+
+
+\definecolor{headerblue}{RGB}{100, 149, 237}
+\definecolor{lightgray}{gray}{0.9}
+\newcommand{\headerfont}{\fontsize{10pt}{12pt}\selectfont\bfseries}
+
+\begin{document}
+
+\newcommand{\TITLE}{AI Benchmark Democratization and Carpentry}
+
+\onecolumn
+\begin{center}
+   {\bf\large \TITLE}
+\end{center}
+
+\tableofcontents
+\twocolumn
+
+\title{\TITLE}
+
+\input{0000-authors}
+
+\maketitle
+
+\input{0010-abstract}
+\input{0020-intro}
+\input{0030-definitions}
+\input{0040-formal}
+\input{0050-benchmark-review}
+\input{0100-profile}
+\input{0060-review-gpu-benchmarks}
+\input{0070-energy-benchmarks}
+\input{0110-sim}
+\input{0090-share}
+\input{0400-carpentry}
+\input{0410-democratizing}
+\input{0530-conclusion}
+
+\input{0910-acknowledgments}
+
+
+% ------------------------------------------------------
+% USE .bbl FILE  (BibTeX workflow)
+% ------------------------------------------------------
+\bibliographystyle{IEEEtran}
+\bibliography{%
+       ref-0-ontology,
+       vonLaszewski-frontiers-citations,
+       ref-carpentry,
+       ref-sinclair,
+       ref-energy,
+       ref-hpcbench,
+       ref-profile
+     }
+     
+\input{0930-glossary}
+\input{0940-contribution}
+
+\end{document}

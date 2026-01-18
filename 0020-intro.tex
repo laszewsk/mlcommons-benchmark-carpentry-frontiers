@@ -1,0 +1,34 @@
+\section{Introduction}
+\label{sec:intro}
+
+Recently, the availability of graphics processing units (GPUs) and the rapid progress in artificial intelligence (AI) -- especially in the area of deep learning -- have brought a revolution to the scientific community. However, the use of these technologies is still in its infancy due to several factors. First, many application scientists are unsure how to leverage these newly available tools and instruments. Second, it remains unclear what level of effort is required to integrate them into their own research. Third, the specific demands these technologies place on infrastructure to be useful for a given scientific problem are not yet well understood.
+
+Some of these challenges can be addressed by providing meaningful benchmarks to the scientific community, which can help researchers assess the usefulness and scalability of AI methods for their own applications. Therefore, it is beneficial to formalize the development of standardized AI benchmarks—not by a few individuals, but by the broader community. Such benchmarks can serve as a critical foundation for the scientific community, enabling rigorous evaluation, comparison, and reproducibility of new models and techniques.
+
+However, as AI systems have become more sophisticated, incorporating complex and dynamic workflows, the traditional static approach to defining benchmarks has proven to be a significant limitation. In addition, to conventional benchmarks that capture key concepts familiar to scientists, we must also account for the continuous evolution of AI models and architectures, the changing nature of datasets, and the diversity of deployment contexts. These factors create a moving target for evaluation, risking a growing misalignment between benchmark results and the actual performance of AI systems in real-world scenarios.
+
+Drawing on insights from our work with MLCommons, educational initiatives, and government-led projects such as the U.S. Department of Energy’s Trillion Parameter Consortium~\cite{trillion-parameter-consortium,Stevens2023-auroraGPT}, we identify a set of fundamental barriers that impede the broader utility and adoption of AI benchmarking.
+Beyond the substantial resource demands and limited access to specialized, leadership-class hardware, there exists a pervasive lack of expertise in benchmark design and a growing uncertainty among practitioners regarding how to relate these performance metrics to their specific application domains.
+Current benchmarks—by often prioritizing peak performance on elite hardware—offer insufficient guidance for the diverse range of computational platforms encountered in practice, from smaller-scale devices to large, pre-deployed commercial language models.
+
+This paper argues that the practice of AI benchmarking itself must become dynamic and adaptable to keep pace with the rapidly evolving AI landscape.
+To achieve this, benchmarks must be designed to transparently incorporate evolving models, updated datasets, and heterogeneous computational platforms, while upholding the core principles of transparency, reproducibility, and interoperability.
+We propose that two complementary strategies can advance this goal: first, democratizing the creation of AI benchmarks and expanding the community contributing to them; and second, establishing a robust foundation for the technical execution and innovation of benchmarks through coordinated educational efforts.
+Together, these approaches will foster sustained expertise spanning from undergraduate education to professional practice.
+
+We believe it is both timely and necessary to establish a solid foundation for the design, use, and evolution of benchmarks through collaborative community efforts—thereby enabling what we call AI benchmark carpentry.
+This paper summarizes the collective perspectives developed through this process within the MLCommons Science \& HPC Working Group.
+
+The paper is organized as follows. In Section~\ref{sec:definition}, we introduce some essential definitions that we use throughout this paper.
+Section~\ref{sec:formal} introduces a formal specification for AI benchmarks.
+In Section~\ref{sec:benchmarks}, we summarize briefly some existing AI benchmark efforts.
+In Section~\ref{sec:share}, we outline how to share benchmarks.
+In Section~\ref{sec:edu}, we define activities to be conducted as part of the educational efforts.
+In Section~\ref{sec:dem}, we identify what we need to do to conduct democratization efforts.
+Lastly, we conclude %this paper 
+in Section~\ref{sec:conclusion}.
+
+Additionally, we list acronyms and abbreviations used in this paper in the Appendix A.
+%~\ref{sec:abbrev}.
+Contributions of the authors are summarized in the Appendix B. 
+%~\ref{sec:contrib}.

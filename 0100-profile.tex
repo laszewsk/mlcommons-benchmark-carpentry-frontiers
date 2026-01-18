@@ -1,0 +1,86 @@
+\subsubsection{Profiling and Performance Analysis}
+\label{sec:prof}
+
+Profiling is the process of measuring a program's performance in
+association with the locations in the source code in order to reveal
+where resources (e.g., time and memory) are spent during execution.
+Profiling is important in AI benchmarking for the following reasons:
+
+\begin{itemize}
+    \item Profiling helps explain why a particular method or
+    implementation variant is faster than another.
+    \item Profiling helps support fair and reproducible benchmarking.
+    \item Profiling can distinguish between the essential computations
+    and extraneous overheads.
+    \item In a heterogeneous system, profiling can identify which
+    components (e.g., CPU or GPU's CUDA cores vs. tensor cores) are
+    being used by different parts of the application.
+    \item Profiling can identify which specific library kernels are being used by different parts of the application.
+\end{itemize}
+
+Table~\ref{tab:merged_profiling_tools} provides a list of profiling tools that are useful for analysis of deep learning applications.
+
+\begin{table*}[htbp]
+\centering
+\caption{Summary of Example Profiling Tools Useful for Deep Learning and AI Workloads}
+\label{tab:merged_profiling_tools}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|p{0.2\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.4\textwidth}|}
+\hline
+\rowcolor{blue!20} \textbf{Tool / Category} & \textbf{Vendor / Maintainer} & \textbf{Level / Primary Use Case} & \textbf{Key Features and Capabilities} \\
+\hline
+\hline
+\rowcolor{gray!30} \multicolumn{4}{|l|}{\textbf{Framework Profilers}} \\ \hline
+PyTorch Profiler~\cite{TensorFlow_System} & Meta & Framework-level & Records CPU/GPU activities, memory usage, and operator timings; integrates with TensorBoard and Perfetto; useful for training optimization and layer timing. \\ \hline
+TensorBoard / TensorFlow Profiler~\cite{TensorFlow_System} & Google & Framework-level & Visualizes input pipelines, GPU kernels, and op-level timings; includes memory and device utilization tracing; supports bottleneck analysis. \\ \hline
+torch.utils.bottleneck~\cite{PyTorch_System} & Meta & Framework-level & Combines autograd and Python profilers for quick bottleneck diagnostics. \\ \hline
+JAX Profiler~\cite{JAX_Profiler} & Google & Framework-level & Works with TensorBoard to trace XLA compilation, HLO graphs, and TPU/GPU runtime performance. \\ \hline
+NVIDIA DLProf~\cite{NVIDIA_DLProf} & NVIDIA & Framework-level (GPU-focused) & High-level view of deep learning layers and operations; integrates with TensorBoard DLProf plugin. \\ \hline
+\rowcolor{gray!30} \multicolumn{4}{|l|}{\textbf{Hardware / System Profilers}} \\ \hline
+Nsight Systems~\cite{NVIDIA_NsightSys_Doc} & NVIDIA & System-level & Timeline visualization of CPU–GPU interactions, kernel launch overheads, multi-process analysis, and NCCL tracing. \\ \hline
+Nsight Compute~\cite{NVIDIA_NsightComp_Doc} & NVIDIA & Kernel-level & Detailed GPU kernel performance metrics: memory throughput, Tensor Core utilization, occupancy, and roofline analysis. \\ \hline
+nvprof (deprecated)~\cite{NVIDIA:CUDA:ProfilerGuide} & NVIDIA & GPU-level & Legacy command-line CUDA profiler, replaced by Nsight tools. \\ \hline
+VTune Profiler~\cite{Intel_VTune_Doc} & Intel & CPU/System-level & Hotspot analysis, vectorization, threading efficiency, and CPU performance bottlenecks. \\ \hline
+omnitrace / rocprof / rocm-smi~\cite{AMD_ROCM_Doc} & AMD & GPU-level & Profiling and monitoring for AMD GPUs: kernel execution metrics, power, and temperature. \\ \hline
+HPCToolkit~\cite{HPCToolkit_Paper} & Rice University & System-level (CPU+GPU) & Hierarchical performance profiling, time attribution to calling context, supports CUDA and HIP. \\ \hline
+TAU~\cite{TAU_Paper} & University of Oregon & System-level (CPU+GPU+MPI) & Multi-level performance analysis, MPI integration, supports heterogeneous systems. \\ \hline
+Perfetto~\cite{Perfetto_Google} & Google (Open Source) & System-level & High-resolution trace visualization, interoperable with PyTorch/TensorFlow profiler exports. \\ \hline
+PAPI~\cite{PAPI_Paper} & University of Tennessee & Hardware counter interface & Provides access to CPU/GPU performance counters for integration with other profiling tools or custom instrumentation. \\ \hline
+\rowcolor{gray!30} \multicolumn{4}{|l|}{\textbf{Compiler / Graph Profilers}} \\ \hline
+XLA Profiler~\cite{XLA_Paper} & Google & Compiler-level (XLA) & Profiles XLA-compiled operations and execution times; supports JAX/TF and TPU/GPU workloads. \\ \hline
+TorchDynamo / TorchInductor Debug Tools~\cite{TorchDynamo_TorchInductor} & Meta & Compiler-level (PyTorch 2.x) & Analyzes graph fusion, compiler optimizations, and operator performance of compiled PyTorch models. \\ \hline
+Triton Profiler~\cite{Triton_Paper} & OpenAI & Kernel-level (Custom Kernels) & Reports kernel execution time, register usage, and occupancy for custom Triton GPU kernels. \\ \hline
+\rowcolor{gray!30} \multicolumn{4}{|l|}{\textbf{Communication / Distributed Profilers}} \\ \hline
+NCCL Profiler~\cite{NVIDIA_NCCL_Doc} & NVIDIA & Communication-level & Profiles NCCL collective communication operations (e.g., all-reduce, broadcast); timeline visualization of multi-GPU communication. \\ \hline
+AWS SageMaker Debugger / Azure Profiler~\cite{AWS_SageMaker_Debugger,Azure_Profiler} & AWS / Microsoft & Cloud-level & Distributed GPU/CPU monitoring, training metric collection, and profiling at cloud scale. \\ \hline
+Weights \& Biases, Comet, MLflow~\cite{Weights_Biases,Comet_ML,MLflow} & Multiple Vendors & Experiment / Cloud-level & Logs performance traces, GPU utilization, integrates with PyTorch and TensorFlow profilers for real-time monitoring. \\ \hline
+\rowcolor{gray!30} \multicolumn{4}{|l|}{\textbf{System \& Memory Profilers}} \\ \hline
+Torch / TensorFlow Memory Tools~\cite{Torch_Tensorflow_Memory} & Meta / Google & Framework-level (Memory) & Reports GPU memory allocation, fragmentation, and utilization trends for debugging memory bottlenecks. \\ \hline
+Python Profilers (cProfile, py-spy)~\cite{Python_Profilers} & Python Community & CPU-level & Measures Python-level overhead and I/O performance; used for diagnosing data preprocessing bottlenecks. \\ \hline
+\end{tabular}
+\end{table*}
+
+It is important to note that the tooling and services exist for
+supporting different levels of infrastructures. This includes examples
+for framework-level, system-level (including CPU and GPU), kernel-level,
+compiler-level, communication-level, and cloud-level.
+
+Furthermore, we aim here to provide comprehensive coverage of the AI
+profiling stack, which affords users the insights into cross-vendor and
+cross-platform capabilities and offerings, and also provide key analysis
+of features of the said tools and services.
+
+We believe it is essential to increase awareness and use of profiling
+tools through AI benchmarking efforts, enabling a better understanding
+of bottlenecks in AI applications. Additionally, we need to educate the
+community about policy limitations that may implicitly restrict specific
+profiling tools. As discussed previously, one such policy restriction is
+that not all profiling information is available for energy benchmarks.
+Such restrictions may also be in place for additional hardware profiling
+measures.
+
+Lastly, we need to educate the community about the {\em performance
+impact} of profiling costs to avoid over-profiling. Therefore, it makes
+sense that AI benchmarks should be able to choose the level of profiling
+selectively. This information is vital to support the FAIR principles
+and ensure that benchmarks are comparable.

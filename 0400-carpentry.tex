@@ -1,0 +1,94 @@
+%
+%
+% FROZEN
+% FROZEN
+% FROZEN
+%
+%
+
+\section{Towards an AI Benchmark Carpentry Curriculum}
+\label{sec:edu}
+
+Based on the lessons learned and our observations from domain experts, we have devised the following exemplary curriculum addressing AI benchmark carpentry.
+
+\begin{itemize}
+    \item \textbf{Software Carpentry Foundational Tools and Practices:}
+
+    Before addressing benchmark carpentry, we recommend that participants will review and learn about basic fundamental tools and practices. As they already exist as part of Software Carpentry, they can be reused. However, it may be of advantage to adapt certain aspects to explicitly utilize examples that focus on AI benchmarks and not just any arbitrary software carpentry project.
+    
+    \begin{itemize}
+        \item Programming Skills: Proficiency in Python, Jupyter Notebooks, focusing on reproducible coding practices, including documentation, and reproducibility.
+        \item Version Control: Git for tracking changes and collaboration.
+        \item Command-Line Proficiency: Unix shell for efficient data manipulation.
+        \item Data Management: Techniques for data cleaning, transformation, and visualization.
+        \item Learning from Online AI/LLM Resources: Leveraging large language models and online tutorials for benchmarking insights and guidance.
+    \end{itemize}
+    
+    \item \textbf{AI Benchmarking Fundamentals:}
+
+    Having a basic understanding of AI Benchmarking is important for designing, evaluating, and improving AI systems. Benchmarks provide a standardized way to measure performance, compare models, and identify areas for optimization. By introducing benchmarking methodologies, examples, and metrics, participants gain the tools to critically assess AI models. Effective simple visualization practices help communicating results in a transparent, reproducible fashion related to real-world examples.
+
+    
+    \begin{itemize}
+        \item Benchmarking Methodologies: Introduction to frameworks such as MLPerf and AIBench.
+        \item Scenario-Based Benchmarks: Creating benchmarks that simulate real-world AI applications.
+        \item Performance Metrics: Throughput, latency, accuracy, and resource utilization.
+        \item Displaying Information with Graphs: Visualizing benchmark results for better analysis and interpretation.
+    \end{itemize}
+
+\item \textbf{Reproducibility and Experiment Management:}
+
+Especially for benchmarks, it is not only important to document the code, but to document the results so we enable reproducibility. This includes documenting workflows and data provenance in case prior work and data are integrated. Thus, applying the FAIR principles—making data and experiments Findable, Accessible, Interoperable, and Reusable—enhances transparency and promotes collaboration across teams and institutions. 
+
+\begin{itemize}
+    \item Experiment Documentation: Importance of detailed documentation for reproducibility and adherence to FAIR principles.
+    \item Automated Workflows: Using Docker and CI/CD pipelines to automate benchmarking processes.
+    \item Data Provenance: Tracking data sources and transformations for transparency, traceability, and reuse.
+    \item FAIR: Apply the FAIR principle to AI benchmarks.
+\end{itemize}
+
+    \item \textbf{Ethical Considerations and Bias Mitigation:}
+
+    It is important to address the ethical implications of conducting Benchmarks. Here, we not just focus on societal impacts, but also on  the reporting of bias, fairness conducted potentially through hardware, software, and even vendor impacts.
+
+    \begin{itemize}
+        \item Bias Detection: Methods to identify and mitigate biases in AI models and datasets.
+        \item Fairness Metrics: Metrics to assess and ensure fairness in AI systems.
+        \item Ethical Implications: Discussion on societal impacts and ethical decision-making.
+    \end{itemize}
+
+    \item \textbf{Carpentry Principles in Practice:}
+
+    A practical experience will be introduced to showcase the principles of AI benchmarking techniques. For this, a small, manageable datasets, and AI algorithm are used. The project may be conducted individually or in groups, while a walkthrough will also be available. An expansion to this AI-based benchmark will be the hosting and deployment of a leaderboard. Contributors can post their results in this shared leaderboard for the compute systems they have access to.
+    
+    \begin{itemize}
+        \item Hands-On Workshops: Practical sessions applying benchmarking techniques to real datasets.
+        \item Collaborative Projects: Group projects to foster teamwork and problem-solving skills.
+        \item Open-Source Contributions: Participation in community AI benchmarking initiatives.
+    \end{itemize}
+
+    \item \textbf{Special Topics:}
+
+    As we have seen from the previous section, several aspects have a great impact on AI benchmarking, which is so far not covered by other carpentry efforts. This includes energy benchmarking, simulation of hardware to estimate performance, and performance tuning with a focus on AI. Instead of just setting up a leaderboard through, for example, a Docker container, selected parties may have an interest in finding out more about setting up such leaderboards and hosting them.
+    
+    \begin{itemize}
+        \item Energy Efficiency: Measuring power consumption and optimizing AI workloads for lower energy usage.
+        \item Simulation: Using synthetic data and simulated environments for benchmarking when real data is limited.
+        \item Performance Tuning: Techniques for optimizing model execution, hardware utilization, and system throughput.
+        \item Leaderboard Management: Designing, maintaining, and validating AI benchmark leaderboards for reproducibility and fairness.
+        \item To provide users a starting point, presenting the community with a collection of benchmarks can be useful and has been spearheaded at \cite{www-las-mlcommons-benchmark-coolection}.
+    \end{itemize}
+\end{itemize}
+
+From the extensive surveys and numerous examples it is important that to start one ought to begin with the most elementary efforts and grow them continuously. As such, we recommend adding specific lessons when we discover they need to be added by the community. Also, we must involve the community itself and allow for contributions of tutorials from a wide variety of groups.
+
+\begin{comment}
+Furthermore, we believe additional educational lessons ought to be added. One such example we list next.
+
+
+We noticed that using existing carpentry lessons and tools designed for accessing GPUs in HPC carpentry may have to be significantly expanded upon, especially when integrating monitoring and benchmarking information.
+
+For example, educational data centers often focus on teaching their users Open OnDemand \cite{www-open-ondemand} as it provides easy access to the computer through a Web-based user interface. However, recent advances in development tools such as VSCode and PyCharm make it possible to access remote resources directly, including through locally run Jupyter notebooks. This allows the user to simplify access to GPU-based infrastructures in data centers while at the same time fostering more complex analysis capabilities, integrating local capabilities that are not hosted in the data center.
+\end{comment}
+
+

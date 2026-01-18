@@ -1,0 +1,137 @@
+%\clearpage % Start a new page for the landscape table
+%\onecolumn
+
+\begin{landscape} % Rotates the following content to landscape orientation
+%\begin{center}
+\setlength\LTleft{-2in}     % Align longtable to left margin
+\setlength\LTright{-2in}  
+\onecolumn
+
+\begin{longtable}{|p{3.5cm}|p{5.5cm}|p{4cm}|p{1.8cm}|p{3.2cm}|p{2.7cm}|}
+\caption{Additional Benchmarks found with ChatGPT}
+\label{tab:science-longtable-from-chatgpt}
+\\
+\hline
+\rowcolor{blue!30}
+\textbf{Benchmark Name} & \textbf{Description} & \textbf{Key Tasks/Evaluation} & \textbf{Metrics} & \textbf{Notable Models/Performance} & \textbf{Resources/Links} \\
+\hline
+\endhead
+\hline
+\multicolumn{6}{|r|}{{Continued on next page}} \\
+\hline
+\endfoot
+\hline
+\endlastfoot
+
+%\noalign{\smallskip} % Add a small vertical space before the next discipline
+
+% General Scientific Reasoning & Knowledge
+\rowcolor{gray!20}
+\multicolumn{6}{|l|}{\textbf{General Scientific Reasoning \& Knowledge}} \\
+\hline
+\YES \textbf{MMLU (Massive Multitask Language Understanding)} ~\cite{hendrycks2021measuring}  & A broad benchmark testing knowledge and reasoning across 57 academic subjects, including various scientific disciplines. & Multiple-choice questions spanning STEM, humanities, and social sciences. & Accuracy & GPT-4o, Gemini 1.5 Pro, o1, DeepSeek-R1 (Top models show significant gains) & \href{https://paperswithcode.com/dataset/mmlu}{MMLU} \\
+\hline
+\YES \textbf{GPQA Diamond} ~\cite{rein2023gpqagraduatelevelgoogleproofqa2} & A challenging subset of the Graduate-Level Google Proof-of-Concept Questions, requiring deep scientific reasoning and knowledge. & Answering difficult, high-level scientific questions, often requiring multi-step reasoning. & Accuracy & o1, DeepSeek-R1 (AI performance has seen remarkable improvements) & 
+\TODO{\href{https://gpqa.github.io/}{GPQA}} \\
+\hline
+\YES \textbf{ARC-Challenge (Advanced Reasoning Challenge)} ~\cite{clark2018arc} & Focuses on hard science questions, testing deep understanding and logical reasoning. & Answering science questions, often requiring common sense and deductive reasoning. & Accuracy & (Performance varies, but pushes limits of scientific knowledge) & \href{https://allenai.org/data/arc}{ARC-Challenge} \\
+\hline
+\NO \textbf{Humanity's Last Exam} & A rigorous academic test designed to push the limits of AI systems in broad academic knowledge. & Answering extremely challenging questions across various fields, including science. & Accuracy & Top systems score low, highlighting remaining challenges for AI. & (Mentioned in AI Index Report) \\
+\hline
+\YES \textbf{FrontierMath} ~\cite{glazer2024frontiermathbenchmarkevaluatingadvanced} & A complex mathematics benchmark for evaluating advanced mathematical reasoning in AI. & Solving challenging mathematical problems. & Accuracy & AI systems currently solve a tiny percentage of problems. & (Mentioned in AI Index Report) \\
+\hline
+\YES \textbf{SciCode} ~\cite{tian2024scicoderesearchcodingbenchmark} & Evaluates coding abilities, specifically relevant to scientific programming and problem-solving. & Solving coding problems related to scientific tasks. & Success Rate & (Part of Artificial Analysis Intelligence Index) & 
+\TODO{
+\href{https://www.livecodebench.com/}{SciCode (part of LiveCodeBench)}} \\
+\hline
+\YES \textbf{AIME (American Invitational Mathematics Examination)} ~\cite{farrell2021mlperfhpcholisticbenchmark} & Tests advanced mathematical problem-solving skills, often seen as a proxy for scientific reasoning. & Solving complex math problems. & Accuracy & (Part of Artificial Analysis Intelligence Index) & \href{https://artofproblemsolving.com/wiki/index.php/AIME_Problems_and_Solutions}{AIME} \\
+\hline
+\NO \textbf{MATH-500} & A mathematics benchmark designed to evaluate models' performance on a diverse set of math problems. & Solving a wide range of math problems. & Accuracy & (Part of Artificial Analysis Intelligence Index) & (Specific link not readily available, often bundled in broader evaluations) \\
+\hline
+\YES \textbf{CURIE (Scientific Long-Context Understanding, Reasoning and Information Extraction)} ~\cite{cui2025curieevaluatingllmsmultitask} & Evaluates LLMs on scientific problem-solving across six disciplines: materials science, condensed matter physics, quantum computing, geospatial analysis, biodiversity, and proteins. & Information extraction, reasoning, concept tracking, aggregation, algebraic manipulation, multimodal understanding, cross-domain expertise from full-length scientific papers. & Task-specific metrics (e.g., accuracy for extraction, correctness for reasoning) & Substantial room for improvement across all models and tasks. & \href{https://arxiv.org/abs/2404.02029}{CURIE Paper} \\
+\hline
+\textcolor{red}{TODO: under the name: FEABench (Finite Element Analysis Benchmark) ~\cite{mudur2025feabenchevaluatinglanguagemodels}: Evaluating Language Models on Multiphysics Reasoning Ability}
+\YES \textbf{FEABench (Finite Element Analysis Benchmark)} & Measures the ability of LLM agents to simulate, reason, and solve physics, mathematics, and engineering problems using finite element analysis (FEA). & Solving problems requiring FEA simulations and reasoning. & Correctness of solutions & (Part of CURIE related work) & \cite{zhu2024enhancingportfoliooptimizationtransformergan}\href{https://arxiv.org/abs/2404.02029}{\LINK} \\
+\hline
+\YES \textbf{SPIQA (Scientific Paper Image Question Answering)} ~\cite{pramanick2025spiqadatasetmultimodalquestion} & Evaluates multimodal and long-context capabilities of LLMs for scientific image understanding and reasoning. & Answering questions based on scientific figures and associated text from research articles. & Accuracy, F1 score & Significant performance gains by fine-tuning open-source systems. & \href{https://arxiv.org/abs/2404.02029}{SPIQA Paper} \\
+\hline % End of General Scientific Reasoning & Knowledge
+
+% \noalign{\smallskip} % Add a small vertical space before the next discipline
+
+% Biomedical & Life Sciences
+\rowcolor{gray!20}
+\multicolumn{6}{|l|}{\textbf{Biomedical and Life Sciences}} \\
+\hline
+\hline
+\YES \textbf{MedQA} ~\cite{jin2021disease}& Assesses clinical knowledge and medical reasoning. & Answering medical questions, often in multiple-choice format. & Accuracy & o1 (OpenAI) has set a new state-of-the-art. & 
+\TODO{
+\href{https://github.com/pubmedqa/MedQA}{MedQA}} \\
+\hline
+\hline
+\NO \textbf{Therapeutic Data Commons (TDC)} & A foundation for AI in therapeutic science, offering AI-ready datasets, tasks, and leaderboards for drug discovery. & Tasks span drug discovery, including target discovery, activity modeling, efficacy, and safety. & Task-specific metrics (e.g., AUC, F1-score) & A Wide range of AI models are evaluated. & \href{https://tdcommons.ai/}{TDC} \\
+\hline
+\textcolor{red}{TODO: under the name: BaisBench (Biological AI Scientist Benchmark) 1. - Question Answering AND 2. - Cell Type Annotation}
+\YES \textbf{BaisBench (Biological AI Scientist Benchmark)} & Designed to assess AI scientists' ability to generate biological discoveries through data analysis and reasoning with external knowledge in omics data-driven research. & Cell type annotation on single-cell datasets, scientific discovery through multiple-choice questions derived from biological insights of recent single-cell studies. & Accuracy & Current models substantially underperform human experts. & \href{https://arxiv.org/abs/2505.08341}{BaisBench} \\
+\hline
+\YES \textbf{MOLGEN} ~\cite{fang2024domainagnosticmoleculargenerationchemical} & A benchmark for molecular generation tasks in chemistry and drug discovery. & Generating novel molecules with desired properties. & Diversity, validity, novelty, property scores. & (Various generative AI models are benchmarked) & (Often part of broader computational chemistry AI platforms) \\
+\hline
+\YES \textbf{Open Graph Benchmark (OGB) - Biology} ~\cite{hu2021opengraphbenchmarkdatasets} & Graph machine learning benchmarks for biological networks (e.g., protein-protein interaction networks, drug-target interactions). & Node classification, link prediction, graph classification on biological graphs. & Accuracy, AUC & (Various graph neural networks and other graph ML models) & \href{https://ogb.stanford.edu/docs/home/}{OGB} \\
+\hline % End of Biomedical & Life Sciences
+
+% \noalign{\bigskip} % Add a small vertical space before the next discipline
+
+% Materials Science & Chemistry
+\rowcolor{gray!20}
+\multicolumn{6}{|l|}{\textbf{Materials Science \& Chemistry}} \\
+\hline
+\YES \textbf{Materials Project} ~\cite{neurips2024_a8063075} & A vast database of material properties, often used as a benchmark for AI models predicting new materials. & Predicting material properties (e.g., bandgaps, formation energies, stability) for inorganic compounds. & Mean Absolute Error (MAE), R-squared & MatGL, ALIGNN, MEGNet, etc. & \href{https://materialsproject.org/}{Materials Project} \\
+\hline
+\YES \textbf{OCP (Open Catalyst Project)} ~\cite{chanussot2021oc20,tran2023oc22,doi:10.1021/acscatal.0c04525,tran2023b} & Benchmarks for discovering new catalysts using AI, focusing on predicting adsorption energies and forces. & Predicting catalyst properties and reaction outcomes. & MAE on energies and forces & (Various graph neural networks and physics-informed models) & \href{https://opencatalystproject.org/}{Open Catalyst Project} \\
+\hline
+\NO \textbf{JARVIS-Leaderboard (Joint Automated Repository for Various Integrated Simulations)} & NIST-maintained leaderboards for AI models in materials science, covering various properties and simulations. & Material property prediction (e.g., superconducting transition temperature), image classification in STEM, force field prediction. & Task-specific metrics (e.g., MAE, accuracy) & (Various models for materials design) & \href{https://pages.nist.gov/jarvis_leaderboard/}{JARVIS-Leaderboard} \cite{jarvis}\\
+\hline % End of Materials Science & Chemistry
+% \noalign{\bigskip} % Add a small vertical space before the next discipline
+
+% Physics & Engineering
+\rowcolor{gray!20}
+\multicolumn{6}{|l|}{\textbf{Physics \& Engineering}} \\
+\hline
+\textcolor{red}{TODO: under the name: Quantum Computing Benchmarks (QML)}
+\YES \textbf{Quantum Computing Benchmarks (e.g., QML Benchmarks)} ~\cite{bowles2024betterclassicalsubtleart} & Evaluates AI models for tasks in quantum computing, such as quantum state preparation, quantum control, and error correction. & Optimizing quantum circuits, classifying quantum states. & Fidelity, success probability & (Emerging field with specialized benchmarks) & (Often found in quantum machine learning research papers) \\
+\hline
+\NO \textbf{Fluid Dynamics Benchmarks (e.g., based on CFD data)} & Benchmarks for AI models in computational fluid dynamics (CFD), such as predicting flow patterns or turbulence. & Solving Navier-Stokes equations, predicting aerodynamic forces. & Error metrics (e.g., L2 error) & (Physics-informed neural networks, traditional ML models) & (Often custom datasets and benchmarks from research labs) \\
+\hline % End of Physics & Engineering
+% \noalign{\bigskip} % Add a small vertical space before the next discipline
+
+% Earth & Space Sciences
+\rowcolor{gray!20}
+\multicolumn{6}{|l|}{\textbf{Earth and Space Sciences}} \\
+\hline
+\textcolor{red}{TODO: fix bibentry}
+\YES \textbf{SatImgNet} ~\cite{roberts2023satin}
+& Benchmark for analyzing satellite imagery, relevant for climate science, disaster monitoring, and urban planning. & Object detection, semantic segmentation, change detection in satellite images. & mAP, IoU, accuracy & (Various computer vision models) & (Specific datasets and challenges often found in remote sensing conferences) \\
+\hline
+\textcolor{red}{TODO: double check. There are three ClimateLearn entries}
+\textbf{Climate Model Benchmarks (e.g., forecasting)} & Evaluating AI models for climate forecasting, predicting weather patterns, and understanding climate change. & Predicting temperature, precipitation, extreme weather events. & RMSE, bias & (Neural weather models, climate models) & (Collaborative efforts in meteorological and climate science communities) \\
+\hline % End of Earth & Space Sciences
+% \noalign{\bigskip} % Add a small vertical space before the next discipline
+
+% Cross-Disciplinary/General Purpose AI Benchmarks with Scientific Relevance
+\rowcolor{gray!20}
+\multicolumn{6}{|l|}{\textbf{Cross-Disciplinary/General Purpose AI Benchmarks with Scientific Relevance}} \\
+\hline
+\NO \textbf{BIG-Bench (Beyond the Imitation Game Benchmark)} & A very large and diverse benchmark that includes many tasks requiring scientific reasoning and knowledge, often pushing the limits of language models. & Problem-solving, knowledge recall, common-sense reasoning across a wide array of topics, including scientific ones. & Accuracy, various task-specific metrics. & (Many large language models are evaluated on BIG-Bench) & \href{https://github.com/google/BIG-bench}{BIG-Bench} \cite{srivastava2023beyond}\\
+\hline
+\NO \textbf{CommonSenseQA} & Tests common sense reasoning, which is crucial for scientific understanding and problem-solving. & Answering questions requiring general world knowledge. & Accuracy & (Evaluated across various LLMs) & \TODO{\href{https://www.cs.cmu.edu/~zhiliny/data/commonsense_qa.html}{CommonSenseQA}} \\
+\hline
+\NO \textbf{Winogrande} & Assesses commonsense reasoning by resolving ambiguities in sentences that require an understanding of context. & Disambiguating sentences based on contextual understanding. & Accuracy & (Evaluated across various LLMs) & \href{https://leaderboard.allenai.org/winogrande/submissions/public}{Winogrande} \cite{winogrande}\\
+\hline
+\end{longtable}
+%\end{center}
+
+
+\end{landscape}
+
+\twocolumn  %%
+
+

@@ -1,0 +1,108 @@
+\newlength{\ratingswidth}
+\setlength{\ratingswidth}{0.11\textwidth}
+
+\newlength{\imageratingswidth}
+\setlength{\imageratingswidth}{0.06\textwidth}
+
+
+
+\begin{landscape}
+{\footnotesize
+\begin{longtable}{
+|p{0.08\textwidth}
+|p{0.2\textwidth}
+|p{0.2\textwidth}
+|p{0.2\textwidth}
+|p{0.3\textwidth}
+|p{0.11\textwidth}
+|}
+\caption{Ontology Table for Selected AI Science Benchmarks} \label{tab:ontology} \\
+\hline
+\textbf{Ratings} & \textbf{Name} & \textbf{Domain} & \textbf{Models} & \textbf{Metrics} & \textbf{Citation} \\ \hline
+\endfirsthead
+\hline
+\textbf{Ratings} & \textbf{Name} & \textbf{Domain} & \textbf{Models} & \textbf{Metrics} & \textbf{Citation}  \\ \hline \\ \hline
+\endhead
+\hline
+\multicolumn{12}{r}{Continued on next page} \\
+\endfoot
+\hline
+\endlastfoot
+\includegraphics[width=\imageratingswidth]{climatelearn_-_weather_forcasting_radar.pdf} & ClimateLearn - Weather Forcasting & Climate \ & RMSE, Anomaly correlation & Global weather prediction (3-5 days) & \textbf{5.00} \\ \hline
+\includegraphics[width=\imageratingswidth]{climatelearn_-_downscaling_radar.pdf} & ClimateLearn - Downscaling & Climate \ & RMSE, Anomaly correlation & Global weather prediction (3-5 days) & \textbf{5.00} \\ \hline
+\includegraphics[width=\imageratingswidth]{climatelearn_-_climate_projection_radar.pdf} & ClimateLearn - Climate Projection & Climate \ & RMSE, Anomaly correlation & Global weather prediction (3-5 days) & \textbf{5.00} \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_science_-_cloudmask_radar.pdf} & MLCommons Science - CloudMask & Climate \ & MAE, Accuracy, Speedup vs simulation & Inference accuracy, simulation speed-up, generalization & \textbf{5.00} \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_science_-_earthquake_radar.pdf} & MLCommons Science - Earthquake & Climate \ & MAE, Accuracy, Speedup vs simulation & Inference accuracy, simulation speed-up, generalization & \textbf{5.00} \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_science_-_candle_uno_radar.pdf} & MLCommons Science - Candle UNO & Biology \ & MAE, Accuracy, Speedup vs simulation & Inference accuracy, simulation speed-up, generalization & \textbf{5.00} \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_science_-_stemdl_radar.pdf} & MLCommons Science - STEMDL & Materials Science & CNN, GNN, Transformer & MAE, Accuracy, Speedup vs simulation & \cite{10.1007/978-3-031-23220-6_4} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{arc-challenge_advanced_reasoning_challenge_radar.pdf} & ARC-Challenge (Advanced Reasoning Challenge) & Computational Science \ & Commonsense and scientific reasoning & Generalization & GPT-4, Claude \\ \hline
+\includegraphics[width=\imageratingswidth]{molgen_radar.pdf} & MOLGEN & Chemistry & MolGen & Validity\%, Novelty\%, QED, Docking score, penalized logP & \cite{fang2024domainagnosticmoleculargenerationchemical} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{open_graph_benchmark_ogb_-_biology_radar.pdf} & Open Graph Benchmark (OGB) - Biology & Biology \ & Accuracy, ROC-AUC & Scalability and generalization in graph ML for biology & \textbf{4.83} \\ \hline
+\includegraphics[width=\imageratingswidth]{llms_for_crop_science_radar.pdf} & LLMs for Crop Science & Climate \ & Scientific knowledge, crop reasoning & Generalization & GPT-3.5, GPT-4, Claude-3-opus, Qwen-max, LLama3-8B, InternLM2-7B, Qwen1.5-7B \\ \hline
+\includegraphics[width=\imageratingswidth]{scicode_radar.pdf} & SciCode & Computational Science \ & Solve rate (\%) & Program synthesis, scientific computing & \textbf{4.50} \\ \hline
+\includegraphics[width=\imageratingswidth]{calochallenge__radar.pdf} & CaloChallenge 2022 & High Energy Physics & VAE variants, GAN variants, Normalizing flows, Diffusion models & Histogram similarity, Classifier AUC, Generation latency & \cite{krause2024calochallenge2022communitychallenge} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{pdebench_radar.pdf} & PDEBench & Computational Science \ & Time-dependent PDE modeling; physical accuracy & Regression & FNO, U-Net, PINN, Gradient-Based inverse methods \\ \hline
+\includegraphics[width=\imageratingswidth]{urban_data_layer_udl_-_pm_concentration_prediction_radar.pdf} & Urban Data Layer (UDL) - PM2.5 Concentration Prediction & Climate \ & Task-specific accuracy or RMSE & Multi-modal urban inference, standardization & \textbf{4.50} \\ \hline
+\includegraphics[width=\imageratingswidth]{urban_data_layer_udl_-_built-up_area_classification_radar.pdf} & Urban Data Layer (UDL) - Built-up Area Classification & Climate \ & Task-specific accuracy or RMSE & Multi-modal urban inference, standardization & \textbf{4.50} \\ \hline
+\includegraphics[width=\imageratingswidth]{urban_data_layer_udl_-_administrative_boundaries_identification_radar.pdf} & Urban Data Layer (UDL) - Administrative Boundaries Identification & Climate \ & Task-specific accuracy or RMSE & Multi-modal urban inference, standardization & \textbf{4.50} \\ \hline
+\includegraphics[width=\imageratingswidth]{urban_data_layer_udl_-_el_nino_anomaly_detection_radar.pdf} & Urban Data Layer (UDL) - El Nino Anomaly Detection & Climate \ & Task-specific accuracy or RMSE & Multi-modal urban inference, standardization & \textbf{4.50} \\ \hline
+\includegraphics[width=\imageratingswidth]{spiqa_llm_radar.pdf} & SPIQA (LLM) & Computational Science \ & Accuracy, F1 score & Visual reasoning, scientific figure understanding & 4.42 \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_medical_ai_-_pancreas_segmentation_dfci_radar.pdf} & MLCommons Medical AI - Pancreas Segmentation (DFCI) & Biology \ & ROC AUC, Accuracy, Fairness metrics & Clinical accuracy, fairness, generalizability, privacy compliance & 4.33 \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_medical_ai_-_brain_tumor_segmentation_brats_radar.pdf} & MLCommons Medical AI - Brain Tumor Segmentation (BraTS) & Biology \ & ROC AUC, Accuracy, Fairness metrics & Clinical accuracy, fairness, generalizability, privacy compliance & 4.33 \\ \hline
+\includegraphics[width=\imageratingswidth]{mlcommons_medical_ai_-__surgical_workflow_phase_recognition_surgmlcube_radar.pdf} & MLCommons Medical AI -  Surgical Workflow Phase Recognition (SurgMLCube) & Biology \ & ROC AUC, Accuracy, Fairness metrics & Clinical accuracy, fairness, generalizability, privacy compliance & 4.33 \\ \hline
+\includegraphics[width=\imageratingswidth]{seafloorai_radar.pdf} & SeafloorAI & Climate \ & Segmentation pixel accuracy, QA accuracy & Geospatial understanding, multimodal reasoning & 4.33 \\ \hline
+\includegraphics[width=\imageratingswidth]{seafloorgenai_radar.pdf} & SeafloorGenAI & Climate \ & Geospatial understanding, multimodal reasoning & Generalization & SegFormer, ViLT-style multimodal models \\ \hline
+\includegraphics[width=\imageratingswidth]{gess_-_track_pileup_radar.pdf} & GeSS - Track Pileup & High Energy Physics & GCN, EGNN, DimeNet++ & Accuracy, RMSE, OOD robustness delta & \cite{neurips2024_a8063075} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{gess_-_track_signal_radar.pdf} & GeSS - Track Signal & High Energy Physics & GCN, EGNN, DimeNet++ & Accuracy, RMSE, OOD robustness delta & \cite{neurips2024_a8063075} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{gess_-_drugood_radar.pdf} & GeSS - DrugOOD & Biology \ & Accuracy, RMSE, OOD robustness delta & OOD performance in scientific settings & 4.33 \\ \hline
+\includegraphics[width=\imageratingswidth]{gess_-_qmof_radar.pdf} & GeSS - QMOF & Materials Science & GCN, EGNN, DimeNet++ & Accuracy, RMSE, OOD robustness delta & \cite{neurips2024_a8063075} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{ocp_open_catalyst_project_radar.pdf} & OCP (Open Catalyst Project) & Chemistry, Materials Science & CGCNN, SchNet, DimeNet++, GemNet-OC & MAE (energy), MAE (force) & \cite{chanussot2021oc20,tran2023oc22,doi:10.1021/acscatal.0c04525,tran2023b} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{jet_classification_radar.pdf} & Jet Classification & High Energy Physics & Keras DNN, QKeras quantized DNN & Accuracy, AUC & \cite{duarte2022fastml} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{irregular_sensor_data_compression_radar.pdf} & Irregular Sensor Data Compression & High Energy Physics & Autoencoder, Quantized autoencoder & MSE, Compression ratio & \cite{duarte2022fastmlsciencebenchmarksaccelerating2} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{mlperf_hpc_-_cosmoflow_radar.pdf} & MLPerf HPC - Cosmoflow & High Energy Physics & CosmoFlow, DeepCAM, OpenCatalyst & Training time, Accuracy, GPU utilization & \cite{farrell2021mlperfhpcholisticbenchmark} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{mlperf_hpc_-_deepcam_radar.pdf} & MLPerf HPC - DeepCAM & Climate \ & Training time, Accuracy, GPU utilization & Scaling efficiency, training time, model accuracy on HPC & 4.17 \\ \hline
+\includegraphics[width=\imageratingswidth]{mlperf_hpc_-_open_catalyst_project_dimenet__radar.pdf} & MLPerf HPC - Open Catalyst Project DimeNet++ & Chemistry & DeepCAM & Training time, Accuracy, GPU utilization & \cite{farrell2021mlperfhpcholisticbenchmark} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{mlperf_hpc_-_openfold_radar.pdf} & MLPerf HPC - OpenFold & Biology \ & Training time, Accuracy, GPU utilization & Scaling efficiency, training time, model accuracy on HPC & 4.17 \\ \hline
+\includegraphics[width=\imageratingswidth]{hdr_ml_anomaly_challenge_-_gravitational_waves_radar.pdf} & HDR ML Anomaly Challenge - Gravitational Waves & High Energy Physics & Deep latent CNNs, Autoencoders & ROC-AUC, Precision/Recall & \cite{campolongo2025buildingmachinelearningchallenges} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{supercond_-_property_prediction_radar.pdf} & SuperCon3D - Property Prediction & Materials Science & SODNet, DiffCSP-SC & MAE (Tc), Validity of generated structures & \cite{neurips2024_c4e3b55e} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{supercond_-__inverse_crystal_structure_generation_radar.pdf} & SuperCon3D -  Inverse Crystal Structure Generation & Materials Science & SODNet, DiffCSP-SC & MAE (Tc), Validity of generated structures & \cite{neurips2024_c4e3b55e} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{baisbench_biological_ai_scientist_benchmark_-_question_answering_radar.pdf} & BaisBench (Biological AI Scientist Benchmark) - Question Answering & Biology \ & Autonomous biological research capabilities & Generalization & LLM-based AI scientist agents \\ \hline
+\includegraphics[width=\imageratingswidth]{baisbench_biological_ai_scientist_benchmark_-_cell_type_annotation_radar.pdf} & BaisBench (Biological AI Scientist Benchmark) - Cell Type Annotation & Biology \ & Annotation accuracy, QA accuracy & Autonomous biological research capabilities & 4.00 \\ \hline
+\includegraphics[width=\imageratingswidth]{the_well_radar.pdf} & The Well & Biology \ & Surrogate modeling, physics-based prediction & Sequence Prediction/Forecasting & FNO baselines, U-Net baselines \\ \hline
+\includegraphics[width=\imageratingswidth]{mmlu_massive_multitask_language_understanding_radar.pdf} & MMLU (Massive Multitask Language Understanding) & Computational Science \ & General reasoning, subject-matter understanding & Generalization & GPT-4o, Gemini 1.5 Pro, o1, DeepSeek-R1 \\ \hline
+\includegraphics[width=\imageratingswidth]{satimgnet_radar.pdf} & SatImgNet & Climate \ & Accuracy & Zero-shot land-use classification & 3.83 \\ \hline
+\includegraphics[width=\imageratingswidth]{gpqa_diamond_radar.pdf} & GPQA Diamond & Biology \ & Scientific reasoning, deep knowledge & Generalization & o1, DeepSeek-R1 \\ \hline
+\includegraphics[width=\imageratingswidth]{prmk_radar.pdf} & PRM800K & Mathematics & Accuracy & Math reasoning and generalization & 3.83 \\ \hline
+\includegraphics[width=\imageratingswidth]{feabench_finite_element_analysis_benchmark_evaluating_language_models_on_multiphysics_reasoning_ability_radar.pdf} & FEABench (Finite Element Analysis Benchmark): Evaluating Language Models on Multiphysics Reasoning Ability & Mathematics & Solve time, Error norm & Numerical simulation accuracy and efficiency & 3.83 \\ \hline
+\includegraphics[width=\imageratingswidth]{neural_architecture_codesign_for_fast_physics_applications_radar.pdf} & Neural Architecture Codesign for Fast Physics Applications & High Energy Physics & NAC-based BraggNN, NAC-optimized Deep Sets (jet) & Accuracy, Latency, Resource utilization & \cite{weitz2025neuralarchitecturecodesignfast} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{delta_squared-dft_radar.pdf} & Delta Squared-DFT & Chemistry, Materials Science & Delta Squared-ML correction networks, Kernel ridge regression & Mean Absolute Error (eV), Energy ranking accuracy & \cite{khrabrov2024nabla2dftuniversalquantumchemistry} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{hdr_ml_anomaly_challenge_-_sea_level_rise_radar.pdf} & HDR ML Anomaly Challenge - Sea Level Rise & Climate \ & ROC-AUC, Precision/Recall & Detection of environmental anomalies & 3.83 \\ \hline
+\includegraphics[width=\imageratingswidth]{vocal_call_locator_vcl_radar.pdf} & Vocal Call Locator (VCL) & Biology \ & Localization error (cm), Recall/Precision & Source localization accuracy in bioacoustic settings & 3.83 \\ \hline
+\includegraphics[width=\imageratingswidth]{massspecgym_-_de_novo_molecule_generation_radar.pdf} & MassSpecGym - De novo molecule generation & Chemistry & Graph-based generative models, Retrieval baselines & Structure accuracy, Retrieval precision, Simulation MSE & \cite{neurips2024_c6c31413} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{massspecgym_-_molecule_retrieval_radar.pdf} & MassSpecGym - Molecule Retrieval & Chemistry & Graph-based generative models, Retrieval baselines & Structure accuracy, Retrieval precision, Simulation MSE & \cite{neurips2024_c6c31413} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{massspecgym_-_spectrum_simulation_radar.pdf} & MassSpecGym - Spectrum Simulation & Chemistry & Graph-based generative models, Retrieval baselines & Structure accuracy, Retrieval precision, Simulation MSE & \cite{neurips2024_c6c31413} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{spiqa_scientific_paper_image_question_answering_radar.pdf} & SPIQA (Scientific Paper Image Question Answering) & Computational Science \ & Accuracy, F1 score & Visual-textual reasoning in scientific contexts & 3.67 \\ \hline
+\includegraphics[width=\imageratingswidth]{gpqa_a_graduate-level_google-proof_question_and_answer_benchmark_radar.pdf} & GPQA: A Graduate-Level Google-Proof Question and Answer Benchmark & Biology \ & Scientific reasoning, knowledge probing & Generalization & GPT-4 baseline \\ \hline
+\includegraphics[width=\imageratingswidth]{medqa_radar.pdf} & MedQA & Biology \ & Medical diagnosis and knowledge retrieval & Generalization & Neural reader, Retrieval-based QA systems \\ \hline
+\includegraphics[width=\imageratingswidth]{single_qubit_readout_on_qick_system_radar.pdf} & Single Qubit Readout on QICK System & Computational Science \ & Accuracy, Latency & Single-shot fidelity, inference latency & 3.50 \\ \hline
+\includegraphics[width=\imageratingswidth]{cfdbench_fluid_dynamics_radar.pdf} & CFDBench (Fluid Dynamics) & Mathematics & FNO, DeepONet, U-Net & L2 error, MAE & \cite{luo2024cfdbenchlargescalebenchmarkmachine} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{curie_scientific_long-context_understanding_reasoning_and_information_extraction_radar.pdf} & CURIE (Scientific Long-Context Understanding, Reasoning and Information Extraction) & Materials Science, High Energy Physics, Biology \ & Generalization & Reasoning \ & Accuracy \\ \hline
+\includegraphics[width=\imageratingswidth]{smart_pixels_for_lhc_radar.pdf} & Smart Pixels for LHC & High Energy Physics & 2-layer pixel NN & Data rejection rate, Power per pixel & \cite{parpillon2024smartpixelsinpixelai} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{lhc_new_physics_dataset_radar.pdf} & LHC New Physics Dataset & High Energy Physics & Autoencoder, Variational autoencoder, Isolation forest & ROC-AUC, Detection efficiency & \cite{https://doi.org/10.5281/zenodo.5046389} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{quantum_computing_benchmarks_qml_radar.pdf} & Quantum Computing Benchmarks (QML) & Computational Science \ & Fidelity, Success probability & Quantum algorithm performance and fidelity & 3.17 \\ \hline
+\includegraphics[width=\imageratingswidth]{ultrafast_jet_classification_at_the_hl-lhc_radar.pdf} & Ultrafast jet classification at the HL-LHC & High Energy Physics & MLP, Deep Sets, Interaction Network & Accuracy, Latency, Resource utilization & \cite{odagiu2024ultrafastjetclassificationfpgas} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{hedm_braggnn_radar.pdf} & HEDM (BraggNN) & Materials Science & BraggNN & Localization accuracy, Inference time & \cite{liu2021braggnnfastxraybragg} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{d-stem_radar.pdf} & 4D-STEM & Materials Science & CNN models (prototype) & Classification accuracy, Throughput & \cite{qin2023extremely} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{beam_control_radar.pdf} & Beam Control & High Energy Physics & DDPG, PPO (planned) & Stability, Control loss & \cite{duarte2022fastmlsciencebenchmarksaccelerating3,kafkes2021boostrdatasetacceleratorcontrol} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{intelligent_experiments_through_real-time_ai_radar.pdf} & Intelligent experiments through real-time AI & High Energy Physics & Bipartite Graph Network with Set Transformers (BGN-ST), GarNet (edge-classifier) & Accuracy (charm and beauty detection), Latency (micros), Resource utilization (LUT/FF/BRAM/DSP) & \cite{kvapil2025intelligentexperimentsrealtimeai} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{hdr_ml_anomaly_challenge_-_butterfly_radar.pdf} & HDR ML Anomaly Challenge - Butterfly & Biology \ & Classification accuracy, F1 score & Hybrid detection in biological systems & 3.00 \\ \hline
+\includegraphics[width=\imageratingswidth]{dune_radar.pdf} & DUNE & High Energy Physics & CNN, LSTM (planned) & Detection efficiency, Latency & \cite{abud2021deep} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{frontiermath_radar.pdf} & FrontierMath & Mathematics & Accuracy & Symbolic and abstract mathematical reasoning & 2.50 \\ \hline
+\includegraphics[width=\imageratingswidth]{aime_american_invitational_mathematics_examination_radar.pdf} & AIME (American Invitational Mathematics Examination) & Mathematics & Accuracy & Mathematical problem-solving and reasoning & 2.33 \\ \hline
+\includegraphics[width=\imageratingswidth]{quench_detection_radar.pdf} & Quench detection & High Energy Physics & Autoencoder, RL agents (in development) & ROC-AUC, Detection latency & \cite{quench2024} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{materials_project_radar.pdf} & Materials Project & Materials Science & Automatminer, Crystal Graph Neural Networks & MAE, R{\textasciicircum}2 & \cite{jain2013materials} \\ \hline \\ \hline
+\includegraphics[width=\imageratingswidth]{in-situ_high-speed_computer_vision_radar.pdf} & In-Situ High-Speed Computer Vision & High Energy Physics & CNN & Accuracy, FPS & \cite{wei2024lowlatencyopticalbasedmode} \\ \hline \\ \hline
+\end{longtable}
+}
+
+\end{landscape}

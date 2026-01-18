@@ -1,0 +1,83 @@
+\newcommand{\mmB}{B}
+\newcommand{\mmT}{T}
+\newcommand{\mmJ}{$J_L$}
+\newcommand{\mmD}{$D_L$}
+\newcommand{\mmF}{$F_L$}
+
+\begin{figure}[!ht]
+\begin{center}
+\resizebox{1.0\columnwidth}{!}{
+\begin{tikzpicture}[
+    box/.style={rectangle, rounded corners, draw=black, very thick, text width=6cm, align=center, minimum height=1.5cm, fill=white!90!gray},
+    layer/.style={rectangle, rounded corners, draw=blue!50!black, very thick, text width=8cm, align=center, minimum height=1cm, fill=blue!10},
+    metric/.style={rectangle, draw=red!50!black, thick, text width=4cm, align=center, minimum height=0.8cm, fill=red!10},
+    labelbox/.style={rectangle, draw=green!50!black, thick, text width=3cm, align=center, minimum height=0.6cm, fill=green!10},
+    arrow/.style={-Latex, thick}
+]
+
+%==============================================================
+% Facility Layer (Top)
+%===============================================================
+\node (facility_layer) at (0, 0) [layer] {\textbf{3. Facility/Data Center Layer (\mmF)}};
+\node at (0, -0.7) {\footnotesize \emph{Focus: CSR Reporting, Infrastructure Management}};
+
+\node (pue) at (-4, -2) [metric] {\textbf{PUE} \\ (Power Usage Effectiveness)};
+\node (dcie) at (4, -2) [metric] {\textbf{DCiE} \\ (Data Center Infrastructure Efficiency)};
+
+\node (pue_eq) at (-4, -3.5) [box, text width=5cm, minimum height=1.2cm] {$$ \text{PUE} = \frac{\text{Total Facility Energy}}{\text{IT Equipment Energy}} $$};
+\node (dcie_eq) at (4, -3.5) [box, text width=3.3cm, minimum height=1.2cm] {$$ \text{DCiE} = \frac{1}{\text{PUE}} \times 100\% $$};
+
+\draw [arrow] (facility_layer.south) -- ++(0, -0.5) coordinate (split1);
+\draw [arrow] (split1) -- (pue);
+\draw [arrow] (split1) -- (dcie);
+\draw [arrow] (pue) -- (pue_eq);
+\draw [arrow] (dcie) -- (dcie_eq);
+
+%===============================================================
+% Job Layer (Middle)
+%===============================================================
+\node (job_layer) at (0, -6) [layer] {\textbf{2. Job/System Layer (\mmJ)}};
+\node at (0, -6.7) {\footnotesize \emph{Focus: Power-Cap Schedulers, System Optimization}};
+
+\node (kwh) at (-4, -8) [metric] {\textbf{kWh} \\ (Kilowatt-hour)};
+\node (edp) at (4, -8) [metric] {\textbf{Energy–Delay Product} (EDP)};
+
+\node (edp_def) at (4, -9.5) [box, text width=3.5cm, minimum height=1.2cm] {$$ \text{EDP} \propto \text{Energy} \times \text{Delay} $$};
+
+\draw [arrow] (job_layer.south) -- ++(0, -0.5) coordinate (split2);
+\draw [arrow] (split2) -- (kwh);
+\draw [arrow] (split2) -- (edp);
+\draw [arrow] (edp) -- (edp_def);
+
+%===============================================================
+% Device Layer (Bottom)
+%===============================================================
+\node (device_layer) at (0, -12) [layer] {\textbf{1. Device/Micro-architectural Layer (\mmD)}};
+\node at (0, -12.7) {\footnotesize \emph{Focus: Micro-architectural Hot-spots, Hardware Limits}};
+
+\node (eperop) at (-4, -14) [metric] {\textbf{Energy per flop} or \\ \textbf{Energy per inference}};
+\node (temp) at (4, -13.7) [labelbox] {\textbf{Temperature~~Sensors~} (\emph{Non-KPI})~};
+
+\node (eperop_def) at (-4, -15.5) [box, text width=3.5cm, minimum height=1.2cm] {Energy per single \\ computational unit};
+
+\node (temp_reason) at (4, -15.5) [box, text width=3.5cm, minimum height=1.5cm] {Logged because \textbf{thermal headroom} bounds safe \textbf{DVFS} ranges.};
+
+\draw [arrow] (device_layer.south) -- ++(0, -0.5) coordinate (split3);
+\draw [arrow] (split3) -- (eperop);
+\draw [arrow] (split3) -- (temp);
+\draw [arrow] (eperop) -- (eperop_def);
+\draw [arrow] (temp) -- (temp_reason);
+
+% Connecting the layers vertically
+\draw [arrow, line width=2pt, dashed, gray] (job_layer.north) -- (facility_layer.south);
+\draw [arrow, line width=2pt, dashed, gray] (device_layer.north) -- (job_layer.south);
+
+\node at (0, -5) [align=center] {\textbf{Drives Schedulers} \\ $\uparrow$};
+\node at (0, -11) [align=center] {\textbf{Informs System Config} \\ $\uparrow$};
+
+\end{tikzpicture}
+}
+\end{center}
+\caption{Illustration of an Example for Metrics as Used in the Layered System Architecture for Large-Scale AI Benchmarking.}
+\label{fig:energy-metric-layer}
+\end{figure}

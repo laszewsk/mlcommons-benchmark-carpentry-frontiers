@@ -1,0 +1,67 @@
+\begin{table*}[htbp]
+\centering
+\caption{Machine Learning Benchmarks Across Various Domains \TODO{citations missing. See \url{https://mlcommons-science.github.io/benchmark/}}}
+\label{tab:ml_benchmarks}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\rowcolor{blue!30}
+\textbf{Benchmark} & \textbf{Domain} & \textbf{ML motif} & \textbf{Computing motif} \\
+\hline
+\hline
+\YES jet classification \cite{duarte2022fastml} & HEP/NP & Classification & Embedded \\
+\hline
+\YES qubit readout \cite{diguglielmo2025endtoendworkflowmachinelearningbased} & QIS & Classification, Time-series & Embedded \\
+\hline
+\YES quench detection \cite{quench2024} & HEP/NP & Classification, Time-series & Embedded, Edge Inference \\
+\hline
+\YES BraggNN \cite{liu2021braggnnfastxraybragg} & Mat Sci & Regression & Embedded \\
+\hline
+\YES smart pixels \cite{parpillon2024smartpixelsinpixelai} & HEP/NP & Classification & Embedded \\
+\hline
+\YES Calo challenge \cite{krause2024calochallenge2022communitychallenge} \cite{calo-surrogate} & HEP/NP & Generative & HPC training, Inference \\
+\hline
+\YES Cloud Masking \cite{las-mlcommons-science} & Bio/Env Sci & Semantic Segmentation, Computer Vision & Inference \\
+\hline
+\YES CosmoFlow \cite{farrell2021mlperfhpcholisticbenchmark} & HEP/NP & Computer Vision, Inverse & HPC training, Inference \\
+\hline
+\YES Deep CAM \cite{farrell2021mlperfhpcholisticbenchmark} & Bio/Env Sci & Semantic Segmentation, Computer Vision & HPC training, Inference \\
+\hline
+\YES Earthquake forecasting \cite{las-mlcommons-science} & Bio/Env Sci & Regression, Time-series & Inference \\
+\hline
+\YES STEM DL \cite{las-mlcommons-science} & Mat Sci & Classification, Computer Vision & Inference \\
+\hline
+\YES Uno \cite{las-mlcommons-science} & Medical & Regression & Inference \\
+\hline
+\YES PDE Bench \cite{takamoto2024pdebenchextensivebenchmarkscientific} & Math & PINNs & Inference \\
+\hline
+\YES The Well \cite{neurips2024_4f9a5acd} & Math & PINNs & Inference \\
+\hline
+\YES HDR Anomaly Challenge GW \cite{campolongo2025buildingmachinelearningchallenges} & HEP/NP & Anomaly Detection & Inference \\
+\hline
+\YES HDR Anomaly Challenge Butterfly \cite{campolongo2025buildingmachinelearningchallenges2} & Bio/Env Sci & Anomaly Detection & Inference \\
+\hline
+\YES HDR Anomaly Challenge Sea level \cite{campolongo2025buildingmachinelearningchallenges3} & Bio/Env Sci & Anomaly Detection & Inference \\
+\hline
+\YES MHD regression \cite{Wei_2024} & Fusion & Regression & Embedded \\
+\hline
+\NO PtychoNN \cite{sbifair-ptycho} & Mat Sci & Regression & Embedded, Edge Inference \\
+\hline
+\NO ECON autoencoder [citation pending] & HEP/NP & Compression & Embedded \\
+\hline
+\NO supernova pointing \cite{UBOLDI2022166371} & HEP/NP & Regression & Edge Inference \\
+\hline
+\NO TPBench \cite{chung2025theoreticalphysicsbenchmarktpbench} & HEP/NP & LLM & HPC training, Inference \\
+\hline
+\NO Diffuse Multiple Scattering [citation pending] & Mat Sci & Classification, Computer Vision & Inference \\
+\hline
+\NO Electron Microscopy Denoising [citation pending] & Mat Sci & Computer Vision, Regression & Inference \\
+\hline
+\NO EAIRA Astro \cite{cappello2025eairaestablishingmethodologyevaluating} & HEP/NP & LLM & Inference \\
+\hline
+\NO EAIRA Molecule \cite{cappello2025eairaestablishingmethodologyevaluating} & Mat Sci & LLM & Inference \\
+\hline
+\end{tabular}
+}
+\YES = included, \NO = not included in github at \cite{www-las-mlcommons-benchmark-coolection}. Benchmarks that are not currently present in github are in the process of being added. 
+\end{table*}
