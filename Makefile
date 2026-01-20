@@ -1,5 +1,8 @@
 # Main document
-MAIN = vonLaszewski-mlcommons-benchmark-carpentry
+# MAIN = vonLaszewski-mlcommons-benchmark-carpentry
+#MAIN = frontiers
+MAIN = vonLaszewski-carpentry-frontiers
+
 
 # Compilers
 LATEX = pdflatex
@@ -15,7 +18,14 @@ CLEANFILES = *.bbl *.aux *.log *.blg *.bcf *.toc *.out *.lof *.lot *.fls *.fdb_l
 .PHONY: all clean view zip
 
 # Default target
-all: biblatex
+all: frontiers
+
+frontiers:
+	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+	$(BIBTEX) $(MAIN)
+	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+
 
 biblatex: clean
 	cp $(MAIN)-biblatex.tex $(MAIN).tex
