@@ -4,8 +4,7 @@
 \documentclass[utf8]{frontiersinFPHY_FAMS} % Vancouver Reference Style (Numbered) for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
 
 \setcitestyle{square} % for articles in the journals "Frontiers in Physics" and "Frontiers in Applied Mathematics and Statistics" 
-\usepackage{url,hyperref,lineno,microtype,subcaption}
-\usepackage[onehalfspacing]{setspace}
+
 
 \input{paper-format}
 
@@ -18,11 +17,13 @@
 \input{0000-authors-frontiers}
 
 
+\newcommand{\TITLE}{AI Benchmark Democratization and Carpentry}
+
 \begin{document}
 \onecolumn
 \firstpage{1}
 
-\title[Running Title]{Article Title} 
+\title[\TITLE]{\TITLE} 
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
 \address{} %This field will be automatically populated
@@ -31,12 +32,10 @@
 \extraAuth{}% If there are more than 1 corresponding author, comment this line and uncomment the next one.
 %\extraAuth{corresponding Author2 \\ Laboratory X2, Institute X2, Department X2, Organization X2, Street X2, City X2 , State XX2 (only USA, Canada and Australia), Zip Code2, X2 Country X2, email2@uni2.edu}
 
-
 \maketitle
-
+\newpage
 
 \input{0010-abstract}
-
 \input{0020-intro}
 
 \input{0030-definitions}

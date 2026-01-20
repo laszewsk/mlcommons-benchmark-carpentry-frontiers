@@ -12,10 +12,11 @@ For the U.S. Department of Energy (DOE) leadership-class machines, such as those
 \begin{table}[tb]
 \centering
 \caption{Estimated Energy Consumption of GPT Models for Training and Inference 
-(Based on \citep{brown2020language, patterson2021carbon, medium2023gpt4carbon, 
-extremenetworks2023energy, epochai2024compute, hackernoon2024dirtysecret}).}
+%(Based on \citep{brown2020language, patterson2021carbon, medium2023gpt4carbon, 
+%extremenetworks2023energy, epochai2024compute, hackernoon2024dirtysecret}).
+}
 \label{tab:energy-chatgpt}
-\resizebox{\columnwidth}{!}{
+%\resizebox{\columnwidth}{!}{
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{Model} & \textbf{\makecell{Training Energy\\(MWh)}} & \textbf{\makecell{Inference Energy\\(per 1M queries, MWh)}} \\
@@ -27,12 +28,12 @@ GPT-4 & 51,773--62,319 \citep{medium2023gpt4carbon,extremenetworks2023energy} & 
 GPT-5 & $>$60,000 (estimated) \citep{epochai2024compute,hackernoon2024dirtysecret} & $\sim$800--1,200 \\ \hline
 GPT-6 & 80,000--100,000 (projected) \citep{epochai2024compute} & $\sim$1,000--1,500 \\ \hline
 \end{tabular}
-}
+%}
 \end{table}
 
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/gpt_energy_comparison.pdf}
+    \includegraphics[width=0.6\linewidth]{images/gpt_energy_comparison.pdf}
     \caption{Energy Consumption for ChatGPT Training and Inferencing 1 Million Queries. (Data for GPT-5 and 6 are estimates). %\TODO{(Data for GPT-5 and 6 are estimates).} 
     }
     \label{fig:energy-consumption}

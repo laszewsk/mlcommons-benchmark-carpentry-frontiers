@@ -1,3 +1,6 @@
+\usepackage{url,hyperref,lineno,microtype,subcaption}
+\usepackage[onehalfspacing]{setspace}
+
 % -----------------------------------------------------
 % Encoding & Fonts
 % -----------------------------------------------------
@@ -58,9 +61,9 @@
 % -----------------------------------------------------
 % Lists & Custom Enums
 % -----------------------------------------------------
-\usepackage{enumitem}
-\newlist{goal}{enumerate}{1}
-\setlist[goal,1]{label=\textbf{G\arabic*},leftmargin=1.8em,align=left}
+%\usepackage{enumitem}
+%\newlist{goal}{enumerate}{1}
+%\setlist[goal,1]{label=\textbf{G\arabic*},leftmargin=1.8em,align=left}
 
 % -----------------------------------------------------
 % Graphics, TikZ & Diagrams
@@ -106,9 +109,9 @@
 % -----------------------------------------------------
 % Hyperlinks & URLs
 % -----------------------------------------------------
-\usepackage[hyphens]{url}
-\usepackage{hyperref}
-\renewcommand{\UrlFont}{\footnotesize}
+%\usepackage[hyphens]{url}
+%\usepackage{hyperref}
+%\renewcommand{\UrlFont}{\footnotesize}
 
 % -----------------------------------------------------
 % Miscellaneous
@@ -196,23 +199,9 @@
   \fi
 }
 
-% Generic relative-level helper
-\newcommand{\usedynlevel}[2]{%
-  \edef\level{\number\numexpr\getcurrentlevel+#1\relax}%
-  \ifnum\level>5 \def\level{5}\fi % cap at subparagraph
-  \uselevel{\level}{#2}%
-}
-
-% Public dynamic commands
-\newcommand{\dynsection}[1]{\usedynlevel{1}{#1}}        % one deeper
-\newcommand{\dynsubsection}[1]{\usedynlevel{2}{#1}}     % two deeper
-\newcommand{\dynsubsubsection}[1]{\usedynlevel{3}{#1}}  % three deeper
-\newcommand{\dynparagraph}[1]{\usedynlevel{4}{#1}}      % four deeper
-
 \makeatother
 
 \setcounter{tocdepth}{10} 
 
 \usepackage{relsize}
-\tikzset{fontscale/.style = {font=0.8\relsize{#1}}
-    }
+\tikzset{fontscale/.style = {font=0.8\relsize{#1}}}
