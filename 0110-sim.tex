@@ -17,7 +17,7 @@ Simulating AI hardware and software infrastructures offers an opportunity to dem
 This is especially useful for those (a) without direct access to the hardware on which the AI benchmarks run, and therefore can use simulations to estimate its behavior; and (b) planning large-scale experiments, who can use simulations to assess the impact on real hardware and infrastructure.
 
 As part of this, recent work in the modeling and simulation community has significantly expanded users' options for studying how their ML workload optimizations affect them.
-Although there is a wide array of tools that can be used, we focus on four of the most popular, widely used tools: Accel-Sim~\citep{KhairyShen2021-accelSim}, gem5~\citep{binkert2011gem5, LowePowerAhmad2020-gem520}, SST~\citep{RodriguesHemmert2011-sst, SST}, and Digital Twins~\citep{brewer2024digital}.
+Although there is a wide array of tools that can be used, we focus on four of the most popular, widely used tools: Accel-Sim~\citep{KhairyShen2021-accelSim}, gem5~\citep{binkert2011gem5, LowePowerAhmad2020-gem520}, SST~\citep{RodriguesHemmert2011-sst, SST}, and Digital Twins~\citep{brewer2024digital} (see also Table \ref{tab:sim}).
 These tools are often used in academia, industry, and national labs because they enable high-fidelity, early-stage design exploration.
 Moreover, they enable users who do not have access to real hardware or are prototyping optimizations for hardware that does not yet exist to simulate the behavior of popular ML workloads while balancing performance and power trade-offs.
 
@@ -69,10 +69,12 @@ However, for users who want to focus on both smaller- and larger-scale systems, 
 \textbf{ExaDigiT}~\citep{brewer2024digital}: 
 To study AI workloads at datacenter or supercomputer scale, ExaDigiT provides a holistic digital twin framework that models the coupled behavior of workloads, compute, power, and cooling subsystems.
 Unlike simulators such as Accel-Sim, gem5, or SST, which operate at device- or node-level timescales, ExaDigiT enables large-scale modeling of system dynamics over operational timescales—capturing interactions that are difficult to observe or measure directly in production environments.
-This framework further provides a means to evaluate operational strategies, perform “what-if” analyses, and uncover complex, cross-disciplinary transient behaviors that emerge from the tight coupling of workloads, compute, power, and cooling.
+This framework further provides a means to evaluate operational strategies, perform``what-if'' analyses, and uncover complex, cross-disciplinary transient behaviors that emerge from the tight coupling of workloads, compute, power, and cooling.
 
 \begin{table*}[tb!]
   \caption{Example Simulation Tools that Benefit AI Benchmark Simulations.}
+  \label{tab:sim}
+   {\footnotesize
   \begin{center}
   \begin{tabular}
   {|p{0.15\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
@@ -90,7 +92,8 @@ This framework further provides a means to evaluate operational strategies, perf
   ExaDigiT~\citep{brewer2024digital} & \textbf{Datacenter- or supercomputer-level} & Models interactions among workloads, scheduling, power, networking, and cooling, including physical footprint. & Examining ML workload behavior at the largest scales.\\
   \bottomrule
   \end{tabular}
-  \end{center}
+\end{center}
+}
 \end{table*}
 
 ExaDigiT consists of three coupled modules: (1) a \emph{resource allocator and power simulator (RAPS)} for replaying telemetry, simulating the scheduling of real or synthetic workloads, and dynamically estimating energy consumption; (2) a \emph{thermo-fluid cooling module} for predicting pressures, temperatures, flow rates, system-level control responses, and overall power-usage effectiveness (PUE); and (3) a \emph{visual analytics module} that integrates both a web-based dashboard and extended reality (XR) interfaces for immersive exploration of system behavior in augmented, virtual, or mixed reality. 

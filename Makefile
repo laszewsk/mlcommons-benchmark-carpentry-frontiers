@@ -2,7 +2,7 @@
 # MAIN = vonLaszewski-mlcommons-benchmark-carpentry
 #MAIN = frontiers
 MAIN = vonLaszewski-carpentry-frontiers
-
+SUP=$(MAIN)-supplemental
 
 # Compilers
 LATEX = pdflatex
@@ -25,6 +25,12 @@ frontiers:
 	$(BIBTEX) $(MAIN)
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
 	$(LATEX) $(LATEXFLAGS) $(MAIN).tex
+
+sup:
+	$(LATEX) $(LATEXFLAGS) $(SUP).tex
+	$(BIBTEX) $(SUP)
+	$(LATEX) $(LATEXFLAGS) $(SUP).tex
+	$(LATEX) $(LATEXFLAGS) $(SUP).tex
 
 
 biblatex: clean

@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is just an example/guide for you to refer to when producing your supplementary material for your Frontiers article.                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Version 2.5 Generated 2022/06/14 %%%
+%%% You will need to have the following packages installed: datetime, fmtcount, etoolbox, fcprefix, which are normally inlcuded in WinEdt. %%%
+%%% In http://www.ctan.org/ you can find the packages and how to install them, if necessary. %%%
+%%%  NB logo1.jpg is required in the path in order to correctly
+%%%  compile front page header %%%
+
+\PassOptionsToPackage{table}{xcolor}
+
+%\documentclass[utf8]{frontiers_suppmat} % for all articles
+\documentclass[utf8]{FrontiersinVancouver}
+\setcitestyle{square}
+\usepackage{url,hyperref,lineno,microtype,subcaption}
+\usepackage[onehalfspacing]{setspace}
+
+
+
+%\RequirePackage{natbib}
+
+\input{paper-format}
+
+\linenumbers
+
+% Leave a blank line between paragraphs instead of using \\
+
+\input{0000-authors-frontiers}
+
+\begin{document}
+\onecolumn
+\firstpage{1}
+
+\title[Supplementary Material]{{\helveticaitalic{Supplementary Material}}}
+
+\author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
+\address{} %This field will be automatically populated
+\correspondance{} %This field will be automatically populated
+
+\extraAuth{}
+
+\maketitle
+
+
+\section{Supplementary Data}
+
+\setcounter{table}{1}
+\input{0055-table-mlcommons-5}
+
+\setcounter{table}{2}
+\input{ontology/selected-new}
+
+\setcounter{table}{3}
+\input{0100-profile-table}
+
+\bibliographystyle{IEEEtran}
+
+\bibliography{ref-other.bib,ref-misc.bib}
+
+
+\end{document}

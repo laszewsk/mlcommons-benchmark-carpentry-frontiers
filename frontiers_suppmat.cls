@@ -611,6 +611,7 @@
     \rotstart{90 rotate}\box #1\vss}\hss}\rotfinish}
 
 \newif\ifsub@@figure   \sub@@figuretrue
+
 \def\thesubfigure{\@arabic\c@figure\alph{subfigure}}
 \def\fps@subfigure{tbp}
 \def\ftype@subfigure{1}
@@ -846,7 +847,7 @@
       \setlength{\itemindent}{-4mm}}\small}
 {\end{list}\endgroup}
 
-\RequirePackage{natbib}
+% \RequirePackage{natbib}
 
 
 % **********
